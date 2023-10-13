@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import KrNavBar from './KrNavBar';
 
-function KrLayout() {
+function KrDefaultLayout() {
   return (
     <>
       <KrNavBar />
@@ -10,4 +10,4 @@ function KrLayout() {
   );
 }
 
-export default KrLayout;
+export default KrDefaultLayout;
