@@ -21,11 +21,14 @@
   margin-right: 8px;
   background-image: url('../src/assets/Seoul.jpeg');
   background-position: center center;
-  opacity: 0;
   border-radius: 5%;
   animation: fadeIn 1.85s ease-in-out forwards;
   cursor: pointer;
   transition: transform 0.2s ease;
+  /* flex로 가운데 정렬했습니다! */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* transform은 해당 요소가 어디로 움직일지를 말하는 것이다 */
@@ -45,11 +48,13 @@
   margin-left: 8px;
   background-image: url('../src/assets/sapporo_nika.jpeg');
   background-position: center center;
-  opacity: 0.7;
   border-radius: 5%;
   animation: fadeIn 1.85s ease-in-out forwards;
   cursor: pointer;
   transition: transform 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .japan-tab-div:hover {
@@ -60,4 +65,24 @@
 .japan-tab-div:active {
   transform: translate(0, 0);
   box-shadow: 5px 5px 5px #818589;
+}
+
+/* text content의 css 속성을 따로 처리해줍니다 */
+h1 {
+  font-size: 3rem;
+  transition: color 0.3s;
+  color: #ffd400;
+}
+
+.korea-tab-div:hover h1 {
+  color: red;
+}
+
+.japan-tab-div:hover h1 {
+  color: red;
+}
+
+/* text-decoration-line은 a태그의 붙는 default 속성이므로 따로 처리해야해서 이렇게 했습니다! */
+a {
+  text-decoration-line: none;
 }
