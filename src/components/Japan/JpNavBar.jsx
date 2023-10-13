@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function JpNavBar() {
+function JpNavBar() {
   return (
     <header>
       <nav>
@@ -12,3 +12,5 @@ export default function JpNavBar() {
     </header>
   );
 }
+
+export default JpNavBar;

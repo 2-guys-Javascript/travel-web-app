@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function KrNavBar() {
+function KrNavBar() {
   return (
     <header>
       <nav>
@@ -11,3 +11,5 @@ export default function KrNavBar() {
     </header>
   );
 }
+
+export default KrNavBar;

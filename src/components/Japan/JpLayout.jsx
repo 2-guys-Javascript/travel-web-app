@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import JpNavBar from './JpNavBar';
 
-export default function JpLayout() {
+function JpLayout() {
   return (
     <>
       <JpNavBar />
@@ -9,3 +9,5 @@ export default function JpLayout() {
     </>
   );
 }
+
+export default JpLayout;
