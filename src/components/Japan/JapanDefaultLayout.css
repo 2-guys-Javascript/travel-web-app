@@ -1,5 +1,5 @@
 .jp-default-layout {
-  width: 740px;
+  width: 480px;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -9,7 +9,7 @@
 }
 
 .japan-navbar {
-  width: 740px;
+  width: 480px;
   display: flex;
   justify-content: center;
   border: 3px solid red;
