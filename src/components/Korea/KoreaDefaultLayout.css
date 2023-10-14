@@ -1,0 +1,18 @@
+.kr-default-layout {
+  width: 740px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid red;
+}
+
+.korea-navbar {
+  width: 740px;
+  display: flex;
+  justify-content: center;
+  border: 3px solid red;
+  position: absolute;
+  bottom: 0;
+}

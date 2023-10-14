@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function KrNavBar() {
   return (
-    <header>
+    <header className='korea-navbar'>
       <nav>
         <Link to='/'>Home</Link>
         <Link to='korea/weather'>날씨</Link>
