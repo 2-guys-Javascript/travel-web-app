@@ -8,11 +8,17 @@
   border: 3px solid red;
 }
 
-.korea-navbar {
+.korea-footer {
   width: 480px;
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
   border: 3px solid red;
   position: absolute;
   bottom: 0;
+  padding: 20px 0px;
+}
+
+.korea-navbar {
+  display: flex;
+  justify-content: space-around;
 }

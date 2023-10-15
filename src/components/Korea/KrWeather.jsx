@@ -1,12 +1,36 @@
 import { useState } from 'react';
 
 function KrWeather() {
+  // 현재 선택된 도시의 날씨 데이터를 나타내는 상태입니다.
   const [weatherData, setWeatherData] = useState('');
+  // 현재 선택된 도시 이름을 나타내는 상태입니다
   const [city, setCity] = useState('');
 
   const cities = {
-    kr: ['서울', '부산', '제주', '양양', '전주', '대전', '광주', '여수', '강릉', '속초'],
-    us: ['Seoul', 'Busan', 'Jeju', 'Yangyang', 'Jeonju', 'Daejeon', 'Gwangju', 'Yeosu', 'Gangneung', 'Sokcho'],
+    kr: [
+      '서울',
+      '부산',
+      '제주',
+      '양양',
+      '전주',
+      '대전',
+      '광주',
+      '여수',
+      '강릉',
+      '속초',
+    ],
+    us: [
+      'Seoul',
+      'Busan',
+      'Jeju',
+      'Yangyang',
+      'Jeonju',
+      'Daejeon',
+      'Gwangju',
+      'Yeosu',
+      'Gangneung',
+      'Sokcho',
+    ],
   };
 
   const currentDate = () => {
@@ -28,7 +52,6 @@ function KrWeather() {
       const response = await fetch(url, options);
       const result = await response.json();
       setWeatherData(result);
-      console.log(result);
     } catch (error) {
       setWeatherData(null);
       setError(error.message);
