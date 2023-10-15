@@ -1,15 +1,29 @@
+.jp-default-layout {
+  width: 480px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid red;
+}
+
+.japan-navbar {
+  width: 480px;
+  display: flex;
+  justify-content: center;
+  border: 3px solid red;
+  position: absolute;
+  bottom: 0;
+}
+
 .exchange-outer-div {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-}
-
-.japan-navbar {
-  margin-bottom: 20px;
-  padding-bottom: 20px;
 }
 
 .real-exchangeRate {
