@@ -8,13 +8,19 @@
   border: 3px solid red;
 }
 
-.japan-navbar {
+.japan-footer {
   width: 480px;
-  display: flex;
-  justify-content: center;
+  /* display: flex; */
+  /* justify-content: center; */
   border: 3px solid red;
   position: absolute;
   bottom: 0;
+  padding: 20px 0px;
+}
+
+.japan-navbar {
+  display: flex;
+  justify-content: space-around;
 }
 
 .exchange-outer-div {

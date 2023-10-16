@@ -8,15 +8,23 @@ function Exchange() {
 
   // 1엔이 한화로 몇 원인지를 구해주는 함수
   async function getKrwToJpyExchange() {
-    const response = await fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/pair/jpy/krw`);
-    const exchangeData = await response.json();
+    try {
+      const response = await fetch(
+        `https://v6.exchangerate-api.com/v6/${apiKey}/pair/jpy/krw`
+      );
+      const exchangeData = await response.json();
 
-    setKrwToJpy(exchangeData);
+      setKrwToJpy(exchangeData);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   // 한화 1원이 일본화로 몇엔에 해당하는지를 구해주는 함수
   async function getJpyToKrwExchange() {
-    const response = await fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/pair/krw/jpy`);
+    const response = await fetch(
+      `https://v6.exchangerate-api.com/v6/${apiKey}/pair/krw/jpy`
+    );
     const exchangeData = await response.json();
 
     setJpyToKrw(exchangeData);
@@ -36,7 +44,11 @@ function Exchange() {
     <div className='exchange-outer-div'>
       <div>일본 환율 화면입니다</div>
       <div className='real-exchangeRate' onClick={handleChangeKrwJpy}>
-        {isKrwToJpy === true ? <div>{krwToJpy['conversion_rate']}</div> : <div>{jpyToKrw['conversion_rate']}</div>}
+        {isKrwToJpy === true ? (
+          <div>{krwToJpy['conversion_rate']}</div>
+        ) : (
+          <div>{jpyToKrw['conversion_rate']}</div>
+        )}
       </div>
     </div>
   );
