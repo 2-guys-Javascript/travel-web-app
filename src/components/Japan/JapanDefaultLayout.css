@@ -23,6 +23,33 @@
   justify-content: space-around;
 }
 
+.japan-weather-hourly {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+  border: 2px solid red;
+  width: 400px;
+  height: 100px;
+  text-align: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.japan-weather-hourly div {
+  flex: 0 0 auto;
+  margin: 10px;
+}
+
+.japan-weather-hourly p {
+  margin: 5px;
+}
+
+.japan-weather-hourly-icon {
+  width: 42px;
+  height: 42px;
+}
+
 .exchange-outer-div {
   width: 100%;
   height: 100%;

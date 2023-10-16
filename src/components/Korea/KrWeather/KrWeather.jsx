@@ -1,36 +1,17 @@
 import { useState } from 'react';
+import KrForecastWeather from './KrForecastWeather';
+import KrHourlyWeather from './KrHourlyWeather';
 
 function KrWeather() {
   // 현재 선택된 도시의 날씨 데이터를 나타내는 상태입니다.
   const [weatherData, setWeatherData] = useState('');
   // 현재 선택된 도시 이름을 나타내는 상태입니다
   const [city, setCity] = useState('');
+  const [forecast, setForecast] = useState('');
 
   const cities = {
-    kr: [
-      '서울',
-      '부산',
-      '제주',
-      '양양',
-      '전주',
-      '대전',
-      '광주',
-      '여수',
-      '강릉',
-      '속초',
-    ],
-    us: [
-      'Seoul',
-      'Busan',
-      'Jeju',
-      'Yangyang',
-      'Jeonju',
-      'Daejeon',
-      'Gwangju',
-      'Yeosu',
-      'Gangneung',
-      'Sokcho',
-    ],
+    kr: ['서울', '부산', '제주', '양양', '전주', '대전', '광주', '여수', '강릉', '속초'],
+    us: ['Seoul', 'Busan', 'Jeju', 'Yangyang', 'Jeonju', 'Daejeon', 'Gwangju', 'Yeosu', 'Gangneung', 'Sokcho'],
   };
 
   const currentDate = () => {
@@ -47,14 +28,15 @@ function KrWeather() {
   };
 
   const fetchWeatherData = async (e) => {
-    const url = `https://weatherapi-com.p.rapidapi.com/current.json?q=${e}`;
+    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${e}&days=3`;
     try {
       const response = await fetch(url, options);
       const result = await response.json();
       setWeatherData(result);
+      setForecast(result.forecast.forecastday.map((day) => day));
     } catch (error) {
       setWeatherData(null);
-      setError(error.message);
+      console.error(error);
     }
   };
 
@@ -73,9 +55,8 @@ function KrWeather() {
         )}
       </div>
       <h2>{currentDate()} 날씨입니다</h2>
-      <ul className='weather-day'>
-        <li className='weather-time'></li>
-      </ul>
+      <KrHourlyWeather days={forecast} />
+      <KrForecastWeather days={weatherData} />
 
       <ul className='weather-where'>
         {cities.kr.map((krCity, index) => (
