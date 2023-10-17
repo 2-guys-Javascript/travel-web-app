@@ -1,7 +1,7 @@
 .jp-default-layout {
   max-width: 480px;
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,6 +9,7 @@
   border: 3px solid red;
   overflow-y: auto;
   padding-bottom: 60px;
+  box-shadow: 0 0 20px #00000033;
 }
 
 .japan-footer {
