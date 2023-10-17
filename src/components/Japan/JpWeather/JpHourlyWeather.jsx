@@ -6,7 +6,7 @@ function JpHourlyWeather({ days }) {
   return (
     <ul className='japan-weather-hourly'>
       {days[0].hour.map((hour) => (
-        <li>
+        <li key={hour.time.slice(10, 13)}>
           <img className='japan-weather-hourly-icon' src={hour.condition.icon} />
           <p> {hour.feelslike_c} </p>
           <p> {hour.time.slice(10, 16)} </p>
