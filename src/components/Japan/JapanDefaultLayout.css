@@ -8,22 +8,25 @@
   align-items: center;
   border: 3px solid red;
   overflow-y: auto;
-  padding-bottom: 60px;
   box-shadow: 0 0 20px #00000033;
 }
 
 .japan-footer {
+  border: 3px solid red;
   position: fixed;
+  display: flex;
+  align-items: center;
   bottom: 0;
+  height: 10vh;
   z-index: 99;
 }
 
 .japan-navbar {
-  border: 3px solid red;
   max-width: 480px;
   width: 100vw;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   box-sizing: border-box;
   height: 48px;
 }
@@ -69,18 +72,29 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
 
 .real-exchangeRate {
-  position: relative;
-  bottom: 250px;
-  padding: 150px;
-  margin: 150px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+  height: 50%;
   border: 1px solid black;
+  border-radius: 10%;
+  flex-direction: column;
+}
+
+.real-exchangeRate:hover {
+  box-shadow: 0px 0px 30px #f7bee7;
 }
 
 .real-exchangeRate:hover {
   cursor: pointer;
+}
+
+.base-currency {
+  text-align: center;
 }
