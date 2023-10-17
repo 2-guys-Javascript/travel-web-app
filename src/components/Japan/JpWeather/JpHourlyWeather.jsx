@@ -1,16 +1,16 @@
 function JpHourlyWeather({ days }) {
   if (days === '') {
-    return <div></div>;
+    return null;
   }
 
   return (
     <ul className='japan-weather-hourly'>
       {days[0].hour.map((hour) => (
-        <div>
+        <li>
           <img className='japan-weather-hourly-icon' src={hour.condition.icon} />
           <p> {hour.feelslike_c} </p>
           <p> {hour.time.slice(10, 16)} </p>
-        </div>
+        </li>
       ))}
     </ul>
   );

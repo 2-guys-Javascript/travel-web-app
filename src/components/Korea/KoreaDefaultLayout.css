@@ -1,26 +1,43 @@
 .kr-default-layout {
-  width: 480px;
-  height: 100vh;
+  max-width: 480px;
+  width: 100vw;
+  /* 최대의 가로 사이즈 480px / 화면이 더 작을때는 100vw를 주어 반응형 디자인을 구현하였습니다 */
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border: 3px solid red;
+  overflow-y: auto;
+  /* 최대 길이에 맞춰 스크롤이 작동하도록 했습니다 */
+  padding-bottom: 60px;
+  /* navbar가 화면에 보일 수 있는 여유를 줬습니다 */
 }
 
 .korea-footer {
-  width: 480px;
-  /* display: flex;
-  justify-content: center; */
-  border: 3px solid red;
-  position: absolute;
+  position: fixed;
+  /* 위치 고정 */
   bottom: 0;
-  padding: 20px 0px;
+  z-index: 99;
+  /* 최상단 표시 */
 }
 
 .korea-navbar {
+  border: 3px solid red;
+  max-width: 480px;
+  width: 100vw;
+  /* default layout과 동일하게 최대너비와 반응형 넓이를 줬습니다 */
   display: flex;
   justify-content: space-around;
+  box-sizing: border-box;
+  height: 48px;
+}
+
+.korea-navbar a {
+  display: block;
+  flex: 1;
+  /* 하나의 아이템당 하나의 동일한 크기를 줬습니다 */
+  text-align: center;
 }
 
 .korea-weather-hourly {
@@ -29,11 +46,16 @@
   padding: 0;
   margin: 0;
   border: 2px solid red;
-  width: 400px;
+  max-width: 480px;
+  width: 100vw;
+  box-sizing: border-box;
+  /* 화면 밖으로 벗어나지 않도록, 어떤 디바이스에서도 동일한 환경을 제공하도록 수정하였습니다 */
   height: 100px;
   text-align: center;
   flex-wrap: nowrap;
+  overflow-y: hidden;
   overflow-x: auto;
+  /* scroll 관련 기능 */
 }
 
 .korea-weather-hourly div {

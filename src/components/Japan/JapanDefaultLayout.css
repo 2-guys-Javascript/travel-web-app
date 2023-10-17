@@ -1,26 +1,36 @@
 .jp-default-layout {
-  width: 480px;
-  height: 100vh;
+  max-width: 480px;
+  width: 100vw;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border: 3px solid red;
+  overflow-y: auto;
+  padding-bottom: 60px;
 }
 
 .japan-footer {
-  width: 480px;
-  /* display: flex; */
-  /* justify-content: center; */
-  border: 3px solid red;
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  padding: 20px 0px;
+  z-index: 99;
 }
 
 .japan-navbar {
+  border: 3px solid red;
+  max-width: 480px;
+  width: 100vw;
   display: flex;
   justify-content: space-around;
+  box-sizing: border-box;
+  height: 48px;
+}
+
+.japan-navbar a {
+  display: block;
+  flex: 1;
+  text-align: center;
 }
 
 .japan-weather-hourly {
@@ -29,7 +39,8 @@
   padding: 0;
   margin: 0;
   border: 2px solid red;
-  width: 400px;
+  max-width: 480px;
+  box-sizing: border-box;
   height: 100px;
   text-align: center;
   flex-wrap: nowrap;
