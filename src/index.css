@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  overflow: hidden;
 }
 
 /* css #root의 css값 수정했습니다! 모바일 화면 최적화 */
