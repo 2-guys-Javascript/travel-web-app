@@ -2,13 +2,14 @@ body {
   margin: 0;
 }
 
+/* css #root의 css값 수정했습니다! 모바일 화면 최적화 */
 #root {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  position: relative;
+  z-index: 0;
 }
 
 .weather {
