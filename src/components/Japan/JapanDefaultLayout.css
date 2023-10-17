@@ -40,10 +40,12 @@
   margin: 0;
   border: 2px solid red;
   max-width: 480px;
+  width: 100vw;
   box-sizing: border-box;
   height: 100px;
   text-align: center;
   flex-wrap: nowrap;
+  overflow-y: hidden;
   overflow-x: auto;
 }
 
