@@ -10,26 +10,29 @@
   border: 3px solid red;
   overflow-y: auto;
   /* 최대 길이에 맞춰 스크롤이 작동하도록 했습니다 */
-  padding-bottom: 60px;
   /* navbar가 화면에 보일 수 있는 여유를 줬습니다 */
   box-shadow: 0 0 20px #00000033;
 }
 
 .korea-footer {
+  border: 3px solid red;
   position: fixed;
+  display: flex;
   /* 위치 고정 */
   bottom: 0;
   z-index: 99;
+  height: 10vh;
+  align-items: center;
   /* 최상단 표시 */
 }
 
 .korea-navbar {
-  border: 3px solid red;
   max-width: 480px;
   width: 100vw;
   /* default layout과 동일하게 최대너비와 반응형 넓이를 줬습니다 */
   display: flex;
   justify-content: space-around;
+  align-items: center;
   box-sizing: border-box;
   height: 48px;
 }

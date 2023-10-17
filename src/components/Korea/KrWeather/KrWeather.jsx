@@ -42,7 +42,7 @@ function KrWeather() {
 
   return (
     <div className='weather'>
-      <h1>한국 날씨입니다</h1>
+      <h2>한국 날씨입니다</h2>
       <div className='weather-current'>현재 날씨</div>
       <div>
         {weatherData && (

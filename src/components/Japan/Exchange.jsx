@@ -42,12 +42,16 @@ function Exchange() {
 
   return (
     <div className='exchange-outer-div'>
-      <div>일본 환율 화면입니다</div>
+      <h2 className='exchange-description'>일본 환율 화면입니다</h2>
       <div className='real-exchangeRate' onClick={handleChangeKrwJpy}>
+        <div>Click here to change a base currency
+          <h4 className='base-currency'>Base currency is {isKrwToJpy === true? 'Yen': 'Won'}</h4>
+        </div>
+        <h2>{isKrwToJpy === true ? `${krwToJpy['conversion_rate']}₩` : `${jpyToKrw['conversion_rate']}¥`}</h2>
         {isKrwToJpy === true ? (
-          <div>{krwToJpy['conversion_rate']}</div>
+          <div>1 Yen is equal to {krwToJpy['conversion_rate']} Won</div>
         ) : (
-          <div>{jpyToKrw['conversion_rate']}</div>
+          <div>1 Won is equal to {jpyToKrw['conversion_rate']} Yen</div>
         )}
       </div>
     </div>

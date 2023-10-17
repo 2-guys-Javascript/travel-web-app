@@ -43,7 +43,7 @@ function JpWeather() {
 
   return (
     <div className='weather'>
-      <h1>일본 날씨입니다</h1>
+      <h2>일본 날씨입니다</h2>
       <div className='weather-current'>현재 날씨</div>
       <div>
         {weatherData && (
