@@ -40,10 +40,13 @@
 }
 
 .korea-navbar a {
-  display: block;
   flex: 1;
   /* 하나의 아이템당 하나의 동일한 크기를 줬습니다 */
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
 }
 .kr-weather-text-div {
   max-width: 480px;
