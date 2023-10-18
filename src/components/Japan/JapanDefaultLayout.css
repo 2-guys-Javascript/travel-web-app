@@ -165,6 +165,7 @@
   text-align: center;
 }
 
+/* ul 태그에 적용되는 css이며 리스트 타입은 없이, wrap으로 자동으로 아래로 넘겨주었다 */
 .jp-weather-where {
   padding: 0;
   max-width: 460px;
@@ -214,7 +215,7 @@
 }
 
 .real-exchangeRate:hover {
-  box-shadow: 0px 0px 30px #f7bee7;
+  box-shadow: 0px 0px 30px #00000018;
 }
 
 .real-exchangeRate:hover {

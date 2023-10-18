@@ -35,6 +35,7 @@ function Exchange() {
     setIsKrwToJpy(!isKrwToJpy);
   }
 
+  // 첫 화면이 나타날 때 환율을 구하는 함수들이 한번씩 실행됨
   useEffect(() => {
     getKrwToJpyExchange();
     getJpyToKrwExchange();
