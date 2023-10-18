@@ -8,6 +8,7 @@
   align-items: center;
   overflow-y: auto;
   box-shadow: 0 0 20px #00000033;
+  background-color: #ffffff;
 }
 
 .japan-footer {
@@ -32,9 +33,12 @@
 }
 
 .japan-navbar a {
-  display: block;
   flex: 1;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
 }
 
 .jp-weather-text-div {
@@ -59,139 +63,10 @@
   margin-top: 5px;
 }
 
-.jp-weather-current {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.jp-weather-current .city {
-  font-size: 38px;
-  font-weight: 400;
-}
-
-.jp-weather-current .c {
-  font-size: 68px;
-  margin: 0;
-  font-weight: 500;
-}
-
-.jp-weather-current .text {
-  font-size: 18px;
-  text-transform: uppercase;
-  color: #00000055;
-}
-
-.japan-weather-hourly {
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: row;
-  padding: 0px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin: 0;
-  max-width: 460px;
-  width: 95vw;
-  box-sizing: border-box;
-  height: 100px;
-  text-align: center;
-  flex-wrap: nowrap;
-  overflow-y: hidden;
-  overflow-x: auto;
-  list-style-type: none;
-  border-radius: 15px;
-  box-shadow: 0 0 5px #00000033;
-}
-
-.japan-weather-hourly li {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 0 0 auto;
-  margin: 10px;
-}
-
-.japan-weather-hourly p {
-  margin: 5px;
-}
-
-.japan-weather-hourly-icon {
-  width: 38px;
-}
-
-.japan-forecast {
-  background-color: #ffffff;
-  padding: 0;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  max-width: 460px;
-  width: 95vw;
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  border-radius: 15px;
-  box-shadow: 0 0 5px #00000033;
-}
-
-.japan-forecast li {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  border-bottom: 1px solid #00000013;
-}
-
-.japan-forecast .last {
-  border-bottom: none;
-}
-
-.japan-forecast img {
-  width: 28px;
-}
-
-.jp-weather-where-container {
-  max-width: 480px;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 25px;
-}
-
 .jp-where {
   color: #ff8cdcf8;
   font-weight: 400;
   text-align: center;
-}
-
-/* ul 태그에 적용되는 css이며 리스트 타입은 없이, wrap으로 자동으로 아래로 넘겨주었다 */
-.jp-weather-where {
-  padding: 0;
-  max-width: 460px;
-  width: 95vw;
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.jp-weather-city {
-  background-color: #ffffff;
-  text-align: center;
-  font-size: 20px;
-  font-weight: 400;
-  color: #000000;
-  border-radius: 18px;
-  box-shadow: 0 0 3px #00000033;
-  margin: 7px 10px;
-  padding: 8px 18px;
-  cursor: pointer;
-}
-
-.jp-weather-city:hover {
-  background-color: #00000018;
-  transition: 0.5s;
 }
 
 .exchange-outer-div {

@@ -1,5 +1,4 @@
 import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
-import './App.css';
 import Home from './components/Home/Home';
 import Japan from './components/Japan/Japan';
 import Korea from './components/Korea/Korea';

@@ -50,7 +50,7 @@ function JpWeather() {
       </div>
       <div>
         {weatherData && (
-          <div className='jp-weather-current'>
+          <div className='weather-current'>
             <h2 className='city'>{city}</h2>
             <p className='c'>{weatherData.current.feelslike_c}°</p>
             <p className='text'>{weatherData.current.condition.text}</p>
@@ -60,12 +60,12 @@ function JpWeather() {
       {/* JpHourWeather과 JpForecastWeather 컴포넌트는 prop으로 전달된 days가 빈 문자열이면 null 반환으로 UI로 나타나지 않음 */}
       <JpHourlyWeather days={forecast} />
       <JpForecastWeather days={forecast} />
-      <div className='jp-weather-where-container'>
+      <div className='weather-where-container'>
         <h2 className='jp-where'>어디로 놀러가시나요?</h2>
-        <ul className='jp-weather-where'>
+        <ul className='weather-where'>
           {cities.kr.map((krCity, index) => (
             <li
-              className='jp-weather-city'
+              className='weather-city'
               key={krCity}
               onClick={(e) => {
                 setCity(e.target.innerText);
