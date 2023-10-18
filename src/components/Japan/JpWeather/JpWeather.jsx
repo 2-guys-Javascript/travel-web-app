@@ -35,6 +35,7 @@ function JpWeather() {
       const result = await response.json();
       setWeatherData(result);
       setForecast(result.forecast.forecastday.map((day) => day));
+      console.log(result.forecast.forecastday.map((day) => day));
     } catch (error) {
       setWeatherData(null);
       console.error(error);
@@ -43,36 +44,38 @@ function JpWeather() {
 
   return (
     <div className='weather'>
-      <h2>일본 날씨입니다</h2>
-      <div className='weather-current'>현재 날씨</div>
+      <div className='jp-weather-text-div'>
+        <h2 className='jp-weather-text1'>일본</h2>
+        <h2 className='jp-weather-text2'>{weatherData && `${currentDate()} 날씨`}</h2>
+      </div>
       <div>
         {weatherData && (
-          <div>
-            <h2>{city}</h2>
-            <img src={weatherData.current.condition.icon}></img>
-            <p>{weatherData.current.feelslike_c}</p>
-            <p>{weatherData.current.condition.text}</p>
+          <div className='jp-weather-current'>
+            <h2 className='city'>{city}</h2>
+            <p className='c'>{weatherData.current.feelslike_c}°</p>
+            <p className='text'>{weatherData.current.condition.text}</p>
           </div>
         )}
       </div>
-      <h2>{currentDate()} 날씨입니다</h2>
       <JpHourlyWeather days={forecast} />
-      <JpForecastWeather days={weatherData} />
-
-      <ul className='weather-where'>
-        {cities.kr.map((krCity, index) => (
-          <li
-            className='weather-city'
-            key={krCity}
-            onClick={(e) => {
-              setCity(e.target.innerText);
-              fetchWeatherData(cities.us[index]);
-            }}
-          >
-            {krCity}
-          </li>
-        ))}
-      </ul>
+      <JpForecastWeather days={forecast} />
+      <div className='jp-weather-where-container'>
+        <h2 className='jp-where'>어디로 놀러가시나요?</h2>
+        <ul className='jp-weather-where'>
+          {cities.kr.map((krCity, index) => (
+            <li
+              className='jp-weather-city'
+              key={krCity}
+              onClick={(e) => {
+                setCity(e.target.innerText);
+                fetchWeatherData(cities.us[index]);
+              }}
+            >
+              {krCity}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

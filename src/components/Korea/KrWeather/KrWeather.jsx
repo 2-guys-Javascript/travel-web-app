@@ -42,36 +42,38 @@ function KrWeather() {
 
   return (
     <div className='weather'>
-      <h2>한국 날씨입니다</h2>
-      <div className='weather-current'>현재 날씨</div>
+      <div className='kr-weather-text-div'>
+        <h2 className='kr-weather-text1'>한국</h2>
+        <h2 className='kr-weather-text2'>{weatherData && `${currentDate()} 날씨`}</h2>
+      </div>
       <div>
         {weatherData && (
-          <div>
-            <h2>{city}</h2>
-            <img src={weatherData.current.condition.icon}></img>
-            <p>{weatherData.current.feelslike_c}</p>
-            <p>{weatherData.current.condition.text}</p>
+          <div className='kr-weather-current'>
+            <h2 className='city'>{city}</h2>
+            <p className='c'>{weatherData.current.feelslike_c}°</p>
+            <p className='text'>{weatherData.current.condition.text}</p>
           </div>
         )}
       </div>
-      <h2>{currentDate()} 날씨입니다</h2>
       <KrHourlyWeather days={forecast} />
-      <KrForecastWeather days={weatherData} />
-
-      <ul className='weather-where'>
-        {cities.kr.map((krCity, index) => (
-          <li
-            className='weather-city'
-            key={krCity}
-            onClick={(e) => {
-              setCity(e.target.innerText);
-              fetchWeatherData(cities.us[index]);
-            }}
-          >
-            {krCity}
-          </li>
-        ))}
-      </ul>
+      <KrForecastWeather days={forecast} />
+      <div className='kr-weather-where-container'>
+        <h2 className='kr-where'>국내도 즐겁죠!</h2>
+        <ul className='kr-weather-where'>
+          {cities.kr.map((krCity, index) => (
+            <li
+              className='jp-weather-city'
+              key={krCity}
+              onClick={(e) => {
+                setCity(e.target.innerText);
+                fetchWeatherData(cities.us[index]);
+              }}
+            >
+              {krCity}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
