@@ -97,6 +97,10 @@
   cursor: pointer;
 }
 
+.exchange-click-description {
+  text-align: center;
+}
+
 .base-currency {
   text-align: center;
 }

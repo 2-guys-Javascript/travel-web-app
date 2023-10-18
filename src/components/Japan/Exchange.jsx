@@ -45,7 +45,7 @@ function Exchange() {
     <div className='exchange-outer-div'>
       <h2 className='exchange-description'>일본 환율 화면입니다</h2>
       <div className='real-exchangeRate' onClick={handleChangeKrwJpy}>
-        <div>Click here to change a base currency
+        <div className='exchange-click-description'>Click to change a base currency
           <h4 className='base-currency'>Base currency is {isKrwToJpy === true? 'Yen': 'Won'}</h4>
         </div>
         <h2>{isKrwToJpy === true ? `${krwToJpy['conversion_rate']}₩` : `${jpyToKrw['conversion_rate']}¥`}</h2>
