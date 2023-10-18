@@ -1,34 +1,39 @@
 .home-outer-div {
-  width: 100%;
+  max-width: 480px;
+  width: 100vw;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px #00000033;
 }
 
-@keyframes fadeIn {
+@keyframes krFadeIn {
   0% {
+    transform: translate3d(0, -100%, 0);
     opacity: 0;
   }
   100% {
-    opacity: 0.7;
+    transform: translateZ(0);
   }
 }
 
 .korea-tab-div {
-  width: 20em;
-  height: 40.625em;
-  margin-right: 8px;
+  flex: 1;
+  box-sizing: border-box;
+  max-width: 480px;
+  width: 100vw;
   background-image: url('../src/assets/Seoul.jpeg');
   background-position: center center;
-  border-radius: 5%;
-  animation: fadeIn 1.85s ease-in-out forwards;
+  animation: krFadeIn 0.8s ease-out forwards;
   cursor: pointer;
-  transition: transform 0.2s ease;
   /* flex로 가운데 정렬했습니다! */
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0.7;
 }
 
 /* transform은 해당 요소가 어디로 움직일지를 말하는 것이다 */
@@ -42,19 +47,38 @@
   box-shadow: 5px 5px 5px #edd3e4;
 }
 
+.korea {
+  font-family: 'yg-jalnan';
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: 5px 5px #0c6d45;
+  border-radius: 1rem;
+}
+
+@keyframes jpFadeIn {
+  0% {
+    transform: translate3d(0, 100%, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(0);
+  }
+}
+
 .japan-tab-div {
-  width: 20em;
-  height: 40.625em;
-  margin-left: 8px;
+  flex: 1;
+  box-sizing: border-box;
+  max-width: 480px;
+  width: 100vw;
   background-image: url('../src/assets/sapporo_nika.jpeg');
   background-position: center center;
-  border-radius: 5%;
-  animation: fadeIn 1.85s ease-in-out forwards;
+  animation: jpFadeIn 0.8s ease-out forwards;
   cursor: pointer;
   transition: transform 0.2s ease;
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0.7;
 }
 
 .japan-tab-div:hover {
@@ -67,22 +91,47 @@
   box-shadow: 5px 5px 5px #818589;
 }
 
-/* text content의 css 속성을 따로 처리해줍니다 */
-h1 {
+.japan {
+  font-family: 'yg-jalnan';
   font-size: 3rem;
-  transition: color 0.3s;
-  color: #ffd400;
-}
-
-.korea-tab-div:hover h1 {
-  color: red;
-}
-
-.japan-tab-div:hover h1 {
-  color: red;
+  color: #fff;
+  text-shadow: 5px 5px #e165ce;
+  border-radius: 1rem;
 }
 
 /* text-decoration-line은 a태그의 붙는 default 속성이므로 따로 처리해야해서 이렇게 했습니다! */
 a {
   text-decoration-line: none;
+}
+
+.project-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-family: 'LOTTERIACHAB';
+  font-size: 5rem;
+  color: #363636;
+  animation: mainFadeIn 1.2s ease-in-out forwards;
+  background-color: #ffffff;
+  max-width: 460px;
+  width: 90vw;
+  text-align: center;
+  border-radius: 3.7rem;
+  z-index: 99;
+  text-shadow: 3px 3px #d6d6d6, 6px 6px #323232;
+  padding-bottom: 7px;
+}
+
+@keyframes mainFadeIn {
+  0% {
+    font-size: 0;
+    opacity: 0;
+    width: 0;
+  }
+  60% {
+    font-size: 0;
+    opacity: 0;
+    width: 0;
+  }
 }

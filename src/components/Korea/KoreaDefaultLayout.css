@@ -1,0 +1,77 @@
+.kr-default-layout {
+  max-width: 480px;
+  width: 100vw;
+  /* 최대의 가로 사이즈 480px / 화면이 더 작을때는 100vw를 주어 반응형 디자인을 구현하였습니다 */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* 화면의 위부터 아래로 모든 컨텐츠가 표시되도록 수정하였습니다 */
+  align-items: center;
+  overflow-y: auto;
+  /* 최대 길이에 맞춰 스크롤이 작동하도록 했습니다 */
+  /* navbar가 화면에 보일 수 있는 여유를 줬습니다 */
+  box-shadow: 0 0 20px #00000033;
+  background-color: #ffffff;
+}
+
+.korea-footer {
+  position: fixed;
+  /* 위치 고정 */
+  display: flex;
+  align-items: center;
+  bottom: 0;
+  /* 화면 최하단 표시 */
+  z-index: 99;
+  height: 10vh;
+  background-color: #ffffff;
+  box-shadow: 0 0 5px #00000013;
+}
+
+.korea-navbar {
+  max-width: 480px;
+  width: 100vw;
+  /* default layout과 동일하게 최대너비와 반응형 넓이를 줬습니다 */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+  height: 48px;
+}
+
+.korea-navbar a {
+  flex: 1;
+  /* 하나의 아이템당 하나의 동일한 크기를 줬습니다 */
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+}
+.kr-weather-text-div {
+  max-width: 480px;
+  width: 100vw;
+  text-align: center;
+  border-radius: 25px;
+}
+
+.kr-weather-text1 {
+  color: #087953e9;
+  font-size: 30px;
+  font-weight: 400;
+  margin-top: 40px;
+  margin-bottom: 0;
+}
+
+.kr-weather-text2 {
+  color: #0000009e;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.kr-where {
+  color: #008138c1;
+  font-weight: 400;
+  text-align: center;
+}
