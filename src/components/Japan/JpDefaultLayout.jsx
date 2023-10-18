@@ -4,7 +4,7 @@ import JpNavBar from './JpNavBar';
 
 function JpDefaultLayout() {
   return (
-    <div className='jp-default-layout'>
+    <div className='jp-default-layout scroll-box'>
       <Outlet />
       <JpNavBar />
     </div>

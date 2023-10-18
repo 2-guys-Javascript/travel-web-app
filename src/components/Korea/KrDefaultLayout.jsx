@@ -4,7 +4,7 @@ import KrNavBar from './KrNavBar';
 
 function KrDefaultLayout() {
   return (
-    <div className='kr-default-layout'>
+    <div className='kr-default-layout scroll-box'>
       <Outlet />
       <KrNavBar />
     </div>

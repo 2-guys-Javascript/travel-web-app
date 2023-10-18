@@ -4,7 +4,7 @@ function KrHourlyWeather({ days }) {
   }
 
   return (
-    <ul className='korea-weather-hourly'>
+    <ul className='korea-weather-hourly scroll-box'>
       {days[0].hour.map((hour) => (
         <li key={hour.time.slice(10, 13)}>
           <img className='korea-weather-hourly-icon' src={hour.condition.icon} />
