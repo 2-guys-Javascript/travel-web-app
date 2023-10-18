@@ -48,7 +48,7 @@ function KrWeather() {
       </div>
       <div>
         {weatherData && (
-          <div className='kr-weather-current'>
+          <div className='weather-current'>
             <h2 className='city'>{city}</h2>
             <p className='c'>{weatherData.current.feelslike_c}°</p>
             <p className='text'>{weatherData.current.condition.text}</p>
@@ -57,12 +57,12 @@ function KrWeather() {
       </div>
       <KrHourlyWeather days={forecast} />
       <KrForecastWeather days={forecast} />
-      <div className='kr-weather-where-container'>
+      <div className='weather-where-container'>
         <h2 className='kr-where'>국내도 즐겁죠!</h2>
-        <ul className='kr-weather-where'>
+        <ul className='weather-where'>
           {cities.kr.map((krCity, index) => (
             <li
-              className='jp-weather-city'
+              className='weather-city'
               key={krCity}
               onClick={(e) => {
                 setCity(e.target.innerText);
