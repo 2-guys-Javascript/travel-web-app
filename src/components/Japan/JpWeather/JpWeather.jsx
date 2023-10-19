@@ -28,12 +28,13 @@ function JpWeather() {
   };
 
   const fetchWeatherData = async (e) => {
-    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${e}&days=3`;
+    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${e}&days=3&lang=ko`;
     try {
       const response = await fetch(url, options);
       const result = await response.json();
       setWeatherData(result);
       setForecast(result.forecast.forecastday.map((day) => day));
+      console.log(result);
     } catch (error) {
       setWeatherData(null);
     }

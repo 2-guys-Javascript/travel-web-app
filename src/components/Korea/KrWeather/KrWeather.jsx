@@ -26,7 +26,7 @@ function KrWeather() {
   };
 
   const fetchWeatherData = async (e) => {
-    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${e}&days=3`;
+    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${e}&days=3&lang=ko`;
     try {
       const response = await fetch(url, options);
       const result = await response.json();
