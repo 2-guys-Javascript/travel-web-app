@@ -3,12 +3,9 @@ import JpHourlyWeather from './JpHourlyWeather';
 import JpForecastWeather from './JpForecastWeather';
 
 function JpWeather() {
-  // 사용자가 선택한 도시의 데이터를 나타내는 상태
   const [weatherData, setWeatherData] = useState('');
-  // 사용자가 선택한 도시의 이름을 나타내는 상태
   const [city, setCity] = useState('');
   // 사용자가 api 요청을 오늘, 내일, 그리고 모레에 대한 3일을 기준으로 날리기에 길이가 3짜리인 배열 상태가 될 것임
-  // 해당 상태는 JpHourlyWeather와 JpForecastWeather에 모두 days 라는 prop으로 전달
   const [forecast, setForecast] = useState('');
 
   // 현재 웹 애플리케이션에서 UI에 활용하는 이름은 한글이지만, fetch 요청을 날릴 때, q 매개변수에 필요한 것은 영문 도시명이기에 필요
