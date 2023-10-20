@@ -7,6 +7,7 @@ import JpWeather from './components/Japan/JpWeather/JpWeather';
 import KrDefaultLayout from './components/Korea/KrDefaultLayout';
 import JpDefaultLayout from './components/Japan/JpDefaultLayout';
 import Exchange from './components/Japan/Exchange';
+import Login from './components/Login/Login';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='japan/weather' element={<JpWeather />} />
           <Route path='japan/exchange' element={<Exchange />} />
         </Route>
+        <Route path='login' element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
