@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './JapanDefaultLayout.css';
+
 function JpNavBar() {
   return (
     <footer className='japan-footer'>
