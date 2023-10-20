@@ -1,23 +1,20 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Header() {
-  const [isLogin, setIsLogin] = useState(false);
-
-  const handleLogButton = () => {
-    setIsLogin(!isLogin);
-    console.log(!isLogin);
-  };
+function Header({ isLogIn, onChangeIsLogIn }) {
+  function handleClickButton() {
+    onChangeIsLogIn(!isLogIn);
+  }
 
   return (
     <div>
       <h1></h1>
-      {!isLogin ? (
+      {!isLogIn ? (
         <Link to='login'>
-          <button onClick={handleLogButton}>로그인</button>
+          <button onClick={handleClickButton}>로그인</button>
         </Link>
       ) : (
-        <button onClick={handleLogButton}>아웃</button>
+        <button onClick={handleClickButton}>아웃</button>
       )}
     </div>
   );

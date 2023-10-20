@@ -3,10 +3,10 @@ import { Outlet } from 'react-router-dom';
 import KrNavBar from './KrNavBar';
 import Header from '../Header';
 
-function KrDefaultLayout() {
+function KrDefaultLayout({ isLogIn, onChangeIsLogIn }) {
   return (
     <div className='kr-default-layout scroll-box'>
-      <Header />
+      <Header isLogIn={isLogIn} onChangeIsLogIn={onChangeIsLogIn} />
       <Outlet />
       <KrNavBar />
     </div>

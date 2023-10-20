@@ -1,4 +1,5 @@
 import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
+import { useState } from 'react';
 import Home from './components/Home/Home';
 import Japan from './components/Japan/Japan';
 import Korea from './components/Korea/Korea';
@@ -10,20 +11,26 @@ import Exchange from './components/Japan/Exchange';
 import Login from './components/Login/Login';
 
 function App() {
+  const [isLogIn, setIsLogIn] = useState(false);
+
+  // function handleLogButton() {
+  //   set
+  // }
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/*' element={<Home />} />
-        <Route element={<KrDefaultLayout />}>
+        <Route element={<KrDefaultLayout isLogIn={isLogIn} onChangeIsLogIn={setIsLogIn} />}>
           <Route path='korea' element={<Korea />} />
           <Route path='korea/weather' element={<KrWeather />} />
         </Route>
-        <Route element={<JpDefaultLayout />}>
+        <Route path='login' element={<Login />} />
+        <Route element={<JpDefaultLayout isLogIn={isLogIn} onChangeIsLogIn={setIsLogIn} />}>
           <Route path='japan' element={<Japan />} />
           <Route path='japan/weather' element={<JpWeather />} />
           <Route path='japan/exchange' element={<Exchange />} />
         </Route>
-        <Route path='login' element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
