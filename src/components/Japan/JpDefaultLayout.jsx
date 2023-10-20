@@ -3,10 +3,10 @@ import { Outlet } from 'react-router-dom';
 import JpNavBar from './JpNavBar';
 import Header from '../Header';
 
-function JpDefaultLayout() {
+function JpDefaultLayout({ isLogIn, onChangeIsLogIn }) {
   return (
     <div className='jp-default-layout scroll-box'>
-      <Header />
+      <Header isLogIn={isLogIn} onChangeIsLogIn={onChangeIsLogIn} />
       <Outlet />
       <JpNavBar />
     </div>
