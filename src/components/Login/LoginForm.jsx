@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../firebaseConfig';
 
-function LoginForm({ isLogIn, onChangeIsLogIn, onChangeUserId, onChangeDisplayName }) {
+function LoginForm({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) {
   const navigate = useNavigate();
 
   async function handleLoginSubmit(ev) {
@@ -16,7 +16,8 @@ function LoginForm({ isLogIn, onChangeIsLogIn, onChangeUserId, onChangeDisplayNa
       const user = userCredential.user;
       console.log(user);
       console.log('Success!');
-      onChangeIsLogIn(!isLogIn);
+
+      onChangeIsLoggedIn(!isLoggedIn);
       onChangeUserId(user.uid);
       onChangeDisplayName(user.displayName);
       navigate('/home');

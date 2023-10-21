@@ -12,7 +12,7 @@ import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
 
 function App() {
-  const [isLogIn, setIsLogIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userId, setUserId] = useState('');
   const [displayName, setDisplayName] = useState('');
 
@@ -20,11 +20,12 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/*' element={<Home />} />
+
         <Route
           element={
             <KrDefaultLayout
-              isLogIn={isLogIn}
-              onChangeIsLogIn={setIsLogIn}
+              isLoggedIn={isLoggedIn}
+              onChangeIsLoggedIn={setIsLoggedIn}
               userId={userId}
               onChangeUserId={setUserId}
               displayName={displayName}
@@ -32,26 +33,29 @@ function App() {
             />
           }
         >
-          <Route path='korea' element={<Korea />} />
-          <Route path='korea/weather' element={<KrWeather />} />
+          <Route path='/korea' element={<Korea />} />
+          <Route path='/korea/weather' element={<KrWeather />} />
         </Route>
+
         <Route
-          path='login'
+          path='/login'
           element={
             <Login
-              isLogIn={isLogIn}
-              onChangeIsLogIn={setIsLogIn}
+              isLoggedIn={isLoggedIn}
+              onChangeIsLoggedIn={setIsLoggedIn}
               onChangeUserId={setUserId}
               onChangeDisplayName={setDisplayName}
             />
           }
         />
-        <Route path='signup' element={<SignUp />} />
+
+        <Route path='/signup' element={<SignUp />} />
+
         <Route
           element={
             <JpDefaultLayout
-              isLogIn={isLogIn}
-              onChangeIsLogIn={setIsLogIn}
+              isLoggedIn={isLoggedIn}
+              onChangeIsLoggedIn={setIsLoggedIn}
               userId={userId}
               onChangeUserId={setUserId}
               displayName={displayName}
@@ -59,9 +63,9 @@ function App() {
             />
           }
         >
-          <Route path='japan' element={<Japan />} />
-          <Route path='japan/weather' element={<JpWeather />} />
-          <Route path='japan/exchange' element={<Exchange />} />
+          <Route path='/japan' element={<Japan />} />
+          <Route path='/japan/weather' element={<JpWeather />} />
+          <Route path='/japan/exchange' element={<Exchange />} />
         </Route>
       </Routes>
     </BrowserRouter>
