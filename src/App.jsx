@@ -9,27 +9,63 @@ import KrDefaultLayout from './components/Korea/KrDefaultLayout';
 import JpDefaultLayout from './components/Japan/JpDefaultLayout';
 import Exchange from './components/Japan/Exchange';
 import Login from './components/Login/Login';
+import SignUp from './components/SignUp/SignUp';
 
 function App() {
-  const [isLogIn, setIsLogIn] = useState(false);
-
-  // function handleLogButton() {
-  //   set
-  // }
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userId, setUserId] = useState('');
+  const [displayName, setDisplayName] = useState('');
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/*' element={<Home />} />
-        <Route element={<KrDefaultLayout isLogIn={isLogIn} onChangeIsLogIn={setIsLogIn} />}>
-          <Route path='korea' element={<Korea />} />
-          <Route path='korea/weather' element={<KrWeather />} />
+
+        <Route
+          element={
+            <KrDefaultLayout
+              isLoggedIn={isLoggedIn}
+              onChangeIsLoggedIn={setIsLoggedIn}
+              userId={userId}
+              onChangeUserId={setUserId}
+              displayName={displayName}
+              onChangeDisplayName={setDisplayName}
+            />
+          }
+        >
+          <Route path='/korea' element={<Korea />} />
+          <Route path='/korea/weather' element={<KrWeather />} />
         </Route>
-        <Route path='login' element={<Login />} />
-        <Route element={<JpDefaultLayout isLogIn={isLogIn} onChangeIsLogIn={setIsLogIn} />}>
-          <Route path='japan' element={<Japan />} />
-          <Route path='japan/weather' element={<JpWeather />} />
-          <Route path='japan/exchange' element={<Exchange />} />
+
+        <Route
+          path='/login'
+          element={
+            <Login
+              isLoggedIn={isLoggedIn}
+              onChangeIsLoggedIn={setIsLoggedIn}
+              onChangeUserId={setUserId}
+              onChangeDisplayName={setDisplayName}
+            />
+          }
+        />
+
+        <Route path='/signup' element={<SignUp />} />
+
+        <Route
+          element={
+            <JpDefaultLayout
+              isLoggedIn={isLoggedIn}
+              onChangeIsLoggedIn={setIsLoggedIn}
+              userId={userId}
+              onChangeUserId={setUserId}
+              displayName={displayName}
+              onChangeDisplayName={setDisplayName}
+            />
+          }
+        >
+          <Route path='/japan' element={<Japan />} />
+          <Route path='/japan/weather' element={<JpWeather />} />
+          <Route path='/japan/exchange' element={<Exchange />} />
         </Route>
       </Routes>
     </BrowserRouter>
