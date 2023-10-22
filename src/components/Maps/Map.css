@@ -1,0 +1,55 @@
+.map-container {
+  width: 100vw;
+  height: 350px;
+  margin: 10px 0;
+}
+
+.map-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 64px;
+}
+
+.create-marker-form {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+}
+
+.create-marker-form input {
+  margin: 7px;
+  width: 90vw;
+}
+
+.create-marker-form button {
+  box-shadow: 0 0 3px #00000055;
+  border: 0;
+  border-radius: 17px;
+  margin-top: 10px;
+  font-size: 20px;
+  padding: 7px 13px;
+  background-color: #ffffff;
+}
+
+.marker-info {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+}
+
+.marker-info button {
+  box-shadow: 0 0 3px #00000055;
+  border: 0;
+  border-radius: 17px;
+  margin-top: 10px;
+  font-size: 20px;
+  padding: 7px 13px;
+  background-color: #ffffff;
+}
