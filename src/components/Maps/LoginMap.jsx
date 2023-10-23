@@ -7,7 +7,7 @@ import { db } from '../../../firebaseConfig';
 import { getDoc, doc, updateDoc, setDoc } from 'firebase/firestore';
 import './Map.css';
 
-let center = { lat: 37.49, lng: 127.02 };
+const center = { lat: 37.49, lng: 127.02 };
 
 const myStyles = [
   {
@@ -85,7 +85,6 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
 
       if (map) {
         map.panTo(newMarker.position);
-        console.log(newMarker);
       }
     }
     // 마커 정보 표시 안함
@@ -129,7 +128,6 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
   // 무슨 이유에서인지 모르겠으나, 일정 생성하고, 처음 해당 마커를 눌러보면 selectedMarker는 null임
   // 따라서 바로 쓰려면 selectedMarker가 아니라, 그냥 marker를 사용하는 것이 필요함
   const handleMarkerClick = (marker) => {
-    console.log(markers);
     if (creatingMarker) {
       // 생성 중인 마커를 클릭하면 해당 마커를 삭제
       if (markers.length > 0) {
@@ -140,7 +138,6 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
     setSelectedMarker({ ...marker });
     map.panTo(marker.position);
     console.log(marker);
-    console.log(selectedMarker);
   };
 
   const handleDateChange = (ev) => {
@@ -167,7 +164,6 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
     };
 
     fetchMarkersData();
-    console.log(markers);
   }, [selectedDate]);
 
   return isLoaded ? (

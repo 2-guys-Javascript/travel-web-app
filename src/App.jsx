@@ -33,7 +33,19 @@ function App() {
             />
           }
         >
-          <Route path='/korea' element={<Korea />} />
+          <Route
+            path='/korea'
+            element={
+              <Korea
+                isLoggedIn={isLoggedIn}
+                onChangeIsLoggedIn={setIsLoggedIn}
+                userId={userId}
+                onChangeUserId={setUserId}
+                displayName={displayName}
+                onChangeDisplayName={setDisplayName}
+              />
+            }
+          />
           <Route path='/korea/weather' element={<KrWeather />} />
         </Route>
 
