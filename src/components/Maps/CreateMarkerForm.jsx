@@ -4,7 +4,7 @@ import moment from 'moment';
 import './Map.css';
 
 // onCreateMarker는 handleCreateMarker() 함수가 전달된 것으로 폼 정보만 인자로 넣기
-function CreateMarkerForm({ onCreateMarker }) {
+function CreateMarkerForm({ onCreateMarker, userId }) {
   const [dateValue, setDateValue] = useState(new Date());
 
   function handleSubmitForm(ev) {
