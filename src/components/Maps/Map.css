@@ -58,3 +58,44 @@
   padding: 7px 13px;
   background-color: #ffffff;
 }
+
+.react-calendar {
+  margin: 15px 0;
+  border: 0;
+  max-width: 460px;
+  width: 100vw;
+}
+
+.react-calendar__navigation button {
+  background-color: #ffffff;
+  border: 0;
+  font-size: 18px;
+}
+
+.react-calendar__navigation__label span {
+  font-size: 23px;
+}
+
+.react-calendar__month-view__weekdays {
+  padding: 15px 0;
+  border-bottom: 1px solid #00000022;
+}
+
+abbr {
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.react-calendar__month-view__days button {
+  background-color: #ffffff;
+  padding: 9px 0;
+  border: #ffffff;
+}
+
+.react-calendar__month-view__days button abbr {
+  font-size: 17px;
+}
+
+.react-calendar__tile--active {
+  background-color: black;
+}

@@ -1,69 +1,55 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import Calendar from 'react-calendar';
+import moment from 'moment';
+import './Map.css';
 
+// onCreateMarker는 handleCreateMarker() 함수가 전달된 것으로 폼 정보만 인자로 넣기
 function CreateMarkerForm({ onCreateMarker }) {
-  const [newMarkerInfo, setNewMarkerInfo] = useState({
-    title: '',
-    content: '',
-    date: '',
-    time: {
-      from: '',
-      until: '',
-    },
-  });
+  const [dateValue, setDateValue] = useState(new Date());
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    if (name.includes('_')) {
-      // 객체 내부의 필드 업데이트
-      const [objName, fieldName] = name.split('_');
-      setNewMarkerInfo({
-        ...newMarkerInfo,
-        [objName]: { ...newMarkerInfo[objName], [fieldName]: value },
-      });
-    } else {
-      // 일반적인 필드 업데이트
-      setNewMarkerInfo({ ...newMarkerInfo, [name]: value });
-    }
-  };
-
-  const handleCreateMarker = () => {
-    onCreateMarker(newMarkerInfo);
-    setNewMarkerInfo({ title: '', content: '', date: '', time: { from: '', until: '' } });
-  };
+  function handleSubmitForm(ev) {
+    ev.preventDefault();
+    const newMarkerData = {
+      title: ev.target.elements.title.value,
+      detail: ev.target.elements.detail.value,
+      date: moment(dateValue).format('YYYY년 MM월 DD일'),
+      time: {
+        from: ev.target.elements.startTime.value,
+        until: ev.target.elements.endTime.value,
+      },
+    };
+    onCreateMarker(newMarkerData);
+  }
 
   return (
-    <div className='create-marker-form'>
+    <form onSubmit={handleSubmitForm}>
       <div>
-        제목
-        <input type='text' name='title' placeholder='제목' value={newMarkerInfo.title} onChange={handleInputChange} />
+        <label htmlFor='title'>Title : </label>
+        <input type='text' id='title' name='title' />
       </div>
       <div>
-        내용
-        <input
-          type='text'
-          name='content'
-          placeholder='내용'
-          value={newMarkerInfo.content}
-          onChange={handleInputChange}
+        <label htmlFor='detail'>Detail : </label>
+        <input type='text' id='detail' name='detail' />
+      </div>
+      <div>
+        <Calendar
+          onChange={setDateValue}
+          value={dateValue}
+          next2Label={null}
+          prev2Label={null}
+          formatDay={(locale, date) => moment(date).format('D')}
         />
       </div>
       <div>
-        날짜
-        <input type='date' name='date' placeholder='날짜' value={newMarkerInfo.date} onChange={handleInputChange} />
+        <label htmlFor='startTime'>Start Time : </label>
+        <input type='time' id='startTime' name='startTime' />
       </div>
       <div>
-        시간
-        <input type='time' name='time_from' value={newMarkerInfo.time.from} onChange={handleInputChange} step='3600' />
-        <input
-          type='time'
-          name='time_until'
-          value={newMarkerInfo.time.until}
-          onChange={handleInputChange}
-          step='3600'
-        />
+        <label htmlFor='endTime'>End Time : </label>
+        <input type='time' id='endTime' name='endTime' />
       </div>
-      <button onClick={handleCreateMarker}>마커 생성</button>
-    </div>
+      <button type='submit'>제출</button>
+    </form>
   );
 }
 
