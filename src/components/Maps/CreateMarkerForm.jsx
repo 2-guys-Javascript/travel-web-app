@@ -9,6 +9,7 @@ function CreateMarkerForm({ onCreateMarker }) {
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
   const [isStartSelected, setIsStartSelected] = useState(false);
+  const [isMorningSelected, setIsMorningSelected] = useState(true);
 
   function handleTimeButtonClick(time) {
     if (!isStartSelected) {
@@ -27,7 +28,7 @@ function CreateMarkerForm({ onCreateMarker }) {
 
   function generateTimeButtons() {
     const timeButtons = [];
-    for (let hour = 0; hour < 24; hour++) {
+    for (let hour = isMorningSelected ? 0 : 12; hour < (isMorningSelected ? 12 : 24); hour++) {
       for (let minute = 0; minute < 60; minute += 30) {
         const time = moment({ hour, minute }).format('HH:mm');
         timeButtons.push(
@@ -43,6 +44,10 @@ function CreateMarkerForm({ onCreateMarker }) {
       }
     }
     return timeButtons;
+  }
+
+  function handleToggleMorning() {
+    setIsMorningSelected(!isMorningSelected);
   }
 
   function handleSubmitForm(ev) {
@@ -73,6 +78,9 @@ function CreateMarkerForm({ onCreateMarker }) {
           formatDay={(locale, date) => moment(date).format('D')}
         />
       </div>
+      <button className='toggle-am' onClick={handleToggleMorning}>
+        {!isMorningSelected ? '오후' : '오전'}
+      </button>
       <div className='time-box'>{generateTimeButtons()}</div>
       <div className='title-box'>
         <label htmlFor='title'>Title : </label>

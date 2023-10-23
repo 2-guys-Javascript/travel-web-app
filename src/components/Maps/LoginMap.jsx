@@ -1,5 +1,5 @@
 import { useState, useCallback, memo, useEffect } from 'react';
-import { GoogleMap, useJsApiLoader, MarkerF, InfoWindow, InfoWindowF } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, MarkerF } from '@react-google-maps/api';
 import CreateMarkerForm from './CreateMarkerForm';
 import MarkerInfo from './MarkerInfo';
 import moment from 'moment';
@@ -170,7 +170,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
     <div className='map-display'>
       <div>지도화면입니다</div>
       <div>
-        <input type='date' onChange={handleDateChange} />
+        <input type='date' className='login-date' onChange={handleDateChange} />
       </div>
       <GoogleMap
         mapContainerClassName='map-container'
