@@ -63,7 +63,19 @@ function App() {
             />
           }
         >
-          <Route path='/japan' element={<Japan />} />
+          <Route
+            path='/japan'
+            element={
+              <Japan
+                isLoggedIn={isLoggedIn}
+                onChangeIsLoggedIn={setIsLoggedIn}
+                userId={userId}
+                onChangeUserId={setUserId}
+                displayName={displayName}
+                onChangeDisplayName={setDisplayName}
+              />
+            }
+          />
           <Route path='/japan/weather' element={<JpWeather />} />
           <Route path='/japan/exchange' element={<Exchange />} />
         </Route>
