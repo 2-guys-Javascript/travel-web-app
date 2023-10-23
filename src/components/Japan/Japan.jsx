@@ -1,9 +1,9 @@
-import NonLoginMap from '../Maps/NonLoginMap';
+import LoginMap from '../Maps/LoginMap';
 
 function Japan() {
   return (
     <>
-      <NonLoginMap />
+      <LoginMap />
       <div>This is Japan</div>
     </>
   );
