@@ -1,0 +1,64 @@
+.non {
+  max-width: 480px;
+  width: 100vw;
+  height: 0 auto;
+  margin-bottom: 11vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 400px;
+  position: relative;
+}
+
+.map-container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  margin-top: 35px;
+}
+
+.non-btn-1 {
+  position: fixed;
+  width: 90px;
+  top: 320px;
+  z-index: 99;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 0 3px #00000088;
+  padding: 10px 10px;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.non-btn-2 {
+  width: 40px;
+  position: fixed;
+  top: 107px;
+  z-index: 99;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 0 3px #00000088;
+  padding: 10px 10px;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.non-search-input {
+  text-align: center;
+  width: 170px;
+  position: fixed;
+  top: 80px;
+  z-index: 99;
+  font-size: 16px;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 0 3px #00000088;
+  background-color: #ffffff55;
+  padding: 0;
+}
+
+.non-btn-box {
+}
