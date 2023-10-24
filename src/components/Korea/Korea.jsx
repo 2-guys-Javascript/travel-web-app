@@ -1,9 +1,21 @@
 import LoginMap from '../Maps/LoginMap';
+import NonLoginMap from '../Maps/NonLoginMap';
 
-function Korea() {
+function Korea({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displayName, onChangeDisplayName }) {
   return (
     <>
-      <LoginMap />
+      {isLoggedIn ? (
+        <LoginMap
+          isLoggedIn={isLoggedIn}
+          onChangeIsLoggedIn={onChangeIsLoggedIn}
+          userId={userId}
+          onChangeUserId={onChangeUserId}
+          displayName={displayName}
+          onChangeDisplayName={onChangeDisplayName}
+        />
+      ) : (
+        <NonLoginMap />
+      )}
       <div>This is korea!</div>
     </>
   );
