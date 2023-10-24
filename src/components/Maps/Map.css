@@ -111,6 +111,7 @@ abbr {
 }
 
 .times {
+  cursor: pointer;
   width: 23%;
   height: 55px;
   border: 0.5px solid #00000022;
@@ -143,16 +144,24 @@ abbr {
   margin: 20px 0;
 }
 
+.title-box label {
+  font-size: 23px;
+}
+
 .title-box input {
   border-radius: 12px;
   border: 0.5px solid #00000022;
   background-color: #8b8b8b19;
   box-shadow: 0 0 1px #00000022;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .detail-box {
   margin: 20px 0;
+}
+
+.detail-box label {
+  font-size: 23px;
 }
 
 .detail-box input {
@@ -160,7 +169,7 @@ abbr {
   border: 0.5px solid #00000022;
   background-color: #8b8b8b19;
   box-shadow: 0 0 1px #00000022;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .submit {
@@ -180,4 +189,10 @@ abbr {
   font-size: 22px;
   padding: 12px;
   color: #000000e1;
+}
+
+.existing {
+  background-color: #00000033;
+  pointer-events: none;
+  color: #00000077;
 }

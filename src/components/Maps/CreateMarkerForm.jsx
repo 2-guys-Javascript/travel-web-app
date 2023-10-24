@@ -1,15 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { db } from '../../../firebaseConfig';
+import { getDoc, doc } from 'firebase/firestore';
 import Calendar from 'react-calendar';
 import moment from 'moment';
 import './Map.css';
 
 // onCreateMarker는 handleCreateMarker() 함수가 전달된 것으로 폼 정보만 인자로 넣기
-function CreateMarkerForm({ onCreateMarker, markers, selectedDate }) {
+function CreateMarkerForm({ onCreateMarker, markers, userId }) {
+  const [isSubmitClick, setIsSubmitClick] = useState(false);
   const [dateValue, setDateValue] = useState(new Date());
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
   const [isStartSelected, setIsStartSelected] = useState(false);
   const [isMorningSelected, setIsMorningSelected] = useState(true);
+  const [calendarTimeMarkers, setCalendarTimeMarkers] = useState([]);
+  const [selectedCalendarDate, setSelectedCalendarDate] = useState(moment(new Date()).format('YYYY년 MM월 DD일'));
+
+  function handleCalendarChange(e) {
+    setDateValue(moment(e));
+    setSelectedCalendarDate(moment(e).format('YYYY년 MM월 DD일'));
+  }
 
   function handleTimeButtonClick(time) {
     if (!isStartSelected) {
@@ -39,52 +49,42 @@ function CreateMarkerForm({ onCreateMarker, markers, selectedDate }) {
 
   function generateTimeButtons() {
     const timeButtons = [];
+    const selectedDay = moment(selectedCalendarDate, 'YYYY년 MM월 DD일').date();
+
     for (let hour = isMorningSelected ? 0 : 12; hour < (isMorningSelected ? 12 : 24); hour++) {
       for (let minute = 0; minute < 60; minute += 30) {
         const time = moment({ hour, minute }).format('HH:mm');
-        const isDisabled =
-          (isStartSelected && endTime !== '' && (time <= startTime || time <= endTime)) ||
-          (!isStartSelected && startTime !== '' && time <= startTime) ||
-          isTimeSlotBooked(selectedDate, time); // 이미 저장된 일정 중에 해당 시간대가 선택되어 있는지 확인
 
-        timeButtons.push(
-          <button
-            className={`times ${isDisabled ? 'disabled' : ''} ${
-              (startTime === time && isStartSelected) || (endTime === time && !isStartSelected) ? 'selected' : ''
-            }`}
-            id={time}
-            key={time}
-            onClick={() => handleTimeButtonClick(time)}
-            disabled={isDisabled}
-          >
-            {time}
-            {startTime === time && isStartSelected && <p>시작 시간</p>}
-            {endTime === time && !isStartSelected && <p>종료 시간</p>}
-          </button>
-        );
-      }
-    }
-    return timeButtons;
-  }
+        // 시간 버튼을 선택된 날짜의 날짜에 따라 보여줍니다.
+        if (selectedDay === moment(dateValue).date()) {
+          // 이미 존재하는 마커의 시간대인 경우 클래스 추가
+          const isExistingTime = calendarTimeMarkers.slice(0, calendarTimeMarkers.length).some((marker) => {
+            return (
+              marker.info.date === selectedCalendarDate &&
+              time >= marker.info.time.from &&
+              time < marker.info.time.until
+            );
+          });
 
-  // 이미 저장된 일정 중에 해당 시간대가 선택되어 있는지 확인
-  function isTimeSlotBooked(selectedDate, selectedTime) {
-    for (let marker = 0; marker < markers - 1; marker++) {
-      if (marker.info.date === selectedDate) {
-        const markerStartTime = moment(marker.info.time.from, 'HH:mm');
-        const markerEndTime = moment(marker.info.time.until, 'HH:mm');
-        const selectedMoment = moment(selectedTime, 'HH:mm');
-
-        // 새로운 마커를 만들려는 시간대가 이미 저장된 마커의 시간대와 겹치면 true를 반환
-        if (
-          (selectedMoment.isSameOrAfter(markerStartTime) && selectedMoment.isBefore(markerEndTime)) ||
-          (selectedMoment.isSameOrAfter(markerStartTime) && selectedMoment.isSameOrBefore(markerEndTime))
-        ) {
-          return true; // 시간대가 이미 선택된 경우
+          timeButtons.push(
+            <button
+              className={`times ${startTime === time || endTime === time ? 'selected' : ''} ${
+                isExistingTime ? 'existing' : ''
+              }`}
+              id={time}
+              key={time}
+              onClick={() => handleTimeButtonClick(time)}
+            >
+              {time}
+              {startTime === time && <p>시작 시간</p>}
+              {endTime === time && <p>종료 시간</p>}
+            </button>
+          );
         }
       }
     }
-    return false; // 시간대가 사용 가능한 경우
+
+    return timeButtons;
   }
 
   function handleToggleMorning() {
@@ -94,7 +94,7 @@ function CreateMarkerForm({ onCreateMarker, markers, selectedDate }) {
   function handleSubmitForm(ev) {
     ev.preventDefault();
 
-    if (startTime && endTime && ev.target.elements.title.value && ev.target.elements.detail.value) {
+    if (startTime && endTime && ev.target.elements.title.value && ev.target.elements.detail.value && isSubmitClick) {
       const newMarkerData = {
         title: ev.target.elements.title.value,
         detail: ev.target.elements.detail.value,
@@ -108,11 +108,31 @@ function CreateMarkerForm({ onCreateMarker, markers, selectedDate }) {
     }
   }
 
+  useEffect(() => {
+    setCalendarTimeMarkers([]);
+    const fetchCalendarMarkersData = async () => {
+      try {
+        const documentRef = doc(db, userId, selectedCalendarDate);
+        const snapShot = await getDoc(documentRef);
+        const fetchedDocument = snapShot.data();
+        const markerArray = [];
+        for (const myKey in fetchedDocument) {
+          markerArray.push(fetchedDocument[myKey]);
+        }
+        setCalendarTimeMarkers(markerArray);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchCalendarMarkersData();
+  }, [selectedCalendarDate]);
+
   return (
     <form className='create-marker-form' onSubmit={handleSubmitForm}>
       <div>
         <Calendar
-          onChange={setDateValue}
+          onChange={handleCalendarChange}
           value={dateValue}
           next2Label={null}
           prev2Label={null}
@@ -124,14 +144,14 @@ function CreateMarkerForm({ onCreateMarker, markers, selectedDate }) {
       </button>
       <div className='time-box'>{generateTimeButtons()}</div>
       <div className='title-box'>
-        <label htmlFor='title'>Title : </label>
+        <label htmlFor='title'>장소</label>
         <input type='text' id='title' name='title' />
       </div>
       <div className='detail-box'>
-        <label htmlFor='detail'>Detail : </label>
+        <label htmlFor='detail'>메모</label>
         <input type='text' id='detail' name='detail' />
       </div>
-      <button className='submit' type='submit'>
+      <button onClick={() => setIsSubmitClick(true)} className='submit' type='submit'>
         제출
       </button>
     </form>
