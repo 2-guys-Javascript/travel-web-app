@@ -190,7 +190,14 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
           />
         ))}
       </GoogleMap>
-      {creatingMarker && <CreateMarkerForm onCreateMarker={handleCreateMarker} userId={userId} />}
+      {creatingMarker && (
+        <CreateMarkerForm
+          markers={markers}
+          selectedDate={selectedDate}
+          onCreateMarker={handleCreateMarker}
+          userId={userId}
+        />
+      )}
       {selectedMarker && <MarkerInfo marker={selectedMarker} onClose={() => setSelectedMarker(null)} />}
     </div>
   ) : (

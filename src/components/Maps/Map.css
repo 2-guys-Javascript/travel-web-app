@@ -112,18 +112,31 @@ abbr {
 
 .times {
   width: 23%;
+  height: 55px;
   border: 0.5px solid #00000022;
   box-shadow: 0 0 1px #00000022;
   border-radius: 12px;
   background-color: #ffffff;
-  padding: 10px 7px;
-  margin: 7px 3px;
-  font-size: 14px;
+  padding: 20px 8px;
+  margin: 5px 3px;
+  font-size: 16px;
+  color: #00000099;
 }
 
 .selected {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #1ba136;
   color: #ffffff;
+  font-size: 20px;
+}
+
+.selected p {
+  margin: 0;
+  margin-top: 5px;
+  font-size: 12px;
 }
 
 .title-box {
@@ -158,4 +171,13 @@ abbr {
   border: 0;
   color: #ffffff;
   box-shadow: 0 0 2px #00000033;
+}
+
+.toggle-am {
+  border: 0;
+  background-color: #ffffff;
+  cursor: pointer;
+  font-size: 22px;
+  padding: 12px;
+  color: #000000e1;
 }
