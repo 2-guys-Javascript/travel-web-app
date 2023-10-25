@@ -21,6 +21,8 @@ const myStyles = [
   },
 ];
 
+const libraries = ['places'];
+
 function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displayName, onChangeDisplayName }) {
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState(null);
@@ -39,6 +41,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
     region: 'kr',
     language: 'ko',
     version: 'quarterly',
+    libraries,
   });
 
   const onLoad = useCallback(
