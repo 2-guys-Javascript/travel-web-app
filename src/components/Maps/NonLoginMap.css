@@ -33,6 +33,10 @@
   color: #ffffff;
 }
 
+.non-btn-1:hover {
+  cursor: pointer;
+}
+
 .non-btn-2 {
   width: 40px;
   height: 40px;
@@ -47,6 +51,10 @@
   padding: 10px 10px;
   background-color: #000000;
   color: #ffffff;
+}
+
+.non-btn-2:hover {
+  cursor: pointer;
 }
 
 .non-search-input {

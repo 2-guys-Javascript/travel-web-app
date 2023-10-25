@@ -1,4 +1,6 @@
 .jp-default-layout {
+  z-index: 5;
+  position: fixed;
   max-width: 480px;
   width: 100vw;
   height: 100vh;
