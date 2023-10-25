@@ -26,8 +26,6 @@ function NonLoginMap() {
   const [cafeButton, setCafeButton] = useState(true);
   const [restaurantsButton, setRestaurantsButton] = useState(false);
   const [openInfo, setOpenInfo] = useState({});
-  const [isOpen, setIsOpen] = useState(null);
-  const [clickInfo, setClickInfo] = useState(false);
 
   const inputRef = useRef();
   const mapContainerRef = useRef();
@@ -151,7 +149,6 @@ function NonLoginMap() {
   function handleSelectedPlace(result) {
     const isOpen = openInfo[result.place_id];
     setOpenInfo({ ...openInfo, [result.place_id]: !isOpen });
-    setClickInfo(!clickInfo);
     console.log(result);
 
     // 마커를 클릭했을 때, 클릭된 마커의 정보를 리스트 맨 위로 올립니다.
@@ -226,10 +223,7 @@ function NonLoginMap() {
               <li key={result.place_id}>
                 {result.photos && result.photos.length > 0 ? (
                   <div>
-                    <div
-                      className={`non-list ${clickInfo ? 'active' : ''}`}
-                      onClick={() => handleSelectedPlace(result)}
-                    >
+                    <div className='non-list' onClick={() => handleSelectedPlace(result)}>
                       <img src={result.photos[0].getUrl()} />
                       <h2>{result.name}</h2>
                     </div>
@@ -237,10 +231,7 @@ function NonLoginMap() {
                   </div>
                 ) : (
                   <div>
-                    <div
-                      className={`non-list ${clickInfo ? 'active' : ''}`}
-                      onClick={() => handleSelectedPlace(result)}
-                    >
+                    <div className='non-list' onClick={() => handleSelectedPlace(result)}>
                       <div className='non-img'>등록된 사진이 없어요 😢</div>
                       <h2>{result.name}</h2>
                     </div>
@@ -253,10 +244,7 @@ function NonLoginMap() {
               <li key={result.place_id}>
                 {result.photos && result.photos.length > 0 ? (
                   <div>
-                    <div
-                      className={`non-list ${clickInfo ? 'active' : ''}`}
-                      onClick={() => handleSelectedPlace(result)}
-                    >
+                    <div className='non-list' onClick={() => handleSelectedPlace(result)}>
                       <img
                         src={result.photos[0].getUrl({
                           maxWidth: 150,
@@ -268,10 +256,7 @@ function NonLoginMap() {
                   </div>
                 ) : (
                   <div>
-                    <div
-                      className={`non-list ${clickInfo ? 'active' : ''}`}
-                      onClick={() => handleSelectedPlace(result)}
-                    >
+                    <div className='non-list' onClick={() => handleSelectedPlace(result)}>
                       <div className='non-img'>등록된 사진이 없어요 😢</div>
                       <h2>{result.name}</h2>
                     </div>
