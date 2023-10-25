@@ -12,16 +12,22 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding-bottom: 11vh;
+  padding-bottom: 20vh;
+  z-index: 5;
 }
 
 .create-marker-form {
+  position: relative;
+  top: 450px;
+  bottom: 200px;
+  z-index: 4;
   max-width: 460px;
   width: 100vw;
   display: flex;
   flex-direction: column;
   justify-self: center;
   align-items: center;
+  padding-bottom: 20vh;
 }
 
 .create-marker-form input {
@@ -37,6 +43,10 @@
   flex-direction: column;
   justify-self: center;
   align-items: center;
+  z-index: 6;
+  position: fixed;
+  height: 100vh;
+  top: 58vh;
 }
 
 .marker-info button {
@@ -195,4 +205,10 @@ abbr {
   background-color: #00000033;
   pointer-events: none;
   color: #00000077;
+}
+
+.login-date {
+  z-index: 5;
+  position: fixed;
+  top: 50px;
 }

@@ -16,7 +16,6 @@ function Japan({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, display
       ) : (
         <NonLoginMap />
       )}
-      <div>This is Japan</div>
     </>
   );
 }

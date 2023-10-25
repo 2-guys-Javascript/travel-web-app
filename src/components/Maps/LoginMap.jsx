@@ -1,11 +1,12 @@
-import { useState, useCallback, memo, useEffect } from 'react';
-import { GoogleMap, useJsApiLoader, MarkerF } from '@react-google-maps/api';
+import { useState, useCallback, memo, useEffect, useRef } from 'react';
+import { GoogleMap, useJsApiLoader, MarkerF, Autocomplete, InfoWindow } from '@react-google-maps/api';
 import CreateMarkerForm from './CreateMarkerForm';
 import MarkerInfo from './MarkerInfo';
 import moment from 'moment';
 import { db } from '../../../firebaseConfig';
 import { getDoc, doc, updateDoc, setDoc } from 'firebase/firestore';
 import './Map.css';
+import './LoginMap.css';
 
 const center = { lat: 37.49, lng: 127.02 };
 
@@ -34,6 +35,18 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
   const [selectedMarker, setSelectedMarker] = useState(null);
   // 현재 날짜를 나타낼 상태에 해당합니다. 이는 useEffect의 의존성으로 사용되어 바뀌면 새로운 데이터를 불러오게 합니다. 시작은 현재 날짜
   const [selectedDate, setSelectedDate] = useState(moment(new Date()).format('YYYY년 MM월 DD일'));
+  const [getCafe, setGetCafe] = useState([]);
+  const [getRestaurants, setGetRestaurants] = useState([]);
+  const [selectedNearByPlace, SetSelectedNearByPlace] = useState(null);
+
+  const inputRef = useRef();
+
+  const restaurantMarkerIcon = {
+    url: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freeiconspng.com%2Fimages%2Frestaurant-icon-png&psig=AOvVaw3dK8tD1vqX4A3JhwaRAAQ4&ust=1698342896236000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCJD397vikYIDFQAAAAAdAAAAABAE',
+    scaledSize: new window.google.maps.Size(40, 40),
+    origin: new window.google.maps.Point(0, 0),
+    anchor: new window.google.maps.Point(20, 40),
+  };
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -169,30 +182,135 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
     fetchMarkersData();
   }, [selectedDate]);
 
+  // 사용자가 선택한 마커가 바뀌면 해당 마커 일정이 나타나도록 해줬어요
+  useEffect(() => {
+    if (selectedMarker === null) return;
+
+    const search = new google.maps.places.PlacesService(map);
+    const restaurantRequest = {
+      location: new google.maps.LatLng(selectedMarker.position.lat, selectedMarker.position.lng),
+      radius: 500,
+      type: 'restaurant',
+      rankBy: google.maps.places.RankBy.PROMINENCE,
+    };
+
+    search.nearbySearch(restaurantRequest, (results, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        console.log(results);
+        const restaurant = results.filter((result) => result.types.indexOf('restaurant') === 0);
+        console.log(restaurant);
+        setGetRestaurants(restaurant);
+      } else {
+        console.error('This is an error :', status);
+      }
+    });
+
+    const cafeRequest = {
+      location: new google.maps.LatLng(selectedMarker.position.lat, selectedMarker.position.lng),
+      radius: 500,
+      type: 'cafe',
+      rankBy: google.maps.places.RankBy.PROMINENCE,
+    };
+    search.nearbySearch(cafeRequest, (results, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        console.log(results);
+        const cafe = results.filter((result) => result.types.indexOf('cafe') === 0);
+        console.log(cafe);
+        setGetCafe(cafe);
+      } else {
+        console.error('This is an error :', status);
+      }
+    });
+  }, [selectedMarker]);
+
+  async function handleSearch() {
+    const place = inputRef.current.value;
+    const placesService = new window.google.maps.places.PlacesService(map);
+
+    placesService.findPlaceFromQuery(
+      {
+        query: place,
+        fields: ['geometry'],
+      },
+      (results, status) => {
+        if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+          if (results && results.length > 0) {
+            const location = results[0].geometry.location;
+            const newCenter = {
+              lat: location.lat(),
+              lng: location.lng(),
+            };
+            map.panTo(newCenter, { behavior: 'smooth' });
+          }
+        }
+      }
+    );
+  }
+
   return isLoaded ? (
     <div className='map-display'>
-      <div>지도화면입니다</div>
-      <div>
-        <input type='date' className='login-date' onChange={handleDateChange} />
+      <input type='date' className='login-date' onChange={handleDateChange} />
+
+      <div className='login-map-container'>
+        <GoogleMap
+          mapContainerClassName='map-container'
+          center={userLocation || center}
+          onLoad={onLoad}
+          zoom={16}
+          onUnmount={onUnmount}
+          options={{ disableDefaultUI: true, styles: myStyles }}
+          onClick={(event) => handleMapClick(event)}
+        >
+          {markers.map((marker) => (
+            <MarkerF
+              key={marker.id}
+              position={marker.position}
+              onClick={() => handleMarkerClick(marker)}
+              // label={(index + 1).toString()} // 마커에 숫자 레이블 추가
+            />
+          ))}
+
+          {getRestaurants.map((result, index) => (
+            <MarkerF
+              key={result.place_id}
+              position={result.geometry.location}
+              title={result.name}
+              zIndex={getRestaurants.length - index}
+              onClick={() => {
+                SetSelectedNearByPlace(result);
+              }}
+            />
+          ))}
+          {getCafe.map((result, index) => (
+            <MarkerF
+              key={result.place_id}
+              position={result.geometry.location}
+              title={result.name}
+              zIndex={getCafe.length - index}
+              onClick={() => {
+                SetSelectedNearByPlace(result);
+              }}
+            />
+          ))}
+          {selectedNearByPlace && (
+            <InfoWindow
+              position={selectedNearByPlace.geometry.location}
+              onCloseClick={() => SetSelectedNearByPlace(null)}
+            >
+              <div>{selectedNearByPlace.name}</div>
+            </InfoWindow>
+          )}
+        </GoogleMap>
       </div>
-      <GoogleMap
-        mapContainerClassName='map-container'
-        center={userLocation || center}
-        onLoad={onLoad}
-        zoom={16}
-        onUnmount={onUnmount}
-        options={{ disableDefaultUI: true, styles: myStyles }}
-        onClick={(event) => handleMapClick(event)}
-      >
-        {markers.map((marker) => (
-          <MarkerF
-            key={marker.id}
-            position={marker.position}
-            onClick={() => handleMarkerClick(marker)}
-            // label={(index + 1).toString()} // 마커에 숫자 레이블 추가
-          />
-        ))}
-      </GoogleMap>
+      <button className='login-btn-1' onClick={() => map.panTo(userLocation, { behavior: 'smooth' })}>
+        내 위치로
+      </button>
+      <Autocomplete>
+        <input className='login-search-input' type='text' placeholder='어디로 갈까요?' ref={inputRef} />
+      </Autocomplete>
+      <button className='login-btn-2' onClick={handleSearch}>
+        🚀
+      </button>
       {creatingMarker && (
         <CreateMarkerForm
           markers={markers}

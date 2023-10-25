@@ -8,7 +8,6 @@ function MarkerInfo({ marker, onClose }) {
 
   return (
     <div className='marker-info'>
-      <h2>마커 정보</h2>
       <p>제목: {marker.info.title}</p>
       <p>내용: {marker.info.detail}</p>
       <p>날짜: {marker.info.date}</p>
