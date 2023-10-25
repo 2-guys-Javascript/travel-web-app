@@ -25,8 +25,9 @@ function NonLoginMap() {
   const [isSearch, setIsSearch] = useState(false);
   const [cafeButton, setCafeButton] = useState(true);
   const [restaurantsButton, setRestaurantsButton] = useState(false);
-  const [selectedPlace, setSelectedPlace] = useState(null);
   const [openInfo, setOpenInfo] = useState({});
+  const [isOpen, setIsOpen] = useState(null);
+  const [clickInfo, setClickInfo] = useState(false);
 
   const inputRef = useRef();
   const mapContainerRef = useRef();
@@ -80,7 +81,7 @@ function NonLoginMap() {
     placesService.findPlaceFromQuery(
       {
         query: place,
-        fields: ['geometry'], // 가져올 필드 지정 (여기에서는 geometry 필드만 사용)
+        fields: ['geometry'],
       },
       (results, status) => {
         if (status === window.google.maps.places.PlacesServiceStatus.OK) {
@@ -94,6 +95,7 @@ function NonLoginMap() {
             // 지도의 중심을 검색된 장소의 좌표로 이동 (부드럽게)
             map.panTo(newCenter, { behavior: 'smooth' });
 
+            // Nearby Search 요청 보내기
             placesService.nearbySearch(
               {
                 location: newCenter, // 검색된 위치 주변
@@ -104,8 +106,10 @@ function NonLoginMap() {
               },
               (results, status) => {
                 if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-                  console.log('Nearby Restaurants:', results);
-                  setGetRestaurants(results);
+                  const restaurant = results.filter((result) => result.types.indexOf('restaurant') === 0);
+
+                  console.log('Nearby Restaurants:', restaurant);
+                  setGetRestaurants(restaurant);
                 }
               }
             );
@@ -119,8 +123,11 @@ function NonLoginMap() {
               },
               (results, status) => {
                 if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-                  console.log('Nearby Cafes:', results);
-                  setGetCafe(results);
+                  const cafe = results.filter((result) => result.types.includes('cafe'));
+
+                  console.log('Nearby Cafes:', cafe);
+
+                  setGetCafe(cafe);
                 }
               }
             );
@@ -128,24 +135,28 @@ function NonLoginMap() {
         }
       }
     );
-    // Nearby Search 요청 보내기
   }
 
-  function handleCategory() {
-    setCafeButton(!cafeButton);
-    setRestaurantsButton(!restaurantsButton);
+  function handleCafeCategory() {
+    setCafeButton(true);
+    setRestaurantsButton(false);
+  }
+
+  function handleRestaurantsCategory() {
+    setCafeButton(false);
+    setRestaurantsButton(true);
   }
 
   // 마커나 일정 클릭 했을 때 정보 가져오기
   function handleSelectedPlace(result) {
     const isOpen = openInfo[result.place_id];
     setOpenInfo({ ...openInfo, [result.place_id]: !isOpen });
-    setSelectedPlace(result);
+    setClickInfo(!clickInfo);
     console.log(result);
 
     // 마커를 클릭했을 때, 클릭된 마커의 정보를 리스트 맨 위로 올립니다.
     if (!isOpen) {
-      if (!cafeButton) {
+      if (cafeButton) {
         const updatedCafe = getCafe.filter((place) => place.place_id !== result.place_id);
         setGetCafe([result, ...updatedCafe]);
       } else {
@@ -169,7 +180,7 @@ function NonLoginMap() {
           options={{ disableDefaultUI: true, styles: myStyles }}
         >
           <MarkerF position={userLocation} />
-          {!cafeButton
+          {cafeButton
             ? getCafe.map((result) => (
                 <MarkerF
                   key={result.place_id}
@@ -201,29 +212,39 @@ function NonLoginMap() {
         <div></div>
       ) : (
         <div className='non-btn-box'>
-          <button onClick={handleCategory}>음식점</button>
-          <button onClick={handleCategory}>카페</button>
+          <div className={`button ${restaurantsButton ? 'active' : ''}`} onClick={handleRestaurantsCategory}>
+            음식점
+          </div>
+          <div className={`button ${cafeButton ? 'active' : ''}`} onClick={handleCafeCategory}>
+            카페
+          </div>
         </div>
       )}
       <ul>
-        {!cafeButton
+        {cafeButton
           ? getCafe.map((result) => (
               <li key={result.place_id}>
                 {result.photos && result.photos.length > 0 ? (
-                  <div className='non-list' onClick={() => handleSelectedPlace(result)}>
-                    <img
-                      src={result.photos[0].getUrl({
-                        maxWidth: 150,
-                      })}
-                    />
-                    <h2>{result.name}</h2>
-                    {openInfo[result.place_id] && <PlaceInfo place={result} onClose={() => setSelectedPlace(null)} />}
+                  <div>
+                    <div
+                      className={`non-list ${clickInfo ? 'active' : ''}`}
+                      onClick={() => handleSelectedPlace(result)}
+                    >
+                      <img src={result.photos[0].getUrl()} />
+                      <h2>{result.name}</h2>
+                    </div>
+                    {openInfo[result.place_id] && <PlaceInfo place={result} />}
                   </div>
                 ) : (
-                  <div className='non-list'>
-                    <p>이미지 없음</p>
-                    <h2>{result.name}</h2>
-                    {openInfo[result.place_id] && <PlaceInfo place={result} onClose={() => setSelectedPlace(null)} />}
+                  <div>
+                    <div
+                      className={`non-list ${clickInfo ? 'active' : ''}`}
+                      onClick={() => handleSelectedPlace(result)}
+                    >
+                      <div className='non-img'>등록된 사진이 없어요 😢</div>
+                      <h2>{result.name}</h2>
+                    </div>
+                    {openInfo[result.place_id] && <PlaceInfo place={result} />}
                   </div>
                 )}
               </li>
@@ -231,20 +252,30 @@ function NonLoginMap() {
           : getRestaurants.map((result) => (
               <li key={result.place_id}>
                 {result.photos && result.photos.length > 0 ? (
-                  <div className='non-list' onClick={() => handleSelectedPlace(result)}>
-                    <img
-                      src={result.photos[0].getUrl({
-                        maxWidth: 150,
-                      })}
-                    />
-                    <h2>{result.name}</h2>
-                    {openInfo[result.place_id] && <PlaceInfo place={result} onClose={() => setSelectedPlace(null)} />}
+                  <div>
+                    <div
+                      className={`non-list ${clickInfo ? 'active' : ''}`}
+                      onClick={() => handleSelectedPlace(result)}
+                    >
+                      <img
+                        src={result.photos[0].getUrl({
+                          maxWidth: 150,
+                        })}
+                      />
+                      <h2>{result.name}</h2>
+                    </div>
+                    {openInfo[result.place_id] && <PlaceInfo place={result} />}
                   </div>
                 ) : (
-                  <div className='non-list'>
-                    <p>이미지 없음</p>
-                    <h2>{result.name}</h2>
-                    {openInfo[result.place_id] && <PlaceInfo place={result} onClose={() => setSelectedPlace(null)} />}
+                  <div>
+                    <div
+                      className={`non-list ${clickInfo ? 'active' : ''}`}
+                      onClick={() => handleSelectedPlace(result)}
+                    >
+                      <div className='non-img'>등록된 사진이 없어요 😢</div>
+                      <h2>{result.name}</h2>
+                    </div>
+                    {openInfo[result.place_id] && <PlaceInfo place={result} />}
                   </div>
                 )}
               </li>
