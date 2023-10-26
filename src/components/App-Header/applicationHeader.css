@@ -24,8 +24,12 @@
   font-size: 15px;
 }
 
+.application-header a:visited {
+  color: #cdcdcd;
+}
+
 .application-header button {
-  color: #ffffff;
+  color: #cdcdcd;
   border: 1px solid #000000;
   box-shadow: 0 0 3px #00000055;
   background-color: #000000;

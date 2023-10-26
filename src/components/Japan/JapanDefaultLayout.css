@@ -35,12 +35,19 @@
 }
 
 .japan-navbar a {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #313131;
   flex: 1;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 10vh;
+}
+
+.japan-navbar a:visited {
+  color: #313131;
 }
 
 .jp-weather-text-div {
