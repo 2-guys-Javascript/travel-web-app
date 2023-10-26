@@ -26,7 +26,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState(null);
   // 현재 위치를 받아올 상태
-  const [userLocation, setUserLocation] = useState({ lat: 37.49, lng: 127.02 });
+  const [userLocation, setUserLocation] = useState();
   // 마커를 만드는 중인지
   const [creatingMarker, setCreatingMarker] = useState(false);
   // 저장된 마커의 정보를 보여줄 마커
@@ -260,8 +260,13 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
                 id: newCenter.lat,
                 position: newCenter,
               };
-              setCreatingMarker(true);
-              setMarkers([...markers, newMarker]);
+
+              if (creatingMarker) {
+                setMarkers([...markers.slice(0, markers.length - 1), newMarker]);
+              } else {
+                setCreatingMarker(true);
+                setMarkers([...markers, newMarker]);
+              }
             }
           }
         }
@@ -347,7 +352,16 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
           userId={userId}
         />
       )}
-      {selectedMarker && <MarkerInfo marker={selectedMarker} onClose={() => setSelectedMarker(null)} />}
+      {selectedMarker && (
+        <MarkerInfo
+          selectedMarker={selectedMarker}
+          setSelectedMarker={setSelectedMarker}
+          markers={markers}
+          setMarkers={setMarkers}
+          userId={userId}
+          onClose={() => setSelectedMarker(null)}
+        />
+      )}
       {!selectedMarker && !creatingMarker && (
         <ul className='marker-info-list'>
           {markers.map(
