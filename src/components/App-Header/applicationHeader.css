@@ -1,9 +1,21 @@
 .application-header {
+  position: fixed;
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 100vw;
   max-width: 480px;
+  height: 70px;
   position: fixed;
-  z-index: 5;
+  z-index: 99;
+  background-color: #ffffff;
+}
+
+.application-header h2 {
+  font-family: 'LOTTERIACHAB';
+  font-weight: 300;
+  margin-left: 5px;
+  font-size: 30px;
+  color: #363636;
+  text-shadow: 1px 1px #d6d6d6, 3px 3px #323232;
 }

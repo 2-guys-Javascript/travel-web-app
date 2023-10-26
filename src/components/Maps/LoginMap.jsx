@@ -8,8 +8,6 @@ import { getDoc, doc, updateDoc, setDoc } from 'firebase/firestore';
 import './Map.css';
 import './LoginMap.css';
 
-const center = { lat: 37.49, lng: 127.02 };
-
 const myStyles = [
   {
     featureType: 'poi',
@@ -28,7 +26,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState(null);
   // 현재 위치를 받아올 상태
-  const [userLocation, setUserLocation] = useState(null);
+  const [userLocation, setUserLocation] = useState({ lat: 37.49, lng: 127.02 });
   // 마커를 만드는 중인지
   const [creatingMarker, setCreatingMarker] = useState(false);
   // 저장된 마커의 정보를 보여줄 마커
@@ -184,7 +182,18 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
 
   // 사용자가 선택한 마커가 바뀌면 해당 마커 일정이 나타나도록 해줬어요
   useEffect(() => {
-    if (selectedMarker === null) return;
+    if (selectedMarker === null) {
+      setGetRestaurants([]);
+      setGetCafe([]);
+      return;
+    }
+
+    if (selectedMarker.info === undefined) {
+      setGetCafe([]);
+      setGetRestaurants([]);
+      setSelectedMarker(false);
+      return;
+    }
 
     const search = new google.maps.places.PlacesService(map);
     const restaurantRequest = {
@@ -241,6 +250,19 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
               lng: location.lng(),
             };
             map.panTo(newCenter, { behavior: 'smooth' });
+
+            const isMarkerExist = markers.some(
+              (marker) => marker.position.lat === newCenter.lat && marker.position.lng === newCenter.lng
+            );
+
+            if (!isMarkerExist) {
+              const newMarker = {
+                id: newCenter.lat,
+                position: newCenter,
+              };
+              setCreatingMarker(true);
+              setMarkers([...markers, newMarker]);
+            }
           }
         }
       }
@@ -249,12 +271,10 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
 
   return isLoaded ? (
     <div className='map-display'>
-      <input type='date' className='login-date' onChange={handleDateChange} />
-
-      <div className='login-map-container'>
+      <div className='map-container'>
         <GoogleMap
           mapContainerClassName='map-container'
-          center={userLocation || center}
+          center={userLocation}
           onLoad={onLoad}
           zoom={16}
           onUnmount={onUnmount}
@@ -302,15 +322,23 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
           )}
         </GoogleMap>
       </div>
-      <button className='login-btn-1' onClick={() => map.panTo(userLocation, { behavior: 'smooth' })}>
+      <button className='btn-1' onClick={() => map.panTo(userLocation, { behavior: 'smooth' })}>
         내 위치로
       </button>
       <Autocomplete>
-        <input className='login-search-input' type='text' placeholder='어디로 갈까요?' ref={inputRef} />
+        <input className='search-input' type='text' placeholder='어디로 갈까요?' ref={inputRef} />
       </Autocomplete>
-      <button className='login-btn-2' onClick={handleSearch}>
+      <button className='btn-2' onClick={handleSearch}>
         🚀
       </button>
+      <input
+        type='text'
+        className='login-date'
+        onChange={handleDateChange}
+        onFocus={(e) => (e.target.type = 'date')}
+        onBlur={(e) => (e.target.type = 'text')}
+        placeholder='날짜를 입력해주세요'
+      />
       {creatingMarker && (
         <CreateMarkerForm
           markers={markers}
@@ -320,6 +348,22 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
         />
       )}
       {selectedMarker && <MarkerInfo marker={selectedMarker} onClose={() => setSelectedMarker(null)} />}
+      {!selectedMarker && !creatingMarker && (
+        <ul className='marker-info-list'>
+          {markers.map(
+            (marker) =>
+              marker.info && (
+                <li key={marker.info.id}>
+                  <p>장소 : {marker.info.title}</p>
+                  <p>메모 : {marker.info.detail}</p>
+                  <p>
+                    시간 : {marker.info.time.from} ~ {marker.info.time.until}
+                  </p>
+                </li>
+              )
+          )}
+        </ul>
+      )}
     </div>
   ) : (
     <div></div>
