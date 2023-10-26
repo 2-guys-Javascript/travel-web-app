@@ -166,7 +166,7 @@ function NonLoginMap() {
   }
 
   return isLoaded ? (
-    <div className='non'>
+    <div className='map-display'>
       <div ref={mapContainerRef} className='map-container'>
         <GoogleMap
           mapContainerClassName='map-container'
@@ -196,13 +196,13 @@ function NonLoginMap() {
               ))}
         </GoogleMap>
       </div>
-      <button className='non-btn-1' onClick={() => map.panTo(userLocation, { behavior: 'smooth' })}>
+      <button className='btn-1' onClick={() => map.panTo(userLocation, { behavior: 'smooth' })}>
         내 위치로
       </button>
       <Autocomplete>
-        <input className='non-search-input' type='text' placeholder='어디로 갈까요?' ref={inputRef} />
+        <input className='search-input' type='text' placeholder='어디로 갈까요?' ref={inputRef} />
       </Autocomplete>
-      <button className='non-btn-2' onClick={handleSearch}>
+      <button className='btn-2' onClick={handleSearch}>
         🚀
       </button>
       {!isSearch ? (
@@ -217,7 +217,7 @@ function NonLoginMap() {
           </div>
         </div>
       )}
-      <ul>
+      <ul className='non-ul'>
         {cafeButton
           ? getCafe.map((result) => (
               <li key={result.place_id}>

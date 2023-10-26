@@ -20,6 +20,7 @@ function ApplicationHeader({
 
   return (
     <div className='application-header'>
+      <h2>일단락</h2>
       <h3>사용자의 닉네임 : {displayName}</h3>
       {!isLoggedIn ? (
         <button>
