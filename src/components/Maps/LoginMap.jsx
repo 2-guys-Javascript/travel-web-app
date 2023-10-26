@@ -260,8 +260,13 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
                 id: newCenter.lat,
                 position: newCenter,
               };
-              setCreatingMarker(true);
-              setMarkers([...markers, newMarker]);
+
+              if (creatingMarker) {
+                setMarkers([...markers.slice(0, markers.length - 1), newMarker]);
+              } else {
+                setCreatingMarker(true);
+                setMarkers([...markers, newMarker]);
+              }
             }
           }
         }
@@ -347,7 +352,16 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
           userId={userId}
         />
       )}
-      {selectedMarker && <MarkerInfo marker={selectedMarker} onClose={() => setSelectedMarker(null)} />}
+      {selectedMarker && (
+        <MarkerInfo
+          selectedMarker={selectedMarker}
+          setSelectedMarker={setSelectedMarker}
+          markers={markers}
+          setMarkers={setMarkers}
+          userId={userId}
+          onClose={() => setSelectedMarker(null)}
+        />
+      )}
       {!selectedMarker && !creatingMarker && (
         <ul className='marker-info-list'>
           {markers.map(

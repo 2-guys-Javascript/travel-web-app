@@ -47,7 +47,7 @@ function CreateMarkerForm({ onCreateMarker, markers, userId }) {
     }
   }
 
-  function generateTimeButtons() {
+  function TimeButtons() {
     const timeButtons = [];
     const selectedDay = moment(selectedCalendarDate, 'YYYY년 MM월 DD일').date();
 
@@ -142,7 +142,9 @@ function CreateMarkerForm({ onCreateMarker, markers, userId }) {
       <button className='toggle-am' onClick={handleToggleMorning}>
         {!isMorningSelected ? '오후' : '오전'}
       </button>
-      <div className='time-box'>{generateTimeButtons()}</div>
+      <div className='time-box'>
+        <TimeButtons />
+      </div>
       <div className='title-box'>
         <label htmlFor='title'>장소</label>
         <input type='text' id='title' name='title' />
