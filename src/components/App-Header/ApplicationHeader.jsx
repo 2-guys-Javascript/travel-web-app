@@ -21,13 +21,13 @@ function ApplicationHeader({
   return (
     <div className='application-header'>
       <h2>일단락</h2>
-      <h3>사용자의 닉네임 : {displayName}</h3>
+      <h3>{displayName}</h3>
       {!isLoggedIn ? (
         <button>
           <Link to='login'>로그인</Link>
         </button>
       ) : (
-        <button onClick={handleClickButton}>아웃</button>
+        <button onClick={handleClickButton}>로그아웃</button>
       )}
     </div>
   );

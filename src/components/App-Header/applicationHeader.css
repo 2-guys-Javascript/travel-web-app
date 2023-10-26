@@ -1,8 +1,8 @@
 .application-header {
-  position: fixed;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-direction: row;
   width: 100vw;
   max-width: 480px;
   height: 70px;
@@ -14,8 +14,24 @@
 .application-header h2 {
   font-family: 'LOTTERIACHAB';
   font-weight: 300;
-  margin-left: 5px;
   font-size: 30px;
   color: #363636;
   text-shadow: 1px 1px #d6d6d6, 3px 3px #323232;
+  margin-right: 35%;
+}
+
+.application-header h3 {
+  font-size: 15px;
+}
+
+.application-header button {
+  color: #ffffff;
+  border: 1px solid #000000;
+  box-shadow: 0 0 3px #00000055;
+  background-color: #000000;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 10px;
 }
