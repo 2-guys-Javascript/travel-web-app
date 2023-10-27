@@ -23,11 +23,13 @@ function ApplicationHeader({
       <h2>일단락</h2>
       <h3>{displayName}</h3>
       {!isLoggedIn ? (
-        <button>
+        <button className='login-logout-button'>
           <Link to='login'>로그인</Link>
         </button>
       ) : (
-        <button onClick={handleClickButton}>로그아웃</button>
+        <button className='login-logout-button' onClick={handleClickButton}>
+          로그아웃
+        </button>
       )}
     </div>
   );

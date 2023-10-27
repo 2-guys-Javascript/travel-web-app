@@ -30,18 +30,20 @@ function LoginForm({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDis
   return (
     <>
       <form action='post' className='login-form' onSubmit={handleLoginSubmit}>
-        <div>
-          <label htmlFor='email'>Email : </label>
-          <input type='email' id='email' name='email' />
-        </div>
-        <div>
-          <label htmlFor='password'>Password : </label>
-          <input type='password' id='password' name='password' />
-        </div>
-        <button type='submit'>로그인 하기</button>
-        <Link to='/signup'>
-          <button>회원 가입하기</button>
-        </Link>
+        <input className='email-input' type='email' id='email' name='email' placeholder='Email을 입력하세요' />
+
+        <input
+          className='password-input'
+          type='password'
+          id='password'
+          name='password'
+          placeholder='비밀번호를 입력하세요'
+        />
+        <button type='submit' className='submit-button'>
+          로그인 하기
+        </button>
+
+        <Link to='/signup'>Sign up here!</Link>
       </form>
     </>
   );
