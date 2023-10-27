@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import JpHourlyWeather from './JpHourlyWeather';
 import JpForecastWeather from './JpForecastWeather';
 
-function JpWeather() {
+function JpWeather({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) {
   const [weatherData, setWeatherData] = useState('');
   const [city, setCity] = useState('');
   // 사용자가 api 요청을 오늘, 내일, 그리고 모레에 대한 3일을 기준으로 날리기에 길이가 3짜리인 배열 상태가 될 것임
@@ -39,6 +39,21 @@ function JpWeather() {
       setWeatherData(null);
     }
   };
+
+  useEffect(() => {
+    const storedLoginStatus = localStorage.getItem('isLoggedIn');
+    const storedUserId = localStorage.getItem('userId');
+    const storedDisplayName = localStorage.getItem('displayName');
+    console.log(storedLoginStatus);
+    console.log(storedUserId);
+    console.log(storedDisplayName);
+
+    if (storedLoginStatus) {
+      onChangeIsLoggedIn(storedLoginStatus);
+      onChangeUserId(storedUserId);
+      onChangeDisplayName(storedDisplayName);
+    }
+  }, []);
 
   return (
     <div className='weather'>

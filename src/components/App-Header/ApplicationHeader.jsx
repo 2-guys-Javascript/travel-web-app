@@ -16,6 +16,10 @@ function ApplicationHeader({
     onChangeIsLoggedIn(!isLoggedIn);
     onChangeUserId('');
     onChangeDisplayName('');
+
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('displayName');
   }
 
   return (

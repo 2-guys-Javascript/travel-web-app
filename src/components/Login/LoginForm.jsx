@@ -20,6 +20,10 @@ function LoginForm({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDis
       onChangeIsLoggedIn(!isLoggedIn);
       onChangeUserId(user.uid);
       onChangeDisplayName(user.displayName);
+
+      localStorage.setItem('isLoggedIn', true);
+      localStorage.setItem('userId', user.uid);
+      localStorage.setItem('displayName', user.displayName);
       navigate('/home');
     } catch (error) {
       alert('Failed!');
