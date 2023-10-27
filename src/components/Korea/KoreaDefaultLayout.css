@@ -20,10 +20,10 @@
   display: flex;
   align-items: center;
   bottom: 0;
-  height: 10vh;
+  height: 68px;
   z-index: 99;
   background-color: #ffffff;
-  box-shadow: 0 0 5px #00000033;
+  box-shadow: 0 0 3px #00000033;
 }
 
 .korea-navbar {
@@ -37,19 +37,15 @@
 }
 
 .korea-navbar a {
-  font-size: 1.1rem;
-  font-weight: 300;
-  color: #313131;
-  flex: 1;
   text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 10vh;
 }
 
-.korea-navbar a:visited {
-  color: #313131;
+.korea-navbar img {
+  width: 28px;
+}
+
+.korea-navbar a:active {
+  filter: invert(50%);
 }
 
 .kr-weather-text-div {

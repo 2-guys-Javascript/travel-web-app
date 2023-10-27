@@ -45,6 +45,11 @@
   max-width: 460px;
   width: 90vw;
   list-style: none;
+  padding-bottom: 80px;
+}
+
+.non-ul li {
+  background-color: #ffffff;
 }
 
 .non-list {
@@ -54,14 +59,13 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  text-align: start;
   border: 1px solid #00000055;
   box-shadow: 0 0 3px #00000033;
-  background-color: #ffffff;
-  font-size: 14px;
+  font-size: 0.7rem;
   margin-top: 10px;
   border-radius: 15px;
-  z-index: 5;
-  font-size: 14px;
+  /* box-sizing: border-box; */
 }
 
 .non-list:active {
@@ -69,7 +73,9 @@
 }
 
 .non-list h2 {
+  background-color: #ffffff;
   padding-left: 10px;
+  padding-right: 10px;
   color: #161616;
 }
 

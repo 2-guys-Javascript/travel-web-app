@@ -18,6 +18,7 @@
   left: 50%;
   transform: translateX(-50%);
   box-shadow: 0 0 3px #00000055;
+  z-index: 5;
 }
 
 .custom-input:active {
@@ -32,7 +33,6 @@
   flex-direction: column;
   justify-self: center;
   align-items: center;
-  padding-bottom: 11vh;
 }
 
 .create-marker-form input {
@@ -113,7 +113,7 @@ abbr {
 }
 
 .react-calendar__tile--active {
-  background-color: #1ba136;
+  background-color: #000000;
   border-radius: 12px;
   box-shadow: 0 0 2px #00000022;
   color: #ffffff;
@@ -152,7 +152,7 @@ abbr {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #1ba136;
+  background-color: #2c2c2c;
   color: #ffffff;
   font-size: 20px;
 }
@@ -199,7 +199,7 @@ abbr {
   font-size: 24px;
   border-radius: 14px;
   padding: 8px 15px;
-  background-color: #1ba136;
+  background-color: #000000;
   border: 0;
   color: #ffffff;
   box-shadow: 0 0 2px #00000033;
@@ -209,9 +209,18 @@ abbr {
   border: 0;
   background-color: #ffffff;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 26px;
   padding: 12px;
   color: #000000e1;
+}
+
+.toggle-am .am {
+  font-weight: 500;
+}
+
+.toggle-am .pm {
+  font-size: 14px;
+  color: #00000088;
 }
 
 .existing {
@@ -222,7 +231,6 @@ abbr {
 
 .marker-info-list {
   margin: 0;
-  border: 1px solid red;
 }
 
 .marker-info-list {
@@ -236,12 +244,25 @@ abbr {
   list-style: none;
 }
 
+.marker-info-list li:active {
+  background-color: #00000022;
+}
+
 .marker-info-list li {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid red;
+  border: 0;
+  border-radius: 15px;
+  box-shadow: 0 0 3px #00000055;
+  margin-bottom: 15px;
   max-width: 460px;
   width: 90vw;
   height: 80px;
+}
+
+.login-bottom {
+  background-color: #ffffff;
+  z-index: 3;
+  padding-bottom: 80px;
 }

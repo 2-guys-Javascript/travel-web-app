@@ -4,9 +4,15 @@ function KrNavBar() {
   return (
     <footer className='korea-footer'>
       <nav className='korea-navbar'>
-        <Link to='/'>Home</Link>
-        <Link to='korea/weather'>날씨</Link>
-        <Link to='korea'>지도</Link>
+        <Link to='/'>
+          <img src='/src/assets/nav-home.png' alt='홈' />
+        </Link>
+        <Link to='korea/weather'>
+          <img src='/src/assets/nav-weather.png' alt='날씨' />
+        </Link>
+        <Link to='korea'>
+          <img src='/src/assets/nav-map.png' alt='지도' />
+        </Link>
       </nav>
     </footer>
   );

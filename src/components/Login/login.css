@@ -5,17 +5,20 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
+  align-items: center;
+  overflow-y: auto;
+  box-shadow: 0 0 20px #00000033;
 }
 
 .login-header {
-  width: 100%;
+  position: fixed;
+  display: flex;
+  width: 100vw;
   max-width: 480px;
   height: 70px;
-  position: fixed;
   top: 0;
-  display: flex;
   z-index: 99;
   justify-content: space-around;
   align-items: center;
@@ -47,15 +50,19 @@
 }
 
 .login-form {
-  width: 100vw;
-  height: 35vh;
   max-width: 480px;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid black;
-  margin-top: 20px;
+  padding-bottom: 30px;
+}
+
+.project-logo {
+  width: 200px;
+  margin: 60px 0 40px 0;
+  border-radius: 50%;
 }
 
 .__or__ {
@@ -69,21 +76,42 @@
 
 .__or__:before,
 .__or__:after {
+  max-width: 200px;
+  width: 40vw;
   height: 1px;
   background: #e8e8e8;
   flex: 1;
-  content: '';
+  content: ' ';
 }
 
 .github-img {
-  width: 45px;
-  height: 45px;
+  width: 38px;
+  height: 38px;
+  background-color: #ffffff;
+  filter: invert(100%);
+  margin-left: 20px;
 }
 
 .github-login-div {
+  margin-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 0;
+  border-radius: 12px;
+  background-color: #000000;
+  max-width: 460px;
+  width: 80vw;
+  min-height: 60px;
+  height: 60px;
+  color: #ffffff;
+  box-shadow: 0 0 3px #00000088;
+  margin-bottom: 30px;
+}
+
+.github-login-div span {
+  margin-left: 15vw;
+  margin-right: 20px;
 }
 
 .github-login-div:hover {
@@ -91,12 +119,16 @@
 }
 
 .email-input {
-  line-height: 40px;
+  line-height: 36px;
+  font-size: 16px;
   width: 90vw;
   max-width: 460px;
   color: black;
-  font-size: 20px;
   border: 1px solid #cecaca;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  padding-left: 15px;
+  box-sizing: border-box;
 }
 
 .email-input:focus {
@@ -104,12 +136,16 @@
 }
 
 .password-input {
-  line-height: 40px;
+  line-height: 36px;
+  font-size: 16px;
   width: 90vw;
   max-width: 460px;
   color: black;
-  font-size: 20px;
   border: 1px solid #cecaca;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  padding-left: 15px;
+  box-sizing: border-box;
 }
 
 .password-input:focus {
@@ -117,13 +153,41 @@
 }
 
 .submit-button {
-  width: 90vw;
   max-width: 460px;
-  height: 42px;
+  width: 90vw;
+  height: 40px;
   background-color: black;
+  border: 0;
   color: white;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  box-shadow: 0 0 3px #00000088;
 }
 
 .submit-button:hover {
   cursor: pointer;
+}
+
+.submit-button:active {
+  background-color: #323232;
+}
+
+.to-signup {
+  margin: 18px 0;
+}
+
+.if {
+  font-size: 14px;
+  color: #888888;
+}
+
+.login-form a {
+  font-size: 16px;
+  margin-left: 10px;
+  color: #007bff;
+}
+
+.login-form a:visited {
+  color: #007bff;
 }

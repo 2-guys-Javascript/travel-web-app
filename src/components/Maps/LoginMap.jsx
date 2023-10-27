@@ -79,26 +79,30 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
       }
       setCreatingMarker(false);
     } else {
-      const lat = event.latLng.lat();
-      const lng = event.latLng.lng();
+      if (selectedMarker) {
+        setSelectedMarker(null);
+      } else {
+        const lat = event.latLng.lat();
+        const lng = event.latLng.lng();
 
-      const newMarker = {
-        id: lat,
-        position: {
-          lat: lat,
-          lng: lng,
-        },
-      };
+        const newMarker = {
+          id: lat,
+          position: {
+            lat: lat,
+            lng: lng,
+          },
+        };
 
-      setCreatingMarker(true);
-      setMarkers([...markers, newMarker]);
+        setCreatingMarker(true);
+        setMarkers([...markers, newMarker]);
 
-      if (map) {
-        map.panTo(newMarker.position);
+        if (map) {
+          map.panTo(newMarker.position);
+        }
       }
+      // 마커 정보 표시 안함
+      setSelectedMarker(null);
     }
-    // 마커 정보 표시 안함
-    setSelectedMarker(null);
   };
 
   // CreateMarkerForm 컴포넌트에 전달되며 새로운 마커를 보여줌
@@ -401,40 +405,41 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
         locale={ko}
         customInput={<CustomInput />}
       />
-      {creatingMarker && (
-        <CreateMarkerForm
-          markers={markers}
-          selectedDate={selectedDate}
-          onCreateMarker={handleCreateMarker}
-          userId={userId}
-        />
-      )}
-      {selectedMarker && (
-        <MarkerInfo
-          selectedMarker={selectedMarker}
-          setSelectedMarker={setSelectedMarker}
-          markers={markers}
-          setMarkers={setMarkers}
-          userId={userId}
-          onClose={() => setSelectedMarker(null)}
-        />
-      )}
-      {!selectedMarker && !creatingMarker && (
-        <ul className='marker-info-list'>
-          {sortedMarkers.map(
-            (marker) =>
-              marker.info && (
-                <li onClick={() => handleMarkerClick(marker)} key={marker.info.title}>
-                  <p>장소 : {marker.info.title}</p>
-                  <p>메모 : {marker.info.detail}</p>
-                  <p>
-                    시간 : {marker.info.time.from} ~ {marker.info.time.until}
-                  </p>
-                </li>
-              )
-          )}
-        </ul>
-      )}
+      <div className='login-bottom'>
+        {creatingMarker && (
+          <CreateMarkerForm
+            markers={markers}
+            selectedDate={selectedDate}
+            onCreateMarker={handleCreateMarker}
+            userId={userId}
+          />
+        )}
+        {selectedMarker && (
+          <MarkerInfo
+            selectedMarker={selectedMarker}
+            setSelectedMarker={setSelectedMarker}
+            markers={markers}
+            setMarkers={setMarkers}
+            userId={userId}
+            onClose={() => setSelectedMarker(null)}
+          />
+        )}
+        {!selectedMarker && !creatingMarker && (
+          <ul className='marker-info-list'>
+            {sortedMarkers.map(
+              (marker) =>
+                marker.info && (
+                  <li onClick={() => handleMarkerClick(marker)} key={marker.info.title}>
+                    <p>장소 : {marker.info.title}</p>
+                    <p>
+                      시간 : {marker.info.time.from} ~ {marker.info.time.until}
+                    </p>
+                  </li>
+                )
+            )}
+          </ul>
+        )}
+      </div>
     </div>
   ) : (
     <div></div>
