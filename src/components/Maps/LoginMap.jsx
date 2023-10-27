@@ -42,13 +42,6 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
 
   const inputRef = useRef();
 
-  const restaurantMarkerIcon = {
-    url: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freeiconspng.com%2Fimages%2Frestaurant-icon-png&psig=AOvVaw3dK8tD1vqX4A3JhwaRAAQ4&ust=1698342896236000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCJD397vikYIDFQAAAAAdAAAAABAE',
-    scaledSize: new window.google.maps.Size(40, 40),
-    origin: new window.google.maps.Point(0, 0),
-    anchor: new window.google.maps.Point(20, 40),
-  };
-
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY,

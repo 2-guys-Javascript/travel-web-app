@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-function Exchange() {
+function Exchange({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) {
   const [krwToJpy, setKrwToJpy] = useState(0);
   const [jpyToKrw, setJpyToKrw] = useState(0);
   const [isKrwToJpy, setIsKrwToJpy] = useState(true);
@@ -31,6 +31,21 @@ function Exchange() {
   useEffect(() => {
     getKrwToJpyExchange();
     getJpyToKrwExchange();
+  }, []);
+
+  useEffect(() => {
+    const storedLoginStatus = localStorage.getItem('isLoggedIn');
+    const storedUserId = localStorage.getItem('userId');
+    const storedDisplayName = localStorage.getItem('displayName');
+    console.log(storedLoginStatus);
+    console.log(storedUserId);
+    console.log(storedDisplayName);
+
+    if (storedLoginStatus) {
+      onChangeIsLoggedIn(storedLoginStatus);
+      onChangeUserId(storedUserId);
+      onChangeDisplayName(storedDisplayName);
+    }
   }, []);
 
   return (

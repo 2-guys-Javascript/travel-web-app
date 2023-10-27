@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import KrForecastWeather from './KrForecastWeather';
 import KrHourlyWeather from './KrHourlyWeather';
 
-function KrWeather() {
+function KrWeather({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) {
   const [weatherData, setWeatherData] = useState('');
   const [city, setCity] = useState('');
   const [forecast, setForecast] = useState('');
@@ -37,6 +37,21 @@ function KrWeather() {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    const storedLoginStatus = localStorage.getItem('isLoggedIn');
+    const storedUserId = localStorage.getItem('userId');
+    const storedDisplayName = localStorage.getItem('displayName');
+    console.log(storedLoginStatus);
+    console.log(storedUserId);
+    console.log(storedDisplayName);
+
+    if (storedLoginStatus) {
+      onChangeIsLoggedIn(storedLoginStatus);
+      onChangeUserId(storedUserId);
+      onChangeDisplayName(storedDisplayName);
+    }
+  }, []);
 
   return (
     <div className='weather'>

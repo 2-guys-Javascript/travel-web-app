@@ -46,7 +46,16 @@ function App() {
               />
             }
           />
-          <Route path='/korea/weather' element={<KrWeather />} />
+          <Route
+            path='/korea/weather'
+            element={
+              <KrWeather
+                onChangeIsLoggedIn={setIsLoggedIn}
+                onChangeUserId={setUserId}
+                onChangeDisplayName={setDisplayName}
+              />
+            }
+          />
         </Route>
 
         <Route
@@ -88,8 +97,26 @@ function App() {
               />
             }
           />
-          <Route path='/japan/weather' element={<JpWeather />} />
-          <Route path='/japan/exchange' element={<Exchange />} />
+          <Route
+            path='/japan/weather'
+            element={
+              <JpWeather
+                onChangeIsLoggedIn={setIsLoggedIn}
+                onChangeUserId={setUserId}
+                onChangeDisplayName={setDisplayName}
+              />
+            }
+          />
+          <Route
+            path='/japan/exchange'
+            element={
+              <Exchange
+                onChangeIsLoggedIn={setIsLoggedIn}
+                onChangeUserId={setUserId}
+                onChangeDisplayName={setDisplayName}
+              />
+            }
+          />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -15,6 +15,10 @@ function Login({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDisplay
       onChangeUserId(user.uid);
       onChangeDisplayName(user.displayName);
       console.log(result);
+
+      localStorage.setItem('isLoggedIn', true);
+      localStorage.setItem('userId', user.uid);
+      localStorage.setItem('displayName', user.displayName);
       navigate('/home');
     } catch (error) {
       console.log(error);

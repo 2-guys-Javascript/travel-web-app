@@ -1,7 +1,22 @@
+import { useEffect } from 'react';
 import LoginMap from '../Maps/LoginMap';
 import NonLoginMap from '../Maps/NonLoginMap';
 
 function Korea({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displayName, onChangeDisplayName }) {
+  useEffect(() => {
+    const storedLoginStatus = localStorage.getItem('isLoggedIn');
+    const storedUserId = localStorage.getItem('userId');
+    const storedDisplayName = localStorage.getItem('displayName');
+    console.log(storedLoginStatus);
+    console.log(storedUserId);
+    console.log(storedDisplayName);
+
+    if (storedLoginStatus) {
+      onChangeIsLoggedIn(storedLoginStatus);
+      onChangeUserId(storedUserId);
+      onChangeDisplayName(storedDisplayName);
+    }
+  }, []);
   return (
     <>
       {isLoggedIn ? (
