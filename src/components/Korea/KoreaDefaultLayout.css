@@ -17,21 +17,18 @@
 
 .korea-footer {
   position: fixed;
-  /* 위치 고정 */
   display: flex;
   align-items: center;
   bottom: 0;
-  /* 화면 최하단 표시 */
-  z-index: 99;
   height: 10vh;
+  z-index: 99;
   background-color: #ffffff;
-  box-shadow: 0 0 5px #00000013;
+  box-shadow: 0 0 5px #00000033;
 }
 
 .korea-navbar {
   max-width: 480px;
   width: 100vw;
-  /* default layout과 동일하게 최대너비와 반응형 넓이를 줬습니다 */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -40,14 +37,21 @@
 }
 
 .korea-navbar a {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #313131;
   flex: 1;
-  /* 하나의 아이템당 하나의 동일한 크기를 줬습니다 */
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 10vh;
 }
+
+.korea-navbar a:visited {
+  color: #313131;
+}
+
 .kr-weather-text-div {
   max-width: 480px;
   width: 100vw;

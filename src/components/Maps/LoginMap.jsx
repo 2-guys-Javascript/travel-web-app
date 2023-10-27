@@ -1,5 +1,7 @@
-import { useState, useCallback, memo, useEffect, useRef } from 'react';
+import { useState, useCallback, memo, useEffect, useRef, forwardRef } from 'react';
 import { GoogleMap, useJsApiLoader, MarkerF, Autocomplete, InfoWindow } from '@react-google-maps/api';
+import ReactDatePicker from 'react-datepicker';
+import ko from 'date-fns/locale/ko';
 import CreateMarkerForm from './CreateMarkerForm';
 import MarkerInfo from './MarkerInfo';
 import moment from 'moment';
@@ -7,6 +9,7 @@ import { db } from '../../../firebaseConfig';
 import { getDoc, doc, updateDoc, setDoc } from 'firebase/firestore';
 import './Map.css';
 import './LoginMap.css';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const myStyles = [
   {
@@ -32,7 +35,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
   // 저장된 마커의 정보를 보여줄 마커
   const [selectedMarker, setSelectedMarker] = useState(null);
   // 현재 날짜를 나타낼 상태에 해당합니다. 이는 useEffect의 의존성으로 사용되어 바뀌면 새로운 데이터를 불러오게 합니다. 시작은 현재 날짜
-  const [selectedDate, setSelectedDate] = useState(moment(new Date()).format('YYYY년 MM월 DD일'));
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [getCafe, setGetCafe] = useState([]);
   const [getRestaurants, setGetRestaurants] = useState([]);
   const [selectedNearByPlace, SetSelectedNearByPlace] = useState(null);
@@ -119,7 +122,21 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
     const savingObject = {};
     savingObject[newMarker.info.title] = newMarker;
 
-    setMarkers([...markers.slice(0, markers.length - 1), newMarker]);
+    const updatedMarkers = [...markers.slice(0, markers.length - 1), newMarker];
+
+    updatedMarkers.sort((a, b) => {
+      const timeA = a.info && a.info.time && a.info.time.from ? parseTime(a.info.time.from) : 0;
+      const timeB = b.info && b.info.time && b.info.time.from ? parseTime(b.info.time.from) : 0;
+
+      return timeA - timeB;
+    });
+
+    function parseTime(timeString) {
+      const [hours, minutes] = timeString.split(':');
+      return parseInt(hours) * 60 + parseInt(minutes);
+    }
+
+    setMarkers(updatedMarkers);
 
     async function pushIntoDataBase() {
       try {
@@ -149,28 +166,44 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
       }
       setCreatingMarker(false);
     }
-    setSelectedMarker({ ...marker });
+    setSelectedMarker(marker);
     map.panTo(marker.position);
     console.log(marker);
   };
 
-  const handleDateChange = (ev) => {
-    setSelectedDate(moment(ev.target.value).format('YYYY년 MM월 DD일'));
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
   };
 
   // handleMapClick 함수의 처음 조건에 걸리지 않게 creatingMarker를 false로 만들어줬어요
   useEffect(() => {
     setMarkers([]);
     setCreatingMarker(false);
+
     const fetchMarkersData = async () => {
+      const formattedDate = moment(selectedDate).format('YYYY년 MM월 DD일');
+
       try {
-        const documentRef = doc(db, userId, selectedDate);
+        const documentRef = doc(db, userId, formattedDate);
         const snapShot = await getDoc(documentRef);
         const fetchedDocument = snapShot.data();
         const markerArray = [];
         for (const myKey in fetchedDocument) {
           markerArray.push(fetchedDocument[myKey]);
         }
+
+        markerArray.sort((a, b) => {
+          const timeA = a.info && a.info.time && a.info.time.from ? parseTime(a.info.time.from) : 0;
+          const timeB = b.info && b.info.time && b.info.time.from ? parseTime(b.info.time.from) : 0;
+
+          return timeA - timeB;
+        });
+
+        function parseTime(timeString) {
+          const [hours, minutes] = timeString.split(':');
+          return parseInt(hours) * 60 + parseInt(minutes);
+        }
+
         setMarkers(markerArray);
       } catch (error) {
         console.log(error);
@@ -274,6 +307,22 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
     );
   }
 
+  const sortedMarkers = markers.slice().sort((a, b) => {
+    const timeA = a.info && a.info.time && a.info.time.from ? a.info.time.from : '';
+    const timeB = b.info && b.info.time && b.info.time.from ? b.info.time.from : '';
+
+    const dateA = new Date(timeA);
+    const dateB = new Date(timeB);
+
+    return dateA - dateB;
+  });
+
+  const CustomInput = forwardRef(({ value, onClick }, ref) => (
+    <button className='custom-input' onClick={onClick} ref={ref}>
+      {value}
+    </button>
+  ));
+
   return isLoaded ? (
     <div className='map-display'>
       <div className='map-container'>
@@ -286,12 +335,20 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
           options={{ disableDefaultUI: true, styles: myStyles }}
           onClick={(event) => handleMapClick(event)}
         >
+          <MarkerF
+            position={userLocation}
+            icon={{ url: '/src/assets/non.png', scaledSize: new window.google.maps.Size(40, 40) }}
+          />
           {markers.map((marker) => (
             <MarkerF
               key={marker.id}
               position={marker.position}
               onClick={() => handleMarkerClick(marker)}
               // label={(index + 1).toString()} // 마커에 숫자 레이블 추가
+              icon={{
+                url: '/src/assets/pin.png',
+                scaledSize: new window.google.maps.Size(40, 40),
+              }}
             />
           ))}
 
@@ -304,6 +361,10 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
               onClick={() => {
                 SetSelectedNearByPlace(result);
               }}
+              icon={{
+                url: '/src/assets/restaurant.png',
+                scaledSize: new window.google.maps.Size(38, 38),
+              }}
             />
           ))}
           {getCafe.map((result, index) => (
@@ -314,6 +375,10 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
               zIndex={getCafe.length - index}
               onClick={() => {
                 SetSelectedNearByPlace(result);
+              }}
+              icon={{
+                url: '/src/assets/cafe.png',
+                scaledSize: new window.google.maps.Size(38, 38),
               }}
             />
           ))}
@@ -336,13 +401,12 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
       <button className='btn-2' onClick={handleSearch}>
         🚀
       </button>
-      <input
-        type='text'
-        className='login-date'
+      <ReactDatePicker
+        selected={selectedDate}
         onChange={handleDateChange}
-        onFocus={(e) => (e.target.type = 'date')}
-        onBlur={(e) => (e.target.type = 'text')}
-        placeholder='날짜를 입력해주세요'
+        dateFormat={'yyyy년 MM월 dd일'}
+        locale={ko}
+        customInput={<CustomInput />}
       />
       {creatingMarker && (
         <CreateMarkerForm
@@ -364,10 +428,10 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
       )}
       {!selectedMarker && !creatingMarker && (
         <ul className='marker-info-list'>
-          {markers.map(
+          {sortedMarkers.map(
             (marker) =>
               marker.info && (
-                <li key={marker.info.id}>
+                <li onClick={() => handleMarkerClick(marker)} key={marker.info.title}>
                   <p>장소 : {marker.info.title}</p>
                   <p>메모 : {marker.info.detail}</p>
                   <p>

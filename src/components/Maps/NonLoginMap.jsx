@@ -176,7 +176,10 @@ function NonLoginMap() {
           onUnmount={onUnmount}
           options={{ disableDefaultUI: true, styles: myStyles }}
         >
-          <MarkerF position={userLocation} />
+          <MarkerF
+            position={userLocation}
+            icon={{ url: '/src/assets/non.png', scaledSize: new window.google.maps.Size(40, 40) }}
+          />
           {cafeButton
             ? getCafe.map((result) => (
                 <MarkerF
@@ -184,6 +187,10 @@ function NonLoginMap() {
                   position={result.geometry.location}
                   title={result.name}
                   onClick={() => handleSelectedPlace(result)}
+                  icon={{
+                    url: '/src/assets/coffee.png',
+                    scaledSize: new window.google.maps.Size(38, 38),
+                  }}
                 />
               ))
             : getRestaurants.map((result) => (
@@ -192,6 +199,10 @@ function NonLoginMap() {
                   position={result.geometry.location}
                   title={result.name}
                   onClick={() => handleSelectedPlace(result)}
+                  icon={{
+                    url: '/src/assets/restaurant.png',
+                    scaledSize: new window.google.maps.Size(38, 38),
+                  }}
                 />
               ))}
         </GoogleMap>

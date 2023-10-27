@@ -1,16 +1,27 @@
-.login-date {
-  padding: 0;
-  position: fixed;
-  top: 380px;
-  border: 0;
-  border-radius: 12px;
-  width: 180px;
-  height: 28px;
-  z-index: 99;
-  font-size: 14px;
+.react-datepicker-popper {
+  z-index: 99 !important;
+}
+
+.custom-input {
   background-color: #000000;
   color: #ffffff;
-  text-align: center;
+  border: 0;
+  border-radius: 12px;
+  width: 150px;
+  height: 26px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 378px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 3px #00000055;
+}
+
+.custom-input:active {
+  color: #d2d2d2;
 }
 
 .create-marker-form {
