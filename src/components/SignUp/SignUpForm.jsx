@@ -30,19 +30,18 @@ function SignUpForm() {
   return (
     <>
       <form action='post' className='sign-up-form' onSubmit={handleSignUpSubmit}>
-        <div>
-          <label htmlFor='email'>Email : </label>
-          <input type='email' id='email' name='email' />
-        </div>
-        <div>
-          <label htmlFor='password'>Password : </label>
-          <input type='password' id='password' name='password' />
-        </div>
-        <div>
-          <label htmlFor='nickname'>닉네임 : </label>
-          <input type='text' id='nickname' name='nickname' />
-        </div>
-        <button type='submit'>회원 가입</button>
+        <input type='email' id='email' name='email' placeholder='등록하실 Email' className='signup-email-input' />
+        <input type='password' id='password' name='password' placeholder='비밀번호' className='signup-password-input' />
+        <input
+          type='text'
+          id='nickname'
+          name='nickname'
+          placeholder='사용하실 닉네임'
+          className='signup-nickname-input'
+        />
+        <button type='submit' className='signup-button'>
+          회원 가입
+        </button>
       </form>
     </>
   );

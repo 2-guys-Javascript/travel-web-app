@@ -377,7 +377,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
                 SetSelectedNearByPlace(result);
               }}
               icon={{
-                url: '/src/assets/cafe.png',
+                url: '/src/assets/coffee.png',
                 scaledSize: new window.google.maps.Size(38, 38),
               }}
             />

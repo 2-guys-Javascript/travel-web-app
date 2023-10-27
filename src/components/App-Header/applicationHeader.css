@@ -39,3 +39,7 @@
   align-items: center;
   padding: 8px 10px;
 }
+
+.login-logout-button:hover {
+  cursor: pointer;
+}

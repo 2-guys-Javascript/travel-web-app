@@ -24,19 +24,28 @@ function Login({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDisplay
   return (
     <div className='login-page-outer-div'>
       <div className='login-header'>
-        login
-        <Link to='/'>
-          <button>홈으로</button>
-        </Link>
+        <h2>로그인</h2>
+        <button>
+          <Link to='/'>홈으로</Link>
+        </button>
       </div>
+
       <LoginForm
         isLoggedIn={isLoggedIn}
         onChangeIsLoggedIn={onChangeIsLoggedIn}
         onChangeUserId={onChangeUserId}
         onChangeDisplayName={onChangeDisplayName}
       />
-      <div>Blank</div>
-      <button onClick={handleGithubLogin}>Github로 로그인하기</button>
+      <div className='__or__'> 또는 </div>
+
+      <div className='github-login-div'>
+        <img
+          className='github-img'
+          src='/src/assets/github-logo.png'
+          alt='깃허브로 로그인'
+          onClick={handleGithubLogin}
+        />
+      </div>
     </div>
   );
 }
