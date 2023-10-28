@@ -140,7 +140,8 @@ function CreateMarkerForm({ onCreateMarker, markers, userId }) {
         />
       </div>
       <button className='toggle-am' onClick={handleToggleMorning}>
-        {!isMorningSelected ? '오후' : '오전'}
+        <span className={!isMorningSelected ? 'pm' : 'am'}>오전 </span>
+        <span className={!isMorningSelected ? 'am' : 'pm'}> 오후</span>
       </button>
       <div className='time-box'>
         <TimeButtons />

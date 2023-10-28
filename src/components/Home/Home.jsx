@@ -10,6 +10,7 @@ function Home() {
         </div>
       </Link>
       <div className='project-name'>일단락</div>
+      <img className='opening' src='/src/assets/opening.png' alt='오프닝' />
       <Link to='japan' className='japan-tab-div'>
         <div>
           <h1 className='japan'>JAPAN</h1>

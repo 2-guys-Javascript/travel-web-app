@@ -32,7 +32,7 @@ function LoginForm({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDis
   }
 
   return (
-    <>
+    <div>
       <form action='post' className='login-form' onSubmit={handleLoginSubmit}>
         <input className='email-input' type='email' id='email' name='email' placeholder='Email을 입력하세요' />
 
@@ -46,10 +46,12 @@ function LoginForm({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDis
         <button type='submit' className='submit-button'>
           로그인 하기
         </button>
-
-        <Link to='/signup'>Sign up here!</Link>
+        <div className='to-signup'>
+          <span className='if'>회원이 아니신가요?</span>
+          <Link to='/signup'>간편 회원가입</Link>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
 

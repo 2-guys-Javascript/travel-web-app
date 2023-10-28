@@ -5,12 +5,15 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
+  align-items: center;
+  overflow-y: hidden;
+  box-shadow: 0 0 20px #00000033;
 }
 
 .signup-header {
-  width: 100%;
+  width: 100vw;
   max-width: 480px;
   height: 70px;
   position: fixed;
@@ -46,25 +49,43 @@
   color: #cdcdcd;
 }
 
+.signup-text1 {
+  max-width: 460px;
+  width: 90vw;
+  margin-top: 110px;
+  font-size: 1.5rem;
+  text-align: start;
+}
+
+.signup-text2 {
+  max-width: 460px;
+  width: 90vw;
+  font-size: 1rem;
+  margin: 0;
+  text-align: start;
+}
+
 .sign-up-form {
-  width: 100vw;
-  height: 35vh;
   max-width: 480px;
+  width: 100vw;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-around;
-  border: 1px solid black;
-  margin-top: 20px;
+  align-items: center;
 }
 
 .signup-email-input {
-  line-height: 40px;
+  line-height: 36px;
+  font-size: 16px;
   width: 90vw;
   max-width: 460px;
   color: black;
-  font-size: 20px;
   border: 1px solid #cecaca;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  padding-left: 15px;
+  box-sizing: border-box;
 }
 
 .signup-email-input:focus {
@@ -72,12 +93,16 @@
 }
 
 .signup-password-input {
-  line-height: 40px;
+  line-height: 36px;
+  font-size: 16px;
   width: 90vw;
   max-width: 460px;
   color: black;
-  font-size: 20px;
   border: 1px solid #cecaca;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  padding-left: 15px;
+  box-sizing: border-box;
 }
 
 .signup-password-input:focus {
@@ -85,12 +110,16 @@
 }
 
 .signup-nickname-input {
-  line-height: 40px;
+  line-height: 36px;
+  font-size: 16px;
   width: 90vw;
   max-width: 460px;
   color: black;
-  font-size: 20px;
   border: 1px solid #cecaca;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  padding-left: 15px;
+  box-sizing: border-box;
 }
 
 .signup-nickname-input:focus {
@@ -98,13 +127,32 @@
 }
 
 .signup-button {
-  width: 90vw;
   max-width: 460px;
-  height: 42px;
+  width: 90vw;
+  height: 40px;
   background-color: black;
+  border: 0;
   color: white;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  box-shadow: 0 0 3px #00000088;
 }
 
 .signup-button:hover {
   cursor: pointer;
+}
+
+.signup-button:active {
+  background-color: #323232;
+}
+
+.to-login a {
+  font-size: 16px;
+  margin-left: 10px;
+  color: #007bff;
+}
+
+.to-login a:visited {
+  color: #007bff;
 }
