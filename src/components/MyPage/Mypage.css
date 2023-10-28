@@ -18,7 +18,7 @@
   display: flex;
   max-width: 460px;
   width: 90vw;
-  margin: 20px 0;
+  margin-top: 20px;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
@@ -26,13 +26,13 @@
 }
 
 .mypage-defauly-layout .title .goback {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }
 
 .mypage-defauly-layout .title > h2 {
   font-size: 30px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .mypage-information-form {
@@ -43,7 +43,7 @@
   align-items: flex-start;
   width: 90vw;
   max-width: 460px;
-  color: #00000088;
+  color: #000000dd;
   padding-bottom: 140px;
 }
 
@@ -69,20 +69,25 @@
   border-color: #007bff;
 }
 
-.mypage-information-form input[type='file'] {
-  color: #ffffff;
-  border: 1px solid #000000;
-  box-shadow: 0 0 3px #00000055;
-  background-color: #000000;
-  border-radius: 15px;
+.profile-form {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 10px;
-  max-width: 460px;
-  width: 90vw;
+  flex-direction: column;
+  max-width: 480px;
+  width: 100vw;
+  color: #000000dd;
+  margin-bottom: 32px;
+}
+
+.mypage-information-form input[type='file'] {
+  color: #ffffff;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
   box-sizing: border-box;
-  font-size: 14px;
+  background-color: #d1d1d1;
+  color: #d1d1d1;
 }
 
 input::file-selector-button {

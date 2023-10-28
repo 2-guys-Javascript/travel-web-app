@@ -115,10 +115,10 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
         </div>
 
         <form action='post' className='mypage-information-form'>
-          <div>
-            <label htmlFor='profile-image'>프로필 이미지</label>
-            <br />
+          <div className='profile-form'>
             <input id='profile-image' name='profile-image' type='file' />
+            <br />
+            <label htmlFor='profile-image'>프로필 이미지</label>
           </div>
           <div>
             <label htmlFor='nickname'>닉네임</label>
