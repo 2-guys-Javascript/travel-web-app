@@ -10,6 +10,7 @@ import JpDefaultLayout from './components/Japan/JpDefaultLayout';
 import Exchange from './components/Japan/Exchange';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
+import MyPage from './components/MyPage/MyPage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -71,6 +72,19 @@ function App() {
         />
 
         <Route path='/signup' element={<SignUp />} />
+        <Route
+          path='/mypage'
+          element={
+            <MyPage
+              isLoggedIn={isLoggedIn}
+              onChangeIsLoggedIn={setIsLoggedIn}
+              userId={userId}
+              onChangeUserId={setUserId}
+              displayName={displayName}
+              onChangeDisplayName={setDisplayName}
+            />
+          }
+        />
 
         <Route
           element={
