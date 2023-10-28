@@ -42,9 +42,6 @@ function KrWeather({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) 
     const storedLoginStatus = localStorage.getItem('isLoggedIn');
     const storedUserId = localStorage.getItem('userId');
     const storedDisplayName = localStorage.getItem('displayName');
-    console.log(storedLoginStatus);
-    console.log(storedUserId);
-    console.log(storedDisplayName);
 
     if (storedLoginStatus) {
       onChangeIsLoggedIn(storedLoginStatus);

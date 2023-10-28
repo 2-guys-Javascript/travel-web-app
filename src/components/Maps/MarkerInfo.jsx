@@ -11,8 +11,7 @@ function MarkerInfo({ selectedMarker, setSelectedMarker, markers, setMarkers, us
       const documentRef = doc(db, userId, selectedMarker.info.date);
       const dataToRemove = { [selectedMarker.info.title]: deleteField() };
       await updateDoc(documentRef, dataToRemove);
-      // db에서는 지워줬음. 이제 markers를 바꿔줘야함
-      // const filteredMarkersarray = markers.filter((element) => element.info.title !== marker.info.title);
+      // db에서는 지워줬음. 이제 markers를 바꿔줘야함 : 애플리케이션에서의 상태와 DB 간의 동기화
       setMarkers((markers) => {
         return markers.filter((element) => element.info.title !== selectedMarker.info.title);
       });
@@ -20,7 +19,6 @@ function MarkerInfo({ selectedMarker, setSelectedMarker, markers, setMarkers, us
       console.log(error);
     }
     setSelectedMarker(false);
-    console.log(markers);
   }
 
   const from = `${selectedMarker.info.time.from.slice(0, 2)}시 ${selectedMarker.info.time.from.slice(3, 5)}분`;

@@ -7,9 +7,6 @@ function Korea({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, display
     const storedLoginStatus = localStorage.getItem('isLoggedIn');
     const storedUserId = localStorage.getItem('userId');
     const storedDisplayName = localStorage.getItem('displayName');
-    console.log(storedLoginStatus);
-    console.log(storedUserId);
-    console.log(storedDisplayName);
 
     if (storedLoginStatus) {
       onChangeIsLoggedIn(storedLoginStatus);

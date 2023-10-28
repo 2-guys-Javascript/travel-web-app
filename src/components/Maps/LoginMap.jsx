@@ -165,7 +165,6 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
     }
     setSelectedMarker(marker);
     map.panTo(marker.position);
-    console.log(marker);
   };
 
   const handleDateChange = (date) => {
@@ -235,9 +234,8 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
 
     search.nearbySearch(restaurantRequest, (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-        console.log(results);
         const restaurant = results.filter((result) => result.types.indexOf('restaurant') === 0);
-        console.log(restaurant);
+
         setGetRestaurants(restaurant);
       } else {
         console.error('This is an error :', status);
@@ -252,9 +250,8 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
     };
     search.nearbySearch(cafeRequest, (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-        console.log(results);
         const cafe = results.filter((result) => result.types.indexOf('cafe') === 0);
-        console.log(cafe);
+
         setGetCafe(cafe);
       } else {
         console.error('This is an error :', status);
@@ -406,14 +403,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
         customInput={<CustomInput />}
       />
       <div className='login-bottom'>
-        {creatingMarker && (
-          <CreateMarkerForm
-            markers={markers}
-            selectedDate={selectedDate}
-            onCreateMarker={handleCreateMarker}
-            userId={userId}
-          />
-        )}
+        {creatingMarker && <CreateMarkerForm onCreateMarker={handleCreateMarker} userId={userId} />}
         {selectedMarker && (
           <MarkerInfo
             selectedMarker={selectedMarker}

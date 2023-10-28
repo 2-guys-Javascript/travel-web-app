@@ -5,10 +5,9 @@ import JpForecastWeather from './JpForecastWeather';
 function JpWeather({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) {
   const [weatherData, setWeatherData] = useState('');
   const [city, setCity] = useState('');
-  // 사용자가 api 요청을 오늘, 내일, 그리고 모레에 대한 3일을 기준으로 날리기에 길이가 3짜리인 배열 상태가 될 것임
+
   const [forecast, setForecast] = useState('');
 
-  // 현재 웹 애플리케이션에서 UI에 활용하는 이름은 한글이지만, fetch 요청을 날릴 때, q 매개변수에 필요한 것은 영문 도시명이기에 필요
   const cities = {
     kr: ['오사카', '교토', '고베', '도쿄', '하코네', '요코하마', '후쿠오카', '유후인', '기타큐슈', '삿포로'],
     us: ['osaka', 'kyoto', 'kobe', 'tokyo', 'hakone', 'yokohama', 'fukuoka', 'yufuin', 'kitakyushu', 'sapporo'],
@@ -34,7 +33,6 @@ function JpWeather({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) 
       const result = await response.json();
       setWeatherData(result);
       setForecast(result.forecast.forecastday.map((day) => day));
-      console.log(result);
     } catch (error) {
       setWeatherData(null);
     }
@@ -44,9 +42,6 @@ function JpWeather({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) 
     const storedLoginStatus = localStorage.getItem('isLoggedIn');
     const storedUserId = localStorage.getItem('userId');
     const storedDisplayName = localStorage.getItem('displayName');
-    console.log(storedLoginStatus);
-    console.log(storedUserId);
-    console.log(storedDisplayName);
 
     if (storedLoginStatus) {
       onChangeIsLoggedIn(storedLoginStatus);
@@ -70,7 +65,6 @@ function JpWeather({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) 
           </div>
         )}
       </div>
-      {/* JpHourWeather과 JpForecastWeather 컴포넌트는 prop으로 전달된 days가 빈 문자열이면 null 반환으로 UI로 나타나지 않음 */}
       <JpHourlyWeather days={forecast} />
       <JpForecastWeather days={forecast} />
       <div className='weather-where-container'>

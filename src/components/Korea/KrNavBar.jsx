@@ -7,10 +7,10 @@ function KrNavBar() {
         <Link to='/'>
           <img src='/src/assets/nav-home.png' alt='홈' />
         </Link>
-        <Link to='korea/weather'>
+        <Link to='/korea/weather'>
           <img src='/src/assets/nav-weather.png' alt='날씨' />
         </Link>
-        <Link to='korea'>
+        <Link to='/korea'>
           <img src='/src/assets/nav-map.png' alt='지도' />
         </Link>
       </nav>

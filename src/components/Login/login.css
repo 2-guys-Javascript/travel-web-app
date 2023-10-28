@@ -132,7 +132,7 @@
 }
 
 .email-input:focus {
-  border-color: #007bff; /* 포커스 시 테두리 색상 변경 */
+  border-color: #007bff;
 }
 
 .password-input {

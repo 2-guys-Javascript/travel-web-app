@@ -1,16 +1,12 @@
 .kr-default-layout {
   max-width: 480px;
   width: 100vw;
-  /* 최대의 가로 사이즈 480px / 화면이 더 작을때는 100vw를 주어 반응형 디자인을 구현하였습니다 */
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  /* 화면의 위부터 아래로 모든 컨텐츠가 표시되도록 수정하였습니다 */
   align-items: center;
   overflow-y: auto;
-  /* 최대 길이에 맞춰 스크롤이 작동하도록 했습니다 */
-  /* navbar가 화면에 보일 수 있는 여유를 줬습니다 */
   box-shadow: 0 0 20px #00000033;
   background-color: #ffffff;
 }

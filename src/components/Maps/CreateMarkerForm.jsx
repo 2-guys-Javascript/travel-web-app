@@ -5,8 +5,7 @@ import Calendar from 'react-calendar';
 import moment from 'moment';
 import './Map.css';
 
-// onCreateMarker는 handleCreateMarker() 함수가 전달된 것으로 폼 정보만 인자로 넣기
-function CreateMarkerForm({ onCreateMarker, markers, userId }) {
+function CreateMarkerForm({ onCreateMarker, userId }) {
   const [isSubmitClick, setIsSubmitClick] = useState(false);
   const [dateValue, setDateValue] = useState(new Date());
   const [startTime, setStartTime] = useState('');

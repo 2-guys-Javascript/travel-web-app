@@ -20,6 +20,10 @@
   margin-right: 35%;
 }
 
+.application-header h2:hover {
+  cursor: pointer;
+}
+
 .application-header h3 {
   font-size: 15px;
 }

@@ -14,7 +14,6 @@ function Login({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDisplay
       onChangeIsLoggedIn(!isLoggedIn);
       onChangeUserId(user.uid);
       onChangeDisplayName(user.displayName);
-      console.log(result);
 
       localStorage.setItem('isLoggedIn', true);
       localStorage.setItem('userId', user.uid);
