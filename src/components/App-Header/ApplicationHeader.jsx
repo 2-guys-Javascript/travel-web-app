@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './applicationHeader.css';
 
 function ApplicationHeader({
@@ -9,6 +9,8 @@ function ApplicationHeader({
   displayName,
   onChangeDisplayName,
 }) {
+  const navigate = useNavigate();
+
   function handleClickButton() {
     onChangeIsLoggedIn(!isLoggedIn);
     onChangeUserId('');
@@ -19,13 +21,17 @@ function ApplicationHeader({
     localStorage.removeItem('displayName');
   }
 
+  function handleClickIldanrak() {
+    navigate('/');
+  }
+
   return (
     <div className='application-header'>
-      <h2>일단락</h2>
+      <h2 onClick={handleClickIldanrak}>일단락</h2>
       <h3>{displayName}</h3>
       {!isLoggedIn ? (
         <button className='login-logout-button'>
-          <Link to='login'>로그인</Link>
+          <Link to='/login'>로그인</Link>
         </button>
       ) : (
         <button className='login-logout-button' onClick={handleClickButton}>

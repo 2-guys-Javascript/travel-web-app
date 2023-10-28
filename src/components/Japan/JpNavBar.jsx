@@ -8,13 +8,13 @@ function JpNavBar() {
         <Link to='/'>
           <img src='/src/assets/nav-home.png' alt='홈' />
         </Link>
-        <Link to='japan/weather'>
+        <Link to='/japan/weather'>
           <img src='/src/assets/nav-weather.png' alt='날씨' />
         </Link>
-        <Link to='japan'>
+        <Link to='/japan'>
           <img src='/src/assets/nav-map.png' alt='지도' />
         </Link>
-        <Link to='japan/exchange'>
+        <Link to='/japan/exchange'>
           <img src='/src/assets/nav-exchange.png' alt='환율' />
         </Link>
       </nav>
