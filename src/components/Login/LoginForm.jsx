@@ -14,8 +14,6 @@ function LoginForm({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDis
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      console.log(user);
-      console.log('Success!');
 
       onChangeIsLoggedIn(!isLoggedIn);
       onChangeUserId(user.uid);

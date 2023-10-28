@@ -18,8 +18,7 @@ function SignUpForm() {
       await updateProfile(user, {
         displayName: nickname,
       });
-      console.log(user);
-      console.log('success!');
+
       navigate('/login');
     } catch (error) {
       console.log('Failed!');

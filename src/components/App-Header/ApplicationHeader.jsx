@@ -1,8 +1,5 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './applicationHeader.css';
-
-// 본 객체는 임시로 css를 적용하기 위해 만든 것이며, 추후에 css 파일에 생성하여 관리해줄 것입니다
 
 function ApplicationHeader({
   isLoggedIn,

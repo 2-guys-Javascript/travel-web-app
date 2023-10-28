@@ -9,7 +9,7 @@ const myStyles = [
     elementType: 'labels',
     stylers: [
       {
-        visibility: 'off', // 전체 꺼주기
+        visibility: 'off', // 옵션 전체 꺼주기
       },
     ],
   },
@@ -55,7 +55,6 @@ function NonLoginMap() {
 
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
-          // center의 좌표를 현재 위치로
           const lat = position.coords.latitude;
           const lng = position.coords.longitude;
           setUserLocation({ lat, lng });
@@ -92,13 +91,11 @@ function NonLoginMap() {
 
             // 지도의 중심을 검색된 장소의 좌표로 이동 (부드럽게)
             map.panTo(newCenter, { behavior: 'smooth' });
-
-            // Nearby Search 요청 보내기
             placesService.nearbySearch(
               {
-                location: newCenter, // 검색된 위치 주변
-                radius: 500, // 검색 반경 (미터 단위)
-                type: 'restaurant', // 맛집 관련 장소 타입
+                location: newCenter,
+                radius: 500,
+                type: 'restaurant',
                 rankBy: google.maps.places.RankBy.PROMINENCE,
                 language: 'ko',
               },
@@ -106,7 +103,6 @@ function NonLoginMap() {
                 if (status === window.google.maps.places.PlacesServiceStatus.OK) {
                   const restaurant = results.filter((result) => result.types.indexOf('restaurant') === 0);
 
-                  console.log('Nearby Restaurants:', restaurant);
                   setGetRestaurants(restaurant);
                 }
               }
@@ -122,8 +118,6 @@ function NonLoginMap() {
               (results, status) => {
                 if (status === window.google.maps.places.PlacesServiceStatus.OK) {
                   const cafe = results.filter((result) => result.types.includes('cafe'));
-
-                  console.log('Nearby Cafes:', cafe);
 
                   setGetCafe(cafe);
                 }
@@ -149,7 +143,6 @@ function NonLoginMap() {
   function handleSelectedPlace(result) {
     const isOpen = openInfo[result.place_id];
     setOpenInfo({ ...openInfo, [result.place_id]: !isOpen });
-    console.log(result);
 
     // 마커를 클릭했을 때, 클릭된 마커의 정보를 리스트 맨 위로 올립니다.
     if (!isOpen) {

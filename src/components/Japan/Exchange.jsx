@@ -10,8 +10,6 @@ function Exchange({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) {
     try {
       const response = await fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/pair/jpy/krw`);
       const exchangeData = await response.json();
-
-      console.log(exchangeData);
       setKrwToJpy(exchangeData);
     } catch (error) {
       console.log(error);
@@ -38,9 +36,6 @@ function Exchange({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) {
     const storedLoginStatus = localStorage.getItem('isLoggedIn');
     const storedUserId = localStorage.getItem('userId');
     const storedDisplayName = localStorage.getItem('displayName');
-    console.log(storedLoginStatus);
-    console.log(storedUserId);
-    console.log(storedDisplayName);
 
     if (storedLoginStatus) {
       onChangeIsLoggedIn(storedLoginStatus);

@@ -1,4 +1,3 @@
-// 오늘, 내일, 모레에 대한 기상 예보를 나타내는 컴포넌트
 function JpForecastWeather({ days }) {
   if (days === '') {
     return null;
