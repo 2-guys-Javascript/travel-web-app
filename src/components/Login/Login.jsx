@@ -18,6 +18,7 @@ function Login({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDisplay
       localStorage.setItem('isLoggedIn', true);
       localStorage.setItem('userId', user.uid);
       localStorage.setItem('displayName', user.displayName);
+
       navigate('/home');
     } catch (error) {
       console.log(error);

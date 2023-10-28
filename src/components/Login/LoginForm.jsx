@@ -22,6 +22,7 @@ function LoginForm({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDis
       localStorage.setItem('isLoggedIn', true);
       localStorage.setItem('userId', user.uid);
       localStorage.setItem('displayName', user.displayName);
+
       navigate('/home');
     } catch (error) {
       alert('Failed!');
