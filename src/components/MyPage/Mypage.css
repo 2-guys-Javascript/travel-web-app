@@ -1,16 +1,38 @@
 .mypage-defauly-layout {
   z-index: 5;
-  position: fixed;
+  /* position: fixed; */
   max-width: 480px;
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-top: 70px;
   align-items: center;
   overflow-y: auto;
   box-shadow: 0 0 20px #00000033;
   background-color: #ffffff;
+}
+
+.mypage-defauly-layout .title {
+  display: flex;
+  max-width: 460px;
+  width: 90vw;
+  margin: 20px 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+}
+
+.mypage-defauly-layout .title .goback {
+  width: 30px;
+  height: 30px;
+}
+
+.mypage-defauly-layout .title > h2 {
+  font-size: 30px;
+  font-weight: 700;
 }
 
 .mypage-information-form {
@@ -18,26 +40,94 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
   width: 90vw;
   max-width: 460px;
-  height: 80vh;
+  color: #00000088;
+  padding-bottom: 140px;
 }
 
-.mypage-delete-modify-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+.mypage-information-form div {
+  margin-top: 10px;
+}
+
+.mypage-information-form input {
+  margin-top: 5px;
+  line-height: 36px;
+  font-size: 14px;
   width: 90vw;
   max-width: 460px;
+  color: black;
+  border: 1px solid #cecaca;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+
+.mypage-information-form input:focus {
+  border-color: #007bff;
+}
+
+.mypage-information-form input[type='file'] {
+  color: #ffffff;
+  border: 1px solid #000000;
+  box-shadow: 0 0 3px #00000055;
+  background-color: #000000;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 10px;
+  max-width: 460px;
+  width: 90vw;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+input::file-selector-button {
+  display: none;
+}
+
+.mypage-information-form button {
+  max-width: 460px;
+  width: 90vw;
+  height: 40px;
+  background-color: black;
+  border: 0;
+  color: white;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  box-shadow: 0 0 3px #00000088;
+  bottom: 0;
+  position: fixed;
+  z-index: 99;
 }
 
 .mypage-delete-div {
-  border: 1px solid black;
-  padding: 5px 3px;
-  border-radius: 20%;
+  max-width: 460px;
+  width: 90vw;
+  height: 40px;
+  background-color: rgb(168, 14, 14);
+  border: 0;
+  color: white;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  box-shadow: 0 0 3px #00000088;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
 }
 
 .mypage-delete-div:hover {
   cursor: pointer;
+}
+
+.mismatch {
+  color: rgba(207, 0, 0, 0.566);
+  font-size: 12px;
 }

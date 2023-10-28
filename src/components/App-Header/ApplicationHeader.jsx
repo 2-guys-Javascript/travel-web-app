@@ -34,7 +34,7 @@ function ApplicationHeader({
       <h2 onClick={handleClickIldanrak}>일단락</h2>
       {isLoggedIn && (
         <button className='my-page-button' onClick={handleClickMypage}>
-          마이 페이지
+          마이페이지
         </button>
       )}
       <h3>{displayName}</h3>
