@@ -50,6 +50,9 @@
 }
 
 .signup-text1 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   max-width: 460px;
   width: 90vw;
   margin-top: 110px;
@@ -66,7 +69,7 @@
 }
 
 .sign-up-form {
-  max-width: 480px;
+  max-width: 460px;
   width: 90vw;
   margin-top: 30px;
   display: flex;

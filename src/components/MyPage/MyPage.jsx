@@ -2,7 +2,7 @@ import ApplicationHeader from '../App-Header/ApplicationHeader';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../../firebaseConfig';
-import { signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { GithubAuthProvider, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { db } from '../../../firebaseConfig';
 import { getDocs, collection, deleteDoc, doc, query } from 'firebase/firestore';
 
@@ -13,6 +13,7 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
   const [myPageDisplayName, setMyPageDisplayName] = useState('');
   const [passwordMismatch, setPasswordMismatch] = useState('');
   const [passwordCheckMismatch, setPasswordCheckMismatch] = useState('');
+  const [isGitHubLogin, setIsGitHubLogin] = useState(false);
 
   const navigate = useNavigate();
 
@@ -28,6 +29,14 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
 
       // 다음 코드는 input에서의 보이는 값을 불러오는 것
       setMyPageDisplayName(storedDisplayName);
+    }
+
+    const currentUser = auth.currentUser;
+    if (currentUser) {
+      const providers = currentUser.providerData.map((provider) => provider.providerId);
+      if (providers.includes(GithubAuthProvider.PROVIDER_ID)) {
+        setIsGitHubLogin(true);
+      }
     }
   }, []);
 
@@ -126,12 +135,15 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
         </div>
         <form action='post' className='mypage-information-form'>
           <div>
-            <label htmlFor='nickname'>닉네임</label>
+            <label className={isGitHubLogin ? 'github' : ''} htmlFor='nickname'>
+              {isGitHubLogin ? '소셜 로그인 시 닉네임을 변경 할 수 없습니다.' : '닉네임'}
+            </label>
             <br />
             <input
               id='nickname'
               name='nickname'
               type='text'
+              className={isGitHubLogin ? 'github-input' : ''}
               value={myPageDisplayName}
               onChange={handleChangeUserNickname}
             />

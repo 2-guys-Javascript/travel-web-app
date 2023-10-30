@@ -420,9 +420,9 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
               (marker) =>
                 marker.info && (
                   <li onClick={() => handleMarkerClick(marker)} key={marker.info.title}>
-                    <p>장소 : {marker.info.title}</p>
+                    <p>{marker.info.title}</p>
                     <p>
-                      시간 : {marker.info.time.from} ~ {marker.info.time.until}
+                      {marker.info.time.from} ~ {marker.info.time.until}
                     </p>
                   </li>
                 )
