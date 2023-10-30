@@ -4,7 +4,8 @@ import { auth } from '../../../firebaseConfig';
 import { useState } from 'react';
 
 function LoginForm({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) {
-  const [login, setLogin] = useState('');
+  const [errorMessageOne, setErrorMessageOne] = useState('');
+  const [errorMessageTwo, setErrorMessageTwo] = useState('');
 
   const navigate = useNavigate();
 
@@ -28,7 +29,8 @@ function LoginForm({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDis
 
       navigate('/home');
     } catch (error) {
-      setLogin('이메일 또는 비밀번호가 틀렸습니다. 다시 확인하고 입력해주세요.');
+      setErrorMessageOne('계정이 존재하지 않거나 이메일 또는 비밀번호가 틀렸습니다.');
+      setErrorMessageTwo('다시 시도해주세요');
       console.log(error);
     }
   }
@@ -45,7 +47,10 @@ function LoginForm({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDis
           name='password'
           placeholder='비밀번호를 입력하세요'
         />
-        <div className='check'>{login}</div>
+        <div className='check'>
+          <div>{errorMessageOne}</div>
+          <div>{errorMessageTwo}</div>
+        </div>
         <button type='submit' className='submit-button'>
           로그인 하기
         </button>
