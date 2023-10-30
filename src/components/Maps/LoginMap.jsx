@@ -137,7 +137,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
 
     async function pushIntoDataBase() {
       try {
-        const documentRef = doc(db, userId, newMarker.info.date);
+        const documentRef = doc(db, 'users', userId, 'date', newMarker.info.date);
         const documentSnapShot = await getDoc(documentRef);
         if (documentSnapShot.exists()) {
           await updateDoc(documentRef, savingObject);
@@ -180,7 +180,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
       const formattedDate = moment(selectedDate).format('YYYY년 MM월 DD일');
 
       try {
-        const documentRef = doc(db, userId, formattedDate);
+        const documentRef = doc(db, 'users', userId, 'date', formattedDate);
         const snapShot = await getDoc(documentRef);
         const fetchedDocument = snapShot.data();
         const markerArray = [];

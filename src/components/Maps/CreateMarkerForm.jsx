@@ -111,7 +111,7 @@ function CreateMarkerForm({ onCreateMarker, userId }) {
     setCalendarTimeMarkers([]);
     const fetchCalendarMarkersData = async () => {
       try {
-        const documentRef = doc(db, userId, selectedCalendarDate);
+        const documentRef = doc(db, 'users', userId, 'date', selectedCalendarDate);
         const snapShot = await getDoc(documentRef);
         const fetchedDocument = snapShot.data();
         const markerArray = [];

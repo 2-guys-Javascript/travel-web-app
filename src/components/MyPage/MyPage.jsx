@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../../firebaseConfig';
 import { signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { db } from '../../../firebaseConfig';
+import { getDocs, collection, deleteDoc, deleteField, doc, query } from 'firebase/firestore';
 
 import './Mypage.css';
 
@@ -37,8 +39,20 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
     try {
       // Todo : 삭제할 사용자의 컬렉션을 데이터베이스에서 지워주는 작업이 필요합니다
       const user = auth.currentUser;
+      const userId = user.uid;
+
+      const dateQurey = query(collection(db, 'users', userId, 'date'));
+      const dateQureySnapshot = await getDocs(dateQurey);
+
+      dateQureySnapshot.forEach(async (doc) => {
+        await deleteDoc(doc.ref);
+      });
+
+      const userDocRef = doc(db, 'users', userId);
+      await deleteDoc(userDocRef);
 
       await user.delete();
+
       localStorage.removeItem('isLoggedIn');
       localStorage.removeItem('userId');
       localStorage.removeItem('displayName');
