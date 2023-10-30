@@ -191,3 +191,9 @@
 .login-form a:visited {
   color: #007bff;
 }
+
+.login-form .check {
+  color: rgba(207, 0, 0, 0.566);
+  font-size: 12px;
+  margin-bottom: 15px;
+}

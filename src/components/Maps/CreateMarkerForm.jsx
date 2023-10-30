@@ -49,10 +49,13 @@ function CreateMarkerForm({ onCreateMarker, userId }) {
   function TimeButtons() {
     const timeButtons = [];
     const selectedDay = moment(selectedCalendarDate, 'YYYY년 MM월 DD일').date();
+    const selectedStartTime = moment(startTime, 'HH:mm');
+    const selectedEndTime = moment(endTime, 'HH:mm');
 
     for (let hour = isMorningSelected ? 0 : 12; hour < (isMorningSelected ? 12 : 24); hour++) {
       for (let minute = 0; minute < 60; minute += 30) {
         const time = moment({ hour, minute }).format('HH:mm');
+        const currentTime = moment(time, 'HH:mm');
 
         // 시간 버튼을 선택된 날짜의 날짜에 따라 보여줍니다.
         if (selectedDay === moment(dateValue).date()) {
@@ -65,11 +68,14 @@ function CreateMarkerForm({ onCreateMarker, userId }) {
             );
           });
 
+          const isBetweenSelectedTimes =
+            currentTime.isAfter(selectedStartTime) && currentTime.isBefore(selectedEndTime);
+
           timeButtons.push(
             <button
               className={`times ${startTime === time || endTime === time ? 'selected' : ''} ${
                 isExistingTime ? 'existing' : ''
-              }`}
+              } ${isBetweenSelectedTimes ? 'between' : ''}`}
               id={time}
               key={time}
               onClick={() => handleTimeButtonClick(time)}
