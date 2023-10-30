@@ -28,6 +28,7 @@
 .mypage-defauly-layout .title .goback {
   width: 30px;
   height: 30px;
+  cursor: pointer;
 }
 
 .mypage-defauly-layout .title > h2 {
@@ -81,6 +82,7 @@
 }
 
 .mypage-information-form button {
+  cursor: pointer;
   max-width: 460px;
   width: 90vw;
   height: 40px;
@@ -145,4 +147,14 @@
 
 .inquiry img {
   width: 7rem;
+}
+
+.github {
+  color: #00000077;
+}
+
+.mypage-information-form .github-input {
+  background-color: #00000022;
+  pointer-events: none;
+  color: #00000055;
 }
