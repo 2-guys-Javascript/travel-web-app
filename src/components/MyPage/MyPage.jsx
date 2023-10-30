@@ -97,12 +97,10 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
         }
       }
     } else {
-      if (password !== passwordMismatch) {
-        if (passwordMismatch === '') {
-          setPasswordCheckMismatch('비밀번호를 입력해주세요.');
-        } else {
-          setPasswordCheckMismatch('비밀번호 확인의 내용이 다릅니다. 비밀번호 확인해주세요.');
-        }
+      if (passwordMismatch === '') {
+        setPasswordCheckMismatch('비밀번호를 입력해주세요.');
+      } else {
+        setPasswordCheckMismatch('비밀번호 확인의 내용이 다릅니다. 비밀번호 확인해주세요.');
       }
     }
   }
