@@ -26,8 +26,8 @@
 }
 
 .mypage-defauly-layout .title .goback {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
 }
 
 .mypage-defauly-layout .title > h2 {
@@ -74,24 +74,10 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  max-width: 480px;
-  width: 100vw;
+  max-width: 460px;
+  width: 90vw;
   color: #000000dd;
   margin-bottom: 32px;
-}
-
-.mypage-information-form input[type='file'] {
-  color: #ffffff;
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  box-sizing: border-box;
-  background-color: #d1d1d1;
-  color: #d1d1d1;
-}
-
-input::file-selector-button {
-  display: none;
 }
 
 .mypage-information-form button {
@@ -135,4 +121,28 @@ input::file-selector-button {
 .mismatch {
   color: rgba(207, 0, 0, 0.566);
   font-size: 12px;
+}
+
+.inquiry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 460px;
+  width: 90vw;
+  height: 80px;
+  margin-bottom: 15px;
+}
+
+.inquiry h3 {
+  font-size: 12px;
+  color: #0000009b;
+}
+
+.inquiry-h2 {
+  font-size: 16px;
+  color: #000000c4;
+}
+
+.inquiry img {
+  width: 7rem;
 }

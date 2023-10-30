@@ -1,8 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../firebaseConfig';
+import { useState } from 'react';
 
 function LoginForm({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) {
+  const [login, setLogin] = useState('');
+
   const navigate = useNavigate();
 
   async function handleLoginSubmit(ev) {
@@ -25,7 +28,7 @@ function LoginForm({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDis
 
       navigate('/home');
     } catch (error) {
-      alert('Failed!');
+      setLogin('이메일 또는 비밀번호가 틀렸습니다. 다시 확인하고 입력해주세요.');
       console.log(error);
     }
   }
@@ -42,6 +45,7 @@ function LoginForm({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDis
           name='password'
           placeholder='비밀번호를 입력하세요'
         />
+        <div className='check'>{login}</div>
         <button type='submit' className='submit-button'>
           로그인 하기
         </button>

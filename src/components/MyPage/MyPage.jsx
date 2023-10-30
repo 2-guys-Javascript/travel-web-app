@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from '../../../firebaseConfig';
 import { signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { db } from '../../../firebaseConfig';
-import { getDocs, collection, deleteDoc, deleteField, doc, query } from 'firebase/firestore';
+import { getDocs, collection, deleteDoc, doc, query } from 'firebase/firestore';
 
 import './Mypage.css';
 
@@ -37,14 +37,13 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
 
   async function handleDeleteUser() {
     try {
-      // Todo : 삭제할 사용자의 컬렉션을 데이터베이스에서 지워주는 작업이 필요합니다
       const user = auth.currentUser;
       const userId = user.uid;
 
-      const dateQurey = query(collection(db, 'users', userId, 'date'));
-      const dateQureySnapshot = await getDocs(dateQurey);
+      const dateQuery = query(collection(db, 'users', userId, 'date'));
+      const dateQuerySnapshot = await getDocs(dateQuery);
 
-      dateQureySnapshot.forEach(async (doc) => {
+      dateQuerySnapshot.forEach(async (doc) => {
         await deleteDoc(doc.ref);
       });
 
@@ -56,9 +55,11 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
       localStorage.removeItem('isLoggedIn');
       localStorage.removeItem('userId');
       localStorage.removeItem('displayName');
+
       onChangeIsLoggedIn(false);
       onChangeUserId('');
       onChangeDisplayName('');
+
       navigate('/');
     } catch (error) {
       console.log(error);
@@ -74,6 +75,9 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
     const password = ev.target.elements.password.value;
     const passwordMismatch = ev.target.elements['password-check'].value;
 
+    setPasswordMismatch('');
+    setPasswordCheckMismatch('');
+
     if (password === passwordMismatch) {
       try {
         const userCredential = await signInWithEmailAndPassword(auth, auth.currentUser.email, password);
@@ -86,22 +90,17 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
         navigate('/');
       } catch (error) {
         console.log(error);
-        console.log(password);
         if (password === '') {
-          setPasswordCheckMismatch('');
           setPasswordMismatch('비밀번호를 입력해주세요.');
         } else {
-          setPasswordCheckMismatch('');
           setPasswordMismatch('입력하신 비밀번호가 일치하지 않습니다.');
         }
       }
     } else {
       if (password !== passwordMismatch) {
         if (passwordMismatch === '') {
-          setPasswordMismatch('');
           setPasswordCheckMismatch('비밀번호를 입력해주세요.');
         } else {
-          setPasswordMismatch('');
           setPasswordCheckMismatch('비밀번호 확인의 내용이 다릅니다. 비밀번호 확인해주세요.');
         }
       }
@@ -127,13 +126,7 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
           <img className='goback' src='/src/assets/left-arrow.png' alt='뒤로가기' onClick={handleGoBack} />
           <h2>마이페이지</h2>
         </div>
-
         <form action='post' className='mypage-information-form'>
-          <div className='profile-form'>
-            <input id='profile-image' name='profile-image' type='file' />
-            <br />
-            <label htmlFor='profile-image'>프로필 이미지</label>
-          </div>
           <div>
             <label htmlFor='nickname'>닉네임</label>
             <br />
@@ -157,6 +150,17 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
             <input type='password' id='password-check' name='password-check' />
           </div>
           <div className='mismatch'>{passwordCheckMismatch}</div>
+          <div className='__or__'> 기타 </div>
+          <div className='inquiry'>
+            <div>
+              <h2 className='inquiry-h2'>개발자 오픈채팅방 문의하기</h2>
+              <h3>QR코드를 찍거나, 클릭해 입장 가능해요</h3>
+              <h3>비밀번호 : nicemeet</h3>
+            </div>
+            <a href='https://open.kakao.com/o/g4GrCzPf'>
+              <img src='/src/assets/qrcode.svg' alt='qrcode' />
+            </a>
+          </div>
           <div className='mypage-delete-modify-container'>
             <div className='mypage-delete-div' onClick={handleDeleteUser}>
               계정 삭제

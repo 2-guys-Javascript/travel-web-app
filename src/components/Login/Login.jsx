@@ -11,6 +11,7 @@ function Login({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDisplay
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
+
       onChangeIsLoggedIn(!isLoggedIn);
       onChangeUserId(user.uid);
       onChangeDisplayName(user.displayName);
@@ -19,6 +20,7 @@ function Login({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDisplay
       localStorage.setItem('userId', user.uid);
       localStorage.setItem('displayName', user.displayName);
 
+      console.log(user);
       navigate('/home');
     } catch (error) {
       console.log(error);
