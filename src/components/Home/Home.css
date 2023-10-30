@@ -36,7 +36,6 @@
   opacity: 0.7;
 }
 
-/* transform은 해당 요소가 어디로 움직일지를 말하는 것이다 */
 .korea-tab-div:hover {
   transform: translate(-5px, -5px);
   box-shadow: 10px 10px 10px #edd3e4;
@@ -48,11 +47,11 @@
 }
 
 .korea {
-  font-family: 'yg-jalnan';
+  font-family: 'LOTTERIACHAB';
   font-size: 3rem;
-  color: #fff;
-  text-shadow: 5px 5px #0c6d45;
-  border-radius: 1rem;
+  color: #165d23;
+  text-shadow: 3px 3px #d6d6d6, 6px 6px #323232;
+  font-weight: 100;
 }
 
 @keyframes jpFadeIn {
@@ -92,14 +91,13 @@
 }
 
 .japan {
-  font-family: 'yg-jalnan';
+  font-family: 'LOTTERIACHAB';
   font-size: 3rem;
-  color: #fff;
-  text-shadow: 5px 5px #e165ce;
-  border-radius: 1rem;
+  color: #760707;
+  text-shadow: 3px 3px #d6d6d6, 6px 6px #323232;
+  font-weight: 100;
 }
 
-/* text-decoration-line은 a태그의 붙는 default 속성이므로 따로 처리해야해서 이렇게 했습니다! */
 a {
   text-decoration-line: none;
 }
@@ -121,6 +119,7 @@ a {
   z-index: 99;
   text-shadow: 3px 3px #d6d6d6, 6px 6px #323232;
   padding-bottom: 7px;
+  box-shadow: 0 0 3px #00000088;
 }
 
 @keyframes mainFadeIn {
@@ -132,6 +131,24 @@ a {
   60% {
     font-size: 0;
     opacity: 0;
+    width: 0;
+  }
+}
+
+.opening {
+  position: absolute;
+  max-width: 480px;
+  width: 100vw;
+  animation: openFadeIn 1.5s ease-in-out forwards;
+  z-index: 10;
+  pointer-events: none;
+}
+
+@keyframes openFadeIn {
+  0% {
+    width: 0;
+  }
+  60% {
     width: 0;
   }
 }

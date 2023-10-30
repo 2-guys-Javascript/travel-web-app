@@ -71,9 +71,10 @@ body {
 }
 
 .weather-current .text {
+  margin: 35px 0;
   font-size: 18px;
   text-transform: uppercase;
-  color: #00000055;
+  color: #00000085;
 }
 
 .weather-hourly {

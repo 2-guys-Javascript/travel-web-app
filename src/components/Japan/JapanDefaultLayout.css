@@ -1,4 +1,6 @@
 .jp-default-layout {
+  z-index: 5;
+  position: fixed;
   max-width: 480px;
   width: 100vw;
   height: 100vh;
@@ -16,10 +18,10 @@
   display: flex;
   align-items: center;
   bottom: 0;
-  height: 10vh;
+  height: 68px;
   z-index: 99;
   background-color: #ffffff;
-  box-shadow: 0 0 5px #00000033;
+  box-shadow: 0 0 3px #00000033;
 }
 
 .japan-navbar {
@@ -33,12 +35,15 @@
 }
 
 .japan-navbar a {
-  flex: 1;
   text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 10vh;
+}
+
+.japan-navbar img {
+  width: 28px;
+}
+
+.japan-navbar a:active {
+  filter: invert(50%);
 }
 
 .jp-weather-text-div {
@@ -70,37 +75,56 @@
 }
 
 .exchange-outer-div {
-  width: 100%;
+  width: 100vw;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+}
+
+.exchange-description {
+  font-size: 80px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 5px 0 5px;
+  border-radius: 75% 37%;
+  background-color: #e2e2e2;
+  margin: 0;
 }
 
 .real-exchangeRate {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  width: 80%;
+  max-width: 460px;
+  width: 90%;
   height: 50%;
-  border: 1px solid black;
   border-radius: 10%;
   flex-direction: column;
+  color: #333333;
 }
 
-.real-exchangeRate:hover {
-  box-shadow: 0px 0px 30px #00000018;
+.real-exchangeRate h4 {
+  font-size: 18px;
+  color: #000000;
 }
 
 .real-exchangeRate:hover {
   cursor: pointer;
 }
 
-.exchange-click-description {
-  text-align: center;
+.real-exchangeRate h2 {
+  padding: 30px 20px;
+  font-size: 22px;
+  background-color: #a4a4a4;
+  border-radius: 41px;
+  color: #ffffff;
 }
 
-.base-currency {
+.exchange-click-description {
   text-align: center;
 }

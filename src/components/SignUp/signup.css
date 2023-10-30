@@ -1,0 +1,170 @@
+.signup-page-outer-div {
+  background-color: #ffffff;
+  max-width: 480px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+  align-items: center;
+  overflow-y: hidden;
+  box-shadow: 0 0 20px #00000033;
+}
+
+.signup-header {
+  width: 100vw;
+  max-width: 480px;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  display: flex;
+  z-index: 99;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.signup-header h2 {
+  font-family: 'LOTTERIACHAB';
+  font-weight: 300;
+  font-size: 30px;
+  color: #363636;
+  text-shadow: 1px 1px #d6d6d6, 3px 3px #323232;
+  margin-right: 35%;
+}
+
+.signup-header button {
+  color: #cdcdcd;
+  border: 1px solid #000000;
+  box-shadow: 0 0 3px #00000055;
+  background-color: #000000;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 10px;
+}
+
+.signup-header a:visited {
+  color: #cdcdcd;
+}
+
+.signup-text1 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 460px;
+  width: 90vw;
+  margin-top: 110px;
+  font-size: 1.5rem;
+  text-align: start;
+}
+
+.signup-text2 {
+  max-width: 460px;
+  width: 90vw;
+  font-size: 1rem;
+  margin: 0;
+  text-align: start;
+}
+
+.sign-up-form {
+  max-width: 460px;
+  width: 90vw;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.sign-up-form label {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #000000bb;
+}
+
+.signup-email-input {
+  line-height: 36px;
+  font-size: 16px;
+  width: 90vw;
+  max-width: 460px;
+  color: black;
+  border: 1px solid #cecaca;
+  border-radius: 12px;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+
+.signup-email-input:focus {
+  border-color: #007bff; /* 포커스 시 테두리 색상 변경 */
+}
+
+.signup-password-input {
+  line-height: 36px;
+  font-size: 16px;
+  width: 90vw;
+  max-width: 460px;
+  color: black;
+  border: 1px solid #cecaca;
+  border-radius: 12px;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+
+.signup-password-input:focus {
+  border-color: #007bff;
+}
+
+.signup-nickname-input {
+  line-height: 36px;
+  font-size: 16px;
+  width: 90vw;
+  max-width: 460px;
+  color: black;
+  border: 1px solid #cecaca;
+  border-radius: 12px;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+
+.signup-nickname-input:focus {
+  border-color: #007bff;
+}
+
+.signup-button {
+  max-width: 460px;
+  width: 90vw;
+  height: 40px;
+  background-color: black;
+  border: 0;
+  color: white;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  box-shadow: 0 0 3px #00000088;
+}
+
+.signup-button:hover {
+  cursor: pointer;
+}
+
+.signup-button:active {
+  background-color: #323232;
+}
+
+.to-login a {
+  font-size: 16px;
+  margin-left: 10px;
+  color: #007bff;
+}
+
+.to-login a:visited {
+  color: #007bff;
+}
+
+.sign-up-form .check {
+  color: rgba(207, 0, 0, 0.566);
+  font-size: 12px;
+  margin-bottom: 15px;
+}

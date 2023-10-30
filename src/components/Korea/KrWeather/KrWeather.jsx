@@ -1,11 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import KrForecastWeather from './KrForecastWeather';
 import KrHourlyWeather from './KrHourlyWeather';
 
-function KrWeather() {
-  // 현재 선택된 도시의 날씨 데이터를 나타내는 상태입니다.
+function KrWeather({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) {
   const [weatherData, setWeatherData] = useState('');
-  // 현재 선택된 도시 이름을 나타내는 상태입니다
   const [city, setCity] = useState('');
   const [forecast, setForecast] = useState('');
 
@@ -28,7 +26,7 @@ function KrWeather() {
   };
 
   const fetchWeatherData = async (e) => {
-    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${e}&days=3`;
+    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${e}&days=3&lang=ko`;
     try {
       const response = await fetch(url, options);
       const result = await response.json();
@@ -39,6 +37,18 @@ function KrWeather() {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    const storedLoginStatus = localStorage.getItem('isLoggedIn');
+    const storedUserId = localStorage.getItem('userId');
+    const storedDisplayName = localStorage.getItem('displayName');
+
+    if (storedLoginStatus) {
+      onChangeIsLoggedIn(storedLoginStatus);
+      onChangeUserId(storedUserId);
+      onChangeDisplayName(storedDisplayName);
+    }
+  }, []);
 
   return (
     <div className='weather'>

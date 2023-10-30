@@ -1,0 +1,293 @@
+.react-datepicker-popper {
+  z-index: 99 !important;
+}
+
+.custom-input {
+  cursor: pointer;
+  background-color: #000000;
+  color: #ffffff;
+  border: 0;
+  border-radius: 12px;
+  width: 150px;
+  height: 26px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 378px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 3px #00000055;
+  z-index: 5;
+}
+
+.custom-input:active {
+  color: #d2d2d2;
+}
+
+.create-marker-form {
+  z-index: 4;
+  max-width: 460px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+}
+
+.create-marker-form input {
+  max-width: 460px;
+  margin: 7px;
+  width: 90vw;
+}
+
+.marker-info {
+  max-width: 460px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+}
+
+.marker-info button {
+  box-shadow: 0 0 3px #00000055;
+  border: 0;
+  border-radius: 17px;
+  margin-top: 10px;
+  font-size: 20px;
+  padding: 7px 13px;
+  background-color: #ffffff;
+}
+
+.marker-info-closeDelete {
+  max-width: 460px;
+  width: 90vw;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.marker-info-closeDelete button:hover {
+  box-shadow: 0px 0px 30px #20202018;
+  cursor: pointer;
+}
+
+.react-calendar {
+  margin: 19px 0;
+  border: 0;
+  max-width: 460px;
+  width: 90vw;
+  padding-bottom: 40px;
+  border-bottom: 0.5px solid #00000022;
+}
+
+.react-calendar__navigation button {
+  background-color: #ffffff;
+  border: 0;
+  font-size: 18px;
+}
+
+.react-calendar__navigation__label span {
+  font-size: 23px;
+}
+
+.react-calendar__month-view__weekdays {
+  padding: 15px 0;
+  border-bottom: 1px solid #00000022;
+}
+
+abbr {
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.react-calendar__tile {
+  background-color: #ffffff;
+  padding: 9px 0;
+  border: #ffffff;
+  color: #00000077;
+}
+
+.react-calendar__tile abbr {
+  font-size: 17px;
+}
+
+.react-calendar__tile--active {
+  background-color: #000000;
+  border-radius: 12px;
+  box-shadow: 0 0 2px #00000022;
+  color: #ffffff;
+  z-index: 99;
+}
+
+.time-box {
+  max-width: 460px;
+  width: 95vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  padding-bottom: 40px;
+  border-bottom: 0.5px solid #00000022;
+}
+
+.times {
+  cursor: pointer;
+  width: 23%;
+  height: 55px;
+  border: 0.5px solid #00000022;
+  box-shadow: 0 0 1px #00000022;
+  border-radius: 12px;
+  background-color: #ffffff;
+  padding: 20px 8px;
+  margin: 5px 3px;
+  font-size: 16px;
+  color: #00000099;
+}
+
+.selected {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1b1b1b;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.selected p {
+  margin: 0;
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.between {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #333333;
+  color: #e1e1e1;
+  font-size: 18px;
+}
+
+.title-box {
+  margin: 20px 0;
+}
+
+.title-box label {
+  font-size: 23px;
+}
+
+.title-box input {
+  border-radius: 12px;
+  border: 0.5px solid #00000022;
+  background-color: #8b8b8b19;
+  box-shadow: 0 0 1px #00000022;
+  font-size: 25px;
+}
+
+.detail-box {
+  margin: 20px 0;
+}
+
+.detail-box label {
+  font-size: 23px;
+}
+
+.detail-box input {
+  border-radius: 12px;
+  border: 0.5px solid #00000022;
+  background-color: #8b8b8b19;
+  box-shadow: 0 0 1px #00000022;
+  font-size: 25px;
+}
+
+.submit {
+  font-size: 24px;
+  border-radius: 14px;
+  padding: 8px 15px;
+  background-color: #000000;
+  border: 0;
+  color: #ffffff;
+  box-shadow: 0 0 2px #00000033;
+}
+
+.toggle-am {
+  border: 0;
+  background-color: #ffffff;
+  cursor: pointer;
+  font-size: 26px;
+  padding: 12px;
+  color: #000000e1;
+}
+
+.toggle-am .am {
+  font-weight: 500;
+}
+
+.toggle-am .pm {
+  font-size: 14px;
+  color: #00000088;
+}
+
+.existing {
+  background-color: #00000033;
+  pointer-events: none;
+  color: #00000077;
+}
+
+.disabled {
+  background-color: #00000033;
+  pointer-events: none;
+  color: #00000077;
+}
+
+.marker-info-list {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  max-width: 460px;
+  width: 90vw;
+  list-style: none;
+}
+
+.marker-info-list li:active {
+  background-color: #00000022;
+}
+
+.marker-info-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 0;
+  border-radius: 15px;
+  box-shadow: 0 0 3px #00000055;
+  margin-bottom: 15px;
+  max-width: 460px;
+  width: 90vw;
+  height: 80px;
+}
+
+.marker-info-list li p {
+  margin: 0 12px;
+  font-size: 16px;
+}
+
+.marker-info-list li :nth-child(2) {
+  color: #00000077;
+  font-size: 14px;
+}
+
+.login-bottom {
+  background-color: #ffffff;
+  z-index: 3;
+  padding-bottom: 80px;
+}
