@@ -128,7 +128,7 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
         displayName={displayName}
         onChangeDisplayName={onChangeDisplayName}
       />
-      <div className='mypage-defauly-layout' onSubmit={handleModifyUserInfo}>
+      <div className='mypage-defauly-layout scroll-box' onSubmit={handleModifyUserInfo}>
         <div className='title'>
           <img className='goback' src='assets/left-arrow.png' alt='뒤로가기' onClick={handleGoBack} />
           <h2>마이페이지</h2>

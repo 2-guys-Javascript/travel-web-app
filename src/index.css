@@ -40,7 +40,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 90px;
+  padding: 25vh 0vh;
 }
 
 /* 아래의 두 설정은 scroll-box 라는 클래스를 가진 요소들에게 스크롤은 되지만, 스크롤 바는 없애는 설정이다 */
