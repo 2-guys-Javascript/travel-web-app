@@ -13,6 +13,7 @@
 }
 
 .login-header {
+  background-color: #ffffff;
   position: fixed;
   display: flex;
   width: 100vw;
@@ -61,7 +62,7 @@
 
 .project-logo {
   width: 200px;
-  margin: 60px 0 40px 0;
+  margin: 20vh 0 40px 0;
   border-radius: 50%;
 }
 
@@ -106,7 +107,7 @@
   height: 60px;
   color: #ffffff;
   box-shadow: 0 0 3px #00000088;
-  margin-bottom: 30px;
+  margin-bottom: 20vh;
 }
 
 .github-login-div span {

@@ -1,5 +1,6 @@
 .mypage-defauly-layout {
   z-index: 5;
+  overflow-y: auto;
   /* position: fixed; */
   max-width: 480px;
   width: 100vw;
@@ -17,7 +18,7 @@
   display: flex;
   max-width: 460px;
   width: 90vw;
-  margin-top: 20px;
+  margin-top: 20vh;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
@@ -80,7 +81,7 @@
   margin-bottom: 32px;
 }
 
-.mypage-information-form button {
+.mypage-information-form button[type='submit'] {
   cursor: pointer;
   max-width: 460px;
   width: 90vw;
@@ -94,6 +95,7 @@
   box-shadow: 0 0 3px #00000088;
   bottom: 0;
   font-size: 17px;
+  margin-bottom: 20vh;
 }
 
 .mypage-delete-div {

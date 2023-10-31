@@ -19,6 +19,8 @@ function ApplicationHeader({
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('userId');
     localStorage.removeItem('displayName');
+
+    navigate('/');
   }
 
   function handleClickIldanrak() {

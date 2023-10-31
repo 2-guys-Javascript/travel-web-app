@@ -37,7 +37,7 @@
 }
 
 .non-ul {
-  padding: 0;
+  padding: 20px 0 20vh;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -45,7 +45,6 @@
   max-width: 460px;
   width: 90vw;
   list-style: none;
-  padding-bottom: 80px;
 }
 
 .non-ul li {

@@ -8,11 +8,12 @@
   justify-content: flex-start;
   text-align: center;
   align-items: center;
-  overflow-y: hidden;
+  overflow-y: auto;
   box-shadow: 0 0 20px #00000033;
 }
 
 .signup-header {
+  background-color: #ffffff;
   width: 100vw;
   max-width: 480px;
   height: 70px;
@@ -55,7 +56,7 @@
   align-items: center;
   max-width: 460px;
   width: 90vw;
-  margin-top: 110px;
+  padding-top: 20vh;
   font-size: 1.5rem;
   text-align: start;
 }
@@ -151,6 +152,10 @@
 
 .signup-button:active {
   background-color: #323232;
+}
+
+.to-login {
+  padding-bottom: 20vh;
 }
 
 .to-login a {

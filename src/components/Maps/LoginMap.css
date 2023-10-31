@@ -207,6 +207,7 @@ abbr {
 }
 
 .submit {
+  margin-bottom: 20vh;
   font-size: 24px;
   border-radius: 14px;
   padding: 8px 15px;
