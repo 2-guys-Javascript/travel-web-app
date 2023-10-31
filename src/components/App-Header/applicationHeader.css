@@ -32,6 +32,10 @@
   color: #cdcdcd;
 }
 
+.application-header a {
+  color: #cdcdcd;
+}
+
 .application-header button {
   color: #cdcdcd;
   border: 1px solid #000000;
