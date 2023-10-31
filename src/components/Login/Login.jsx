@@ -36,7 +36,7 @@ function Login({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDisplay
           <Link to='/'>홈으로</Link>
         </button>
       </div>
-      <img className='project-logo' src='/src/assets/일단락.png' alt='메인로고' />
+      <img className='project-logo' src='assets/일단락.png' alt='메인로고' />
       <LoginForm
         isLoggedIn={isLoggedIn}
         onChangeIsLoggedIn={onChangeIsLoggedIn}
@@ -46,7 +46,7 @@ function Login({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDisplay
       <div className='__or__'> 또는 </div>
 
       <div className='github-login-div' onClick={handleGithubLogin}>
-        <img className='github-img' src='/src/assets/github-logo.png' alt='깃허브로 로그인' />
+        <img className='github-img' src='assets/github-logo.png' alt='깃허브로 로그인' />
         <span>Github 계정으로 로그인</span>
       </div>
     </div>

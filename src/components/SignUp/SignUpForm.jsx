@@ -56,7 +56,6 @@ function SignUpForm() {
           setEmail('잘못된 형식의 이메일입니다.');
         }
         console.log('Failed!');
-        console.log(error.code);
       }
     }
   }
