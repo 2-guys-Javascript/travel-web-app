@@ -25,10 +25,14 @@
 }
 
 .application-header h3 {
-  font-size: 15px;
+  font-size: 10px;
 }
 
 .application-header a:visited {
+  color: #cdcdcd;
+}
+
+.application-header a {
   color: #cdcdcd;
 }
 

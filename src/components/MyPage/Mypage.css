@@ -9,7 +9,6 @@
   justify-content: flex-start;
   margin-top: 70px;
   align-items: center;
-  overflow-y: auto;
   box-shadow: 0 0 20px #00000033;
   background-color: #ffffff;
 }
@@ -94,8 +93,7 @@
   box-sizing: border-box;
   box-shadow: 0 0 3px #00000088;
   bottom: 0;
-  position: fixed;
-  z-index: 99;
+  font-size: 17px;
 }
 
 .mypage-delete-div {
