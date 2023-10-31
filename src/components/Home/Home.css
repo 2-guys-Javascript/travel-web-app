@@ -25,7 +25,7 @@
   box-sizing: border-box;
   max-width: 480px;
   width: 100vw;
-  background-image: url('../src/assets/Seoul.jpeg');
+  background-image: url('/assets/Seoul.jpeg');
   background-position: center center;
   animation: krFadeIn 0.8s ease-out forwards;
   cursor: pointer;
@@ -69,7 +69,7 @@
   box-sizing: border-box;
   max-width: 480px;
   width: 100vw;
-  background-image: url('../src/assets/sapporo_nika.jpeg');
+  background-image: url('/assets/sapporo_nika.jpeg');
   background-position: center center;
   animation: jpFadeIn 0.8s ease-out forwards;
   cursor: pointer;
