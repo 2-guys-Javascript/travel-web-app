@@ -331,7 +331,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
         >
           <MarkerF
             position={userLocation}
-            icon={{ url: '/src/assets/non.png', scaledSize: new window.google.maps.Size(40, 40) }}
+            icon={{ url: 'assets/non.png', scaledSize: new window.google.maps.Size(40, 40) }}
           />
           {markers.map((marker) => (
             <MarkerF
@@ -340,7 +340,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
               onClick={() => handleMarkerClick(marker)}
               // label={(index + 1).toString()} // 마커에 숫자 레이블 추가
               icon={{
-                url: '/src/assets/pin.png',
+                url: 'assets/pin.png',
                 scaledSize: new window.google.maps.Size(40, 40),
               }}
             />
@@ -356,7 +356,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
                 SetSelectedNearByPlace(result);
               }}
               icon={{
-                url: '/src/assets/restaurant.png',
+                url: 'assets/restaurant.png',
                 scaledSize: new window.google.maps.Size(38, 38),
               }}
             />
@@ -371,7 +371,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
                 SetSelectedNearByPlace(result);
               }}
               icon={{
-                url: '/src/assets/coffee.png',
+                url: 'assets/coffee.png',
                 scaledSize: new window.google.maps.Size(38, 38),
               }}
             />

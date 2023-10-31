@@ -130,7 +130,7 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
       />
       <div className='mypage-defauly-layout' onSubmit={handleModifyUserInfo}>
         <div className='title'>
-          <img className='goback' src='/src/assets/left-arrow.png' alt='뒤로가기' onClick={handleGoBack} />
+          <img className='goback' src='assets/left-arrow.png' alt='뒤로가기' onClick={handleGoBack} />
           <h2>마이페이지</h2>
         </div>
         <form action='post' className='mypage-information-form'>
@@ -168,7 +168,7 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
               <h3>비밀번호 : nicemeet</h3>
             </div>
             <a href='https://open.kakao.com/o/g4GrCzPf'>
-              <img src='/src/assets/qrcode.svg' alt='qrcode' />
+              <img src='assets/qrcode.svg' alt='qrcode' />
             </a>
           </div>
           <div className='mypage-delete-modify-container'>
