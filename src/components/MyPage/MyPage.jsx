@@ -130,7 +130,7 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
       />
       <div className='mypage-defauly-layout scroll-box' onSubmit={handleModifyUserInfo}>
         <div className='title'>
-          <img className='goback' src='assets/left-arrow.png' alt='뒤로가기' onClick={handleGoBack} />
+          <img className='goback' src='/public/assets/left-arrow.png' alt='뒤로가기' onClick={handleGoBack} />
           <h2>마이페이지</h2>
         </div>
         <form action='post' className='mypage-information-form'>
