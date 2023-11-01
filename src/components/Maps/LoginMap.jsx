@@ -379,6 +379,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
           {selectedNearByPlace && (
             <InfoWindow
               position={selectedNearByPlace.geometry.location}
+              options={{ pixelOffset: new window.google.maps.Size(0, -35) }}
               onCloseClick={() => SetSelectedNearByPlace(null)}
             >
               <div>{selectedNearByPlace.name}</div>
