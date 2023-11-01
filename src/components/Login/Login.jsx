@@ -28,7 +28,7 @@ function Login({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDisplay
   }
 
   return (
-    <div className='login-page-outer-div'>
+    <div className='login-page-outer-div scroll-box'>
       <div className='login-header'>
         <h2>로그인</h2>
         <div></div>
@@ -46,7 +46,7 @@ function Login({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDisplay
       <div className='__or__'> 또는 </div>
 
       <div className='github-login-div' onClick={handleGithubLogin}>
-        <img className='github-img' src='assets/github-logo.png' alt='깃허브로 로그인' />
+        <img className='github-img' src='/assets/github-logo.png' alt='깃허브로 로그인' />
         <span>Github 계정으로 로그인</span>
       </div>
     </div>

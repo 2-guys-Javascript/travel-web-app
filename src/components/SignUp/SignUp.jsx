@@ -4,7 +4,7 @@ import './signup.css';
 
 function SignUp() {
   return (
-    <div className='signup-page-outer-div'>
+    <div className='signup-page-outer-div scroll-box'>
       <div className='signup-header'>
         <h2>회원가입</h2>
         <div></div>
