@@ -52,22 +52,22 @@
 }
 
 .kr-weather-text1 {
-  color: #087953e9;
-  font-size: 30px;
+  color: #000000;
+  font-size: 26px;
   font-weight: 400;
   margin-top: 40px;
   margin-bottom: 0;
 }
 
 .kr-weather-text2 {
-  color: #0000009e;
+  color: #00000088;
   font-size: 18px;
   font-weight: 500;
   margin-top: 5px;
 }
 
 .kr-where {
-  color: #008138c1;
+  color: #000000;
   font-weight: 400;
   text-align: center;
 }
