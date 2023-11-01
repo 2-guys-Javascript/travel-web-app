@@ -18,7 +18,6 @@
   display: flex;
   max-width: 460px;
   width: 90vw;
-  margin-top: 20vh;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
