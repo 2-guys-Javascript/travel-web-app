@@ -25,15 +25,15 @@
   box-sizing: border-box;
   max-width: 480px;
   width: 100vw;
-  background-image: url('/assets/Seoul.jpeg');
+  background-image: url('/assets/bukchon.jpg');
   background-position: center center;
+  background-size: cover;
   animation: krFadeIn 0.8s ease-out forwards;
   cursor: pointer;
-  /* flex로 가운데 정렬했습니다! */
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .korea-tab-div:hover {
@@ -69,15 +69,16 @@
   box-sizing: border-box;
   max-width: 480px;
   width: 100vw;
-  background-image: url('/assets/sapporo_nika.jpeg');
+  background-image: url('/assets/shirakawa.jpg');
   background-position: center center;
+  background-size: cover;
   animation: jpFadeIn 0.8s ease-out forwards;
   cursor: pointer;
   transition: transform 0.2s ease;
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .japan-tab-div:hover {
