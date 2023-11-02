@@ -54,8 +54,8 @@ function Exchange({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) {
         </div>
         <h2>
           {isKrwToJpy === true
-            ? `100엔에 ${krwToJpy['conversion_rate'] * 100} 원입니다!`
-            : `1000원에 ${jpyToKrw['conversion_rate'] * 1000} 엔입니다!`}
+            ? `100엔에 ${Math.floor(krwToJpy['conversion_rate'] * 100)} 원입니다!`
+            : `1000원에 ${Math.floor(jpyToKrw['conversion_rate'] * 1000)} 엔입니다!`}
         </h2>
       </div>
     </div>
