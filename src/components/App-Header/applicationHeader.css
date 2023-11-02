@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-direction: row;
   width: 100vw;
   max-width: 480px;
   height: 70px;
@@ -53,15 +52,6 @@
 }
 
 .my-page-button {
-  color: #cdcdcd;
-  border: 1px solid #000000;
-  box-shadow: 0 0 3px #00000055;
-  background-color: #000000;
-  border-radius: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 10px;
   position: fixed;
 }
 

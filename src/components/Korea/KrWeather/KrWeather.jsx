@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import KrForecastWeather from './KrForecastWeather';
 import KrHourlyWeather from './KrHourlyWeather';
+import './KrWeather.css';
 
 function KrWeather({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) {
   const [weatherData, setWeatherData] = useState('');

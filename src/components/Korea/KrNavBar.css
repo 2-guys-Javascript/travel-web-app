@@ -1,0 +1,32 @@
+.korea-footer {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  bottom: 0;
+  height: 68px;
+  z-index: 99;
+  background-color: #ffffff;
+  box-shadow: 0 0 3px #00000033;
+}
+
+.korea-navbar {
+  max-width: 480px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+  height: 48px;
+}
+
+.korea-navbar a {
+  text-align: center;
+}
+
+.korea-navbar img {
+  width: 28px;
+}
+
+.korea-navbar a:active {
+  filter: invert(50%);
+}
