@@ -113,14 +113,19 @@ $ npm run preview // 빌드 후 배포 환경에서의 실행
 
 ## 주요 기술 스택 선정 포인트
 
-- VITE
+- VITE <br>
+  기존의 Create React App의 방식을 사용하면 Webpack 번들러와 Babel 트랜스파일러를 통해 빌드하는데, VITE를 이용한 방식은 ESbuild 등을 활용하여 속도가 더 빠르고 개발 환경에서 빌드 결과물을 빠르게 확인할 수 있어 선택했습니다.
 - REACT
-- FIREBASE
-- NETLIFY
+- FIREBASE <br>
+  백엔드 서비스의 구축은 express 프레임워크와 mongoDB를 이용하여 진행할 수도 있습니다. 하지만 해당 방식을 따르면 인증을 구현하기 위해 `passport` 모듈 등을 이용하여 시간이 상대적으로 더 소요된다는 점, mongoDB와 firebase firestore가 모두 noSQL 기반의 document 방식이라 큰 차이가 없다는 점을 고려하여 firebase를 이용해 백엔드를 구축하기로 결정했습니다.
+- NETLIFY <br>
+  netlify 호스팅 서비스를 이용하여 웹 애플리케이션의 배포를 진행하면 Github 레포지토리의 프로젝트를 자동으로 빌드해줄 수 있을 뿐만 아니라, 해당 브랜치에 새롭게 push된 변경 사항까지 자동으로 적용된다는 점은 매우 매력적으로 다가왔습니다.
 
 ## 주요 기능 📌
 
 1. Login & Signup 🔐
+- 로그인은 크게 비밀번호 인증 방식과 깃허브 계정 연동 방식으로 이루어져 있습니다. 두 방식 모두 로그인된 사용자의 정보를 `localStorage`에 [넣어주고](https://github.com/2-guys-Javascript/travel-web-app/blob/d00d43cdb030e24b68f720e1db93925dc1192bc8/src/components/Login/Login.jsx#L19-L21), 각 페이지에 해당하는 컴포넌트가 마운트 될 때마다 useEffect() 훅을 통해서 이를 불러오는 [방식](https://github.com/2-guys-Javascript/travel-web-app/blob/d00d43cdb030e24b68f720e1db93925dc1192bc8/src/components/Japan/Japan.jsx#L6-L16)을 택했습니다 => 지도, 날씨, 환율, 마이 페이지 탭 모두
+- 회원 가입(Sign up)은 html form의 input으로부터 사용자에게 이메일, 비밀 번호 그리고 닉네임을 입력 받아 firebase authentication에 등록해주는 [방식](https://github.com/2-guys-Javascript/travel-web-app/blob/d00d43cdb030e24b68f720e1db93925dc1192bc8/src/components/SignUp/SignUpForm.jsx#L43-L48)을 사용했습니다. 이 과정에서 각 입력 필드가 이메일이 맞는지, 비밀번호의 길이가 적당한지를 정규 표현식 등을 이용하여 검증해주었고, 이미 존재하는 계정인지에 대한 정보는 firebase의 오류 메시지를 통해 나타냈습니다.
 
 2. Map 🗺️
 
