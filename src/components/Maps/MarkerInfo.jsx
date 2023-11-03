@@ -38,8 +38,7 @@ function MarkerInfo({ selectedMarker, setSelectedMarker, markers, setMarkers, us
           <div> {selectedMarker.info.date} </div>
           <p>시간</p>
           <div>
-            {' '}
-            {from} ~ {until}{' '}
+            {from} ~ {until}
           </div>
         </div>
       </div>
