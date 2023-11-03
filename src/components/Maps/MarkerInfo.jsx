@@ -8,7 +8,7 @@ function MarkerInfo({ selectedMarker, setSelectedMarker, markers, setMarkers, us
 
   async function handleDeleteSchedule() {
     try {
-      const documentRef = doc(db, userId, selectedMarker.info.date);
+      const documentRef = doc(db, 'users', userId, 'date', selectedMarker.info.date);
       const dataToRemove = { [selectedMarker.info.title]: deleteField() };
       await updateDoc(documentRef, dataToRemove);
       // db에서는 지워줬음. 이제 markers를 바꿔줘야함 : 애플리케이션에서의 상태와 DB 간의 동기화
@@ -26,12 +26,22 @@ function MarkerInfo({ selectedMarker, setSelectedMarker, markers, setMarkers, us
 
   return (
     <div className='marker-info'>
-      <p>제목: {selectedMarker.info.title}</p>
-      <p>내용: {selectedMarker.info.detail}</p>
-      <p>날짜: {selectedMarker.info.date}</p>
-      <p>
-        시간: {from} ~ {until}
-      </p>
+      <div className='info-wrapper'>
+        <div className='info-div'>
+          <p>제목</p>
+          <div> {selectedMarker.info.title}</div>
+          <p>내용</p>
+          <div> {selectedMarker.info.detail} </div>
+        </div>
+        <div className='info-div'>
+          <p>날짜</p>
+          <div> {selectedMarker.info.date} </div>
+          <p>시간</p>
+          <div>
+            {from} ~ {until}
+          </div>
+        </div>
+      </div>
       <div className='marker-info-closeDelete'>
         <button onClick={onClose}>닫기</button>
         <button onClick={handleDeleteSchedule}>삭제</button>
