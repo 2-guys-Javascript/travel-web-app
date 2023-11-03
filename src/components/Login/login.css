@@ -62,7 +62,7 @@
 
 .project-logo {
   width: 200px;
-  margin: 10vh 0 40px 0;
+  margin: 12vh 0 40px 0;
   border-radius: 50%;
 }
 
@@ -96,26 +96,98 @@
 .github-login-div {
   margin-top: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   border: 0;
   border-radius: 12px;
   background-color: #000000;
   max-width: 460px;
-  width: 80vw;
+  width: 90vw;
   min-height: 60px;
   height: 60px;
   color: #ffffff;
-  box-shadow: 0 0 3px #00000088;
+  box-shadow: 0 0 2px #00000088;
   margin-bottom: 20vh;
 }
 
 .github-login-div span {
+  font-size: 14px;
+  width: 260px;
   margin-left: 40px;
   margin-right: 20px;
 }
 
 .github-login-div:hover {
+  cursor: pointer;
+}
+
+.google-img {
+  width: 38px;
+  height: 38px;
+  background-color: #ffffff;
+  margin-left: 20px;
+}
+
+.google-login-div {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 0;
+  border-radius: 12px;
+  background-color: #ffffff;
+  max-width: 460px;
+  width: 90vw;
+  min-height: 60px;
+  height: 60px;
+  color: #000000;
+  box-shadow: 0 0 2px #00000088;
+  margin-bottom: 10px;
+}
+
+.google-login-div span {
+  font-size: 14px;
+  width: 260px;
+  margin-left: 40px;
+  margin-right: 20px;
+}
+
+.google-login-div:hover {
+  cursor: pointer;
+}
+
+.facebook-img {
+  width: 38px;
+  height: 38px;
+  filter: invert(100%);
+  margin-left: 20px;
+}
+
+.facebook-login-div {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 0;
+  border-radius: 12px;
+  background-color: #3b5998;
+  max-width: 460px;
+  width: 90vw;
+  min-height: 60px;
+  height: 60px;
+  color: #ffffff;
+  box-shadow: 0 0 2px #00000088;
+  margin-bottom: 10px;
+}
+
+.facebook-login-div span {
+  font-size: 14px;
+  width: 260px;
+  margin-left: 40px;
+  margin-right: 20px;
+}
+
+.facebook-login-div:hover {
   cursor: pointer;
 }
 

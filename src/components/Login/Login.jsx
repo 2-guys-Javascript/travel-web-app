@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import LoginForm from './LoginForm';
-import { auth, provider } from '../../../firebaseConfig';
+import { auth, googleProvider, githubProvider, facebookProvider } from '../../../firebaseConfig';
 import { signInWithPopup } from 'firebase/auth';
 import './login.css';
 
@@ -9,7 +9,47 @@ function Login({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDisplay
 
   async function handleGithubLogin() {
     try {
-      const result = await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, githubProvider);
+      const user = result.user;
+
+      onChangeIsLoggedIn(!isLoggedIn);
+      onChangeUserId(user.uid);
+      onChangeDisplayName(user.displayName);
+
+      localStorage.setItem('isLoggedIn', true);
+      localStorage.setItem('userId', user.uid);
+      localStorage.setItem('displayName', user.displayName);
+
+      console.log(user);
+      navigate('/home');
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function handleGoogleLogin() {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+
+      onChangeIsLoggedIn(!isLoggedIn);
+      onChangeUserId(user.uid);
+      onChangeDisplayName(user.displayName);
+
+      localStorage.setItem('isLoggedIn', true);
+      localStorage.setItem('userId', user.uid);
+      localStorage.setItem('displayName', user.displayName);
+
+      console.log(user);
+      navigate('/home');
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function handleFacebookLogin() {
+    try {
+      const result = await signInWithPopup(auth, facebookProvider);
       const user = result.user;
 
       onChangeIsLoggedIn(!isLoggedIn);
@@ -45,6 +85,14 @@ function Login({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDisplay
       />
       <div className='__or__'> 또는 </div>
 
+      <div className='google-login-div' onClick={handleGoogleLogin}>
+        <img className='google-img' src='/assets/google-logo.png' alt='구글로 로그인' />
+        <span>Google 계정으로 로그인</span>
+      </div>
+      <div className='facebook-login-div' onClick={handleFacebookLogin}>
+        <img className='facebook-img' src='/assets/facebook-logo.png' alt='페이스북으로 로그인' />
+        <span>Facebook 계정으로 로그인</span>
+      </div>
       <div className='github-login-div' onClick={handleGithubLogin}>
         <img className='github-img' src='/assets/github-logo.png' alt='깃허브로 로그인' />
         <span>Github 계정으로 로그인</span>

@@ -2,7 +2,13 @@ import ApplicationHeader from '../App-Header/ApplicationHeader';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../../firebaseConfig';
-import { GithubAuthProvider, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import {
+  FacebookAuthProvider,
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from 'firebase/auth';
 import { db } from '../../../firebaseConfig';
 import { getDocs, collection, deleteDoc, doc, query } from 'firebase/firestore';
 
@@ -34,7 +40,11 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
     const currentUser = auth.currentUser;
     if (currentUser) {
       const providers = currentUser.providerData.map((provider) => provider.providerId);
-      if (providers.includes(GithubAuthProvider.PROVIDER_ID)) {
+      if (
+        providers.includes(GithubAuthProvider.PROVIDER_ID) ||
+        providers.includes(GoogleAuthProvider.PROVIDER_ID) ||
+        providers.includes(FacebookAuthProvider.PROVIDER_ID)
+      ) {
         setIsGitHubLogin(true);
       }
     }

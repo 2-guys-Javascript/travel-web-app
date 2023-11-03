@@ -44,11 +44,41 @@
 
 .marker-info {
   max-width: 460px;
-  width: 100vw;
+  width: 90vw;
   display: flex;
   flex-direction: column;
   justify-self: center;
   align-items: center;
+  border-radius: 15px;
+  background-color: #00000011;
+}
+
+.info-wrapper {
+  padding: 9px 10px;
+  max-width: 460px;
+  width: 90vw;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  font-size: 14px;
+}
+
+.info-div p {
+  width: 36px;
+  color: #00000088;
+  margin-right: 10px;
+}
+
+.info-div div {
+  width: 140px;
+  font-size: 12px;
 }
 
 .marker-info-closeDelete button {
@@ -71,6 +101,7 @@
   width: 90vw;
   display: flex;
   justify-content: space-evenly;
+  padding-bottom: 10px;
 }
 
 .marker-info-closeDelete button:hover {
@@ -92,6 +123,7 @@
   background-color: #ffffff;
   border: 0;
   font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .react-calendar__navigation__label span {
@@ -282,7 +314,8 @@ abbr {
   align-items: center;
   border: 0;
   border-radius: 15px;
-  box-shadow: 0 0 3px #00000055;
+  /* box-shadow: 0 0 3px #00000022; */
+  background-color: #00000011;
   margin-bottom: 15px;
   max-width: 460px;
   width: 90vw;
