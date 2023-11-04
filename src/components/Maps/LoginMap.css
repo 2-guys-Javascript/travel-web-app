@@ -1,5 +1,9 @@
 .react-datepicker-popper {
-  z-index: 99 !important;
+  z-index: 200 !important;
+}
+
+.react-datepicker {
+  background-color: #000000;
 }
 
 .custom-input {
@@ -11,15 +15,11 @@
   width: 150px;
   height: 26px;
   padding: 10px;
+  margin: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  top: 378px;
-  left: 50%;
-  transform: translateX(-50%);
   box-shadow: 0 0 3px #00000055;
-  z-index: 5;
 }
 
 .custom-input:active {
@@ -334,6 +334,16 @@ abbr {
 
 .login-bottom {
   background-color: #ffffff;
-  z-index: 3;
   padding-bottom: 80px;
+}
+
+.login-bottom-wrapper {
+  background-color: #ffffff;
+  z-index: 100;
+  max-width: 480px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

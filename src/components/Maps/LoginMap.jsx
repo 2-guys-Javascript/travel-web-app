@@ -396,40 +396,46 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
       <button className='btn-2' onClick={handleSearch}>
         🚀
       </button>
-      <ReactDatePicker
-        selected={selectedDate}
-        onChange={handleDateChange}
-        dateFormat={'yyyy년 MM월 dd일'}
-        locale={ko}
-        customInput={<CustomInput />}
-      />
-      <div className='login-bottom'>
-        {creatingMarker && <CreateMarkerForm onCreateMarker={handleCreateMarker} userId={userId} />}
-        {selectedMarker && (
-          <MarkerInfo
-            selectedMarker={selectedMarker}
-            setSelectedMarker={setSelectedMarker}
-            markers={markers}
-            setMarkers={setMarkers}
-            userId={userId}
-            onClose={() => setSelectedMarker(null)}
-          />
-        )}
-        {!selectedMarker && !creatingMarker && (
-          <ul className='marker-info-list'>
-            {sortedMarkers.map(
-              (marker) =>
-                marker.info && (
-                  <li onClick={() => handleMarkerClick(marker)} key={marker.info.title}>
-                    <p>{marker.info.title}</p>
-                    <p>
-                      {marker.info.time.from} ~ {marker.info.time.until}
-                    </p>
-                  </li>
-                )
-            )}
-          </ul>
-        )}
+      <div className='login-bottom-wrapper'>
+        <ReactDatePicker
+          selected={selectedDate}
+          onChange={handleDateChange}
+          dateFormat={'yyyy년 MM월 dd일'}
+          locale={ko}
+          customInput={<CustomInput />}
+          popperModifiers={{
+            preventOverflow: { enabled: true },
+          }}
+          popperPlacement='auto'
+        />
+        <div className='login-bottom'>
+          {creatingMarker && <CreateMarkerForm onCreateMarker={handleCreateMarker} userId={userId} />}
+          {selectedMarker && (
+            <MarkerInfo
+              selectedMarker={selectedMarker}
+              setSelectedMarker={setSelectedMarker}
+              markers={markers}
+              setMarkers={setMarkers}
+              userId={userId}
+              onClose={() => setSelectedMarker(null)}
+            />
+          )}
+          {!selectedMarker && !creatingMarker && (
+            <ul className='marker-info-list'>
+              {sortedMarkers.map(
+                (marker) =>
+                  marker.info && (
+                    <li onClick={() => handleMarkerClick(marker)} key={marker.info.title}>
+                      <p>{marker.info.title}</p>
+                      <p>
+                        {marker.info.time.from} ~ {marker.info.time.until}
+                      </p>
+                    </li>
+                  )
+              )}
+            </ul>
+          )}
+        </div>
       </div>
     </div>
   ) : (
