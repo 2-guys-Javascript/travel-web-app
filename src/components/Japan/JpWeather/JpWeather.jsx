@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import JpHourlyWeather from './JpHourlyWeather';
 import JpForecastWeather from './JpForecastWeather';
+import './JpWeather.css';
 
 function JpWeather({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) {
   const [weatherData, setWeatherData] = useState('');

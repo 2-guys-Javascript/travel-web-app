@@ -19,7 +19,7 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
   const [myPageDisplayName, setMyPageDisplayName] = useState('');
   const [passwordMismatch, setPasswordMismatch] = useState('');
   const [passwordCheckMismatch, setPasswordCheckMismatch] = useState('');
-  const [isGitHubLogin, setIsGitHubLogin] = useState(false);
+  const [isSocialLogin, setIsSocialLogin] = useState(false);
 
   const navigate = useNavigate();
 
@@ -45,7 +45,7 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
         providers.includes(GoogleAuthProvider.PROVIDER_ID) ||
         providers.includes(FacebookAuthProvider.PROVIDER_ID)
       ) {
-        setIsGitHubLogin(true);
+        setIsSocialLogin(true);
       }
     }
   }, []);
@@ -145,15 +145,15 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
         </div>
         <form action='post' className='mypage-information-form'>
           <div>
-            <label className={isGitHubLogin ? 'github' : ''} htmlFor='nickname'>
-              {isGitHubLogin ? '소셜 로그인 시 닉네임을 변경 할 수 없습니다.' : '닉네임'}
+            <label className={isSocialLogin ? 'github' : ''} htmlFor='nickname'>
+              {isSocialLogin ? '소셜 로그인 시 닉네임을 변경 할 수 없습니다.' : '닉네임'}
             </label>
             <br />
             <input
               id='nickname'
               name='nickname'
               type='text'
-              className={isGitHubLogin ? 'github-input' : ''}
+              className={isSocialLogin ? 'github-input' : ''}
               value={myPageDisplayName}
               onChange={handleChangeUserNickname}
             />

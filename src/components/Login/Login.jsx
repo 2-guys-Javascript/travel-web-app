@@ -20,8 +20,7 @@ function Login({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDisplay
       localStorage.setItem('userId', user.uid);
       localStorage.setItem('displayName', user.displayName);
 
-      console.log(user);
-      navigate('/home');
+      navigate('/');
     } catch (error) {
       console.log(error);
     }
@@ -40,8 +39,7 @@ function Login({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDisplay
       localStorage.setItem('userId', user.uid);
       localStorage.setItem('displayName', user.displayName);
 
-      console.log(user);
-      navigate('/home');
+      navigate('/');
     } catch (error) {
       console.log(error);
     }
@@ -60,8 +58,7 @@ function Login({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDisplay
       localStorage.setItem('userId', user.uid);
       localStorage.setItem('displayName', user.displayName);
 
-      console.log(user);
-      navigate('/home');
+      navigate('/');
     } catch (error) {
       console.log(error);
     }
