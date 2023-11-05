@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './JapanDefaultLayout.css';
+import './JpNavBar.css';
 
 function JpNavBar() {
   return (

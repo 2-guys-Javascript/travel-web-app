@@ -13,67 +13,6 @@
   background-color: #ffffff;
 }
 
-.japan-footer {
-  position: fixed;
-  display: flex;
-  align-items: center;
-  bottom: 0;
-  height: 68px;
-  z-index: 99;
-  background-color: #ffffff;
-  box-shadow: 0 0 3px #00000033;
-}
-
-.japan-navbar {
-  max-width: 480px;
-  width: 100vw;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  box-sizing: border-box;
-  height: 48px;
-}
-
-.japan-navbar a {
-  text-align: center;
-}
-
-.japan-navbar img {
-  width: 28px;
-}
-
-.japan-navbar a:active {
-  filter: invert(50%);
-}
-
-.jp-weather-text-div {
-  max-width: 480px;
-  width: 100vw;
-  text-align: center;
-  border-radius: 25px;
-}
-
-.jp-weather-text1 {
-  color: #000000;
-  font-size: 26px;
-  font-weight: 400;
-  margin-top: 40px;
-  margin-bottom: 0;
-}
-
-.jp-weather-text2 {
-  color: #00000088;
-  font-size: 18px;
-  font-weight: 500;
-  margin-top: 5px;
-}
-
-.jp-where {
-  color: #000000;
-  font-weight: 400;
-  text-align: center;
-}
-
 .exchange-outer-div {
   width: 100vw;
   height: 100%;
