@@ -27,7 +27,7 @@ function LoginForm({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDis
       localStorage.setItem('userId', user.uid);
       localStorage.setItem('displayName', user.displayName);
 
-      navigate('/home');
+      navigate('/');
     } catch (error) {
       setErrorMessageOne('계정이 존재하지 않거나 이메일 또는 비밀번호가 틀렸습니다.');
       setErrorMessageTwo('다시 시도해주세요');
