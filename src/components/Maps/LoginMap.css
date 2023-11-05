@@ -348,3 +348,27 @@ abbr {
   align-items: center;
   flex-direction: column;
 }
+
+.selected-marker-info-container {
+  width: 90vw;
+  max-width: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.selected-marker-info-container img {
+  min-width: 100px;
+  width: 100px;
+  align-self: stretch;
+  object-fit: cover;
+  border-radius: 15px 0 0 15px;
+}
+
+.selected-marker-information-div {
+  flex-grow: 1;
+  align-self: stretch;
+}

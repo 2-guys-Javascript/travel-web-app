@@ -10,6 +10,7 @@ import { getDoc, doc, updateDoc, setDoc } from 'firebase/firestore';
 import './Map.css';
 import './LoginMap.css';
 import 'react-datepicker/dist/react-datepicker.css';
+import SelectedPlaceInfo from './SelectedPlaceInfo';
 
 const myStyles = [
   {
@@ -410,6 +411,25 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
         />
         <div className='login-bottom'>
           {creatingMarker && <CreateMarkerForm onCreateMarker={handleCreateMarker} userId={userId} />}
+          {selectedNearByPlace &&
+            (selectedNearByPlace.photos && selectedNearByPlace.photos.length > 0 ? (
+              <div className='selected-marker-info-container'>
+                <img src={selectedNearByPlace.photos[0].getUrl({ maxWidth: 150 })} />
+                <div className='selected-marker-information-div'>
+                  <h4>{selectedNearByPlace.name}</h4>
+                  <SelectedPlaceInfo place={selectedNearByPlace} />
+                </div>
+              </div>
+            ) : (
+              <div className='selected-marker-info-container'>
+                <div>등록된 사진이 없어요 😢</div>
+                <div className='selected-marker-information-div'>
+                  <h4>{selectedNearByPlace.name}</h4>
+                  <SelectedPlaceInfo place={selectedNearByPlace} />
+                </div>
+              </div>
+            ))}
+          {selectedNearByPlace && console.log(selectedNearByPlace)}
           {selectedMarker && (
             <MarkerInfo
               selectedMarker={selectedMarker}
@@ -417,7 +437,10 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
               markers={markers}
               setMarkers={setMarkers}
               userId={userId}
-              onClose={() => setSelectedMarker(null)}
+              onClose={() => {
+                setSelectedMarker(null);
+                SetSelectedNearByPlace(null);
+              }}
             />
           )}
           {!selectedMarker && !creatingMarker && (
