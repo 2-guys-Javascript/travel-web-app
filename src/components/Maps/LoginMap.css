@@ -3,7 +3,8 @@
 }
 
 .react-datepicker {
-  background-color: #000000;
+  position: sticky;
+  top: 50px;
 }
 
 .custom-input {
