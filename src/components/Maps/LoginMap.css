@@ -2,7 +2,7 @@
   z-index: 200 !important;
 }
 
-.react-datepicker {
+.react-datepicker-wrapper {
   position: sticky;
   top: 50px;
 }
@@ -48,7 +48,6 @@
   width: 90vw;
   display: flex;
   flex-direction: column;
-  justify-self: center;
   align-items: center;
   border-radius: 15px;
   background-color: #00000011;
@@ -347,6 +346,15 @@ abbr {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  transition: transform 0.3s;
+}
+
+.open {
+  transform: translate(0, -130px);
+}
+
+.closed {
+  transform: translate(0, 0);
 }
 
 .selected-marker-info-container {

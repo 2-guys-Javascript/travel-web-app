@@ -26,7 +26,7 @@ const myStyles = [
 
 const libraries = ['places'];
 
-function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displayName, onChangeDisplayName }) {
+function LoginMap({ userId }) {
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState(null);
   // 현재 위치를 받아올 상태
@@ -39,7 +39,8 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [getCafe, setGetCafe] = useState([]);
   const [getRestaurants, setGetRestaurants] = useState([]);
-  const [selectedNearByPlace, SetSelectedNearByPlace] = useState(null);
+  const [selectedNearByPlace, setSelectedNearByPlace] = useState(null);
+  const [contentOpen, setContentOpen] = useState(false);
 
   const inputRef = useRef();
 
@@ -79,9 +80,11 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
         setMarkers(markers.slice(0, markers.length - 1));
       }
       setCreatingMarker(false);
+      setContentOpen(false);
     } else {
       if (selectedMarker) {
         setSelectedMarker(null);
+        setContentOpen(false);
       } else {
         const lat = event.latLng.lat();
         const lng = event.latLng.lng();
@@ -96,6 +99,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
 
         setCreatingMarker(true);
         setMarkers([...markers, newMarker]);
+        setContentOpen(true);
 
         if (map) {
           map.panTo(newMarker.position);
@@ -103,6 +107,9 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
       }
       // 마커 정보 표시 안함
       setSelectedMarker(null);
+    }
+    if (selectedNearByPlace) {
+      setSelectedNearByPlace(null);
     }
   };
 
@@ -152,6 +159,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
 
     pushIntoDataBase();
     setCreatingMarker(false);
+    setContentOpen(false);
   };
 
   // 무슨 이유에서인지 모르겠으나, 일정 생성하고, 처음 해당 마커를 눌러보면 selectedMarker는 null임
@@ -165,6 +173,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
       setCreatingMarker(false);
     }
     setSelectedMarker(marker);
+    setContentOpen(true);
     map.panTo(marker.position);
   };
 
@@ -354,7 +363,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
               title={result.name}
               zIndex={getRestaurants.length - index}
               onClick={() => {
-                SetSelectedNearByPlace(result);
+                setSelectedNearByPlace(result);
               }}
               icon={{
                 url: 'assets/restaurant.png',
@@ -369,7 +378,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
               title={result.name}
               zIndex={getCafe.length - index}
               onClick={() => {
-                SetSelectedNearByPlace(result);
+                setSelectedNearByPlace(result);
               }}
               icon={{
                 url: 'assets/coffee.png',
@@ -381,7 +390,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
             <InfoWindow
               position={selectedNearByPlace.geometry.location}
               options={{ pixelOffset: new window.google.maps.Size(0, -35) }}
-              onCloseClick={() => SetSelectedNearByPlace(null)}
+              onCloseClick={() => setSelectedNearByPlace(null)}
             >
               <div>{selectedNearByPlace.name}</div>
             </InfoWindow>
@@ -397,7 +406,7 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
       <button className='btn-2' onClick={handleSearch}>
         🚀
       </button>
-      <div className='login-bottom-wrapper'>
+      <div className={`login-bottom-wrapper ${contentOpen ? 'open' : 'closed'}`}>
         <ReactDatePicker
           selected={selectedDate}
           onChange={handleDateChange}
@@ -439,7 +448,8 @@ function LoginMap({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, disp
               userId={userId}
               onClose={() => {
                 setSelectedMarker(null);
-                SetSelectedNearByPlace(null);
+                setSelectedNearByPlace(null);
+                setContentOpen(false);
               }}
             />
           )}
