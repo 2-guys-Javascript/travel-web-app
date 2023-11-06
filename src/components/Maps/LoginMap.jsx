@@ -171,10 +171,13 @@ function LoginMap({ userId }) {
         setMarkers(markers.slice(0, markers.length - 1));
       }
       setCreatingMarker(false);
+      setContentOpen(false);
+    } else {
+      setSelectedMarker(marker);
+      setContentOpen(true);
+
+      map.panTo(marker.position);
     }
-    setSelectedMarker(marker);
-    setContentOpen(true);
-    map.panTo(marker.position);
   };
 
   const handleDateChange = (date) => {
