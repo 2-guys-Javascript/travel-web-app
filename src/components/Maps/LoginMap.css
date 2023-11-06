@@ -2,7 +2,7 @@
   z-index: 200 !important;
 }
 
-.react-datepicker {
+.react-datepicker-wrapper {
   position: sticky;
   top: 50px;
 }
@@ -48,7 +48,6 @@
   width: 90vw;
   display: flex;
   flex-direction: column;
-  justify-self: center;
   align-items: center;
   border-radius: 15px;
   background-color: #00000011;
@@ -347,4 +346,37 @@ abbr {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  transition: transform 0.3s;
+}
+
+.open {
+  transform: translate(0, -130px);
+}
+
+.closed {
+  transform: translate(0, 0);
+}
+
+.selected-marker-info-container {
+  width: 90vw;
+  max-width: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.selected-marker-info-container img {
+  min-width: 100px;
+  width: 100px;
+  align-self: stretch;
+  object-fit: cover;
+  border-radius: 15px 0 0 15px;
+}
+
+.selected-marker-information-div {
+  flex-grow: 1;
+  align-self: stretch;
 }
