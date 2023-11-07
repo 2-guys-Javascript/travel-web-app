@@ -346,11 +346,11 @@ abbr {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  transition: transform 0.3s;
+  transition: transform 0.3s ease-out;
 }
 
 .open {
-  transform: translate(0, -130px);
+  transform: translate(0, -80px);
 }
 
 .closed {
@@ -358,25 +358,89 @@ abbr {
 }
 
 .selected-marker-info-container {
-  width: 90vw;
   max-width: 460px;
+  width: 90vw;
+  height: 120px;
   display: flex;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: space-between;
-  border: 1px solid black;
+  border: 1px solid #00000055;
+  box-shadow: 0 0 3px #00000033;
+  font-size: 12px;
   border-radius: 15px;
   margin-bottom: 20px;
+  padding: 10px 0;
 }
 
 .selected-marker-info-container img {
-  min-width: 100px;
-  width: 100px;
-  align-self: stretch;
+  min-width: 150px;
+  width: 150px;
+  height: 140px;
   object-fit: cover;
-  border-radius: 15px 0 0 15px;
+  border-radius: 14px 0 0 14px;
+}
+
+.selected-marker-non-img {
+  min-width: 150px;
+  width: 150px;
+  height: 140px;
+  background-color: #00000033;
+  border-radius: 14px 0 0 14px;
+  color: #000000cc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 13px;
 }
 
 .selected-marker-information-div {
-  flex-grow: 1;
-  align-self: stretch;
+  max-width: 310px;
+  width: 90%;
+}
+
+.selected-marker-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 10px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.selected-marker-info h2 {
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.selected-marker-info p {
+  height: 30px;
+}
+
+.selected-marker-info-open {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.selected-marker-info-open p {
+  border: 0;
+  border-radius: 8px;
+  font-size: 10px;
+  padding: 5px 7px;
+  background-color: #535353d0;
+  color: #ffffff;
+}
+
+.selected-marker-info-open .닫혔어요 {
+  background-color: #b40a0aee;
+}
+
+.selected-marker-info-open .열었어요 {
+  background-color: #13841ed0;
 }
