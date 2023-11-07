@@ -9,9 +9,11 @@ function SelectedPlaceInfo({ place }) {
 
   return (
     <div>
-      <p>{place.vicinity}</p>
-
-      <div>
+      <div className='selected-marker-info'>
+        <h2>{place.name}</h2>
+        <p>{place.vicinity}</p>
+      </div>
+      <div className='selected-marker-info-open'>
         <p className={isOpenMessage}> {isOpenMessage}</p>
       </div>
     </div>

@@ -305,6 +305,7 @@ function LoginMap({ userId }) {
                 setMarkers([...markers.slice(0, markers.length - 1), newMarker]);
               } else {
                 setCreatingMarker(true);
+                setContentOpen(true);
                 setMarkers([...markers, newMarker]);
               }
             }
@@ -426,17 +427,15 @@ function LoginMap({ userId }) {
           {selectedNearByPlace &&
             (selectedNearByPlace.photos && selectedNearByPlace.photos.length > 0 ? (
               <div className='selected-marker-info-container'>
-                <img src={selectedNearByPlace.photos[0].getUrl({ maxWidth: 150 })} />
+                <img src={selectedNearByPlace.photos[0].getUrl()} />
                 <div className='selected-marker-information-div'>
-                  <h4>{selectedNearByPlace.name}</h4>
                   <SelectedPlaceInfo place={selectedNearByPlace} />
                 </div>
               </div>
             ) : (
               <div className='selected-marker-info-container'>
-                <div>등록된 사진이 없어요 😢</div>
+                <div className='selected-marker-non-img'>등록된 사진이 없어요 😢</div>
                 <div className='selected-marker-information-div'>
-                  <h4>{selectedNearByPlace.name}</h4>
                   <SelectedPlaceInfo place={selectedNearByPlace} />
                 </div>
               </div>
