@@ -4,7 +4,7 @@
 
 .react-datepicker-wrapper {
   position: sticky;
-  top: 50px;
+  z-index: 100;
 }
 
 .custom-input {
@@ -334,7 +334,7 @@ abbr {
 
 .login-bottom {
   background-color: #ffffff;
-  padding-bottom: 80px;
+  padding-bottom: 120px;
 }
 
 .login-bottom-wrapper {

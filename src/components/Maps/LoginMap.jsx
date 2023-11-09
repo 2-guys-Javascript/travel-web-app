@@ -331,6 +331,17 @@ function LoginMap({ userId }) {
     </button>
   ));
 
+  useEffect(() => {
+    const datePickerWrapper = document.querySelector('.react-datepicker-wrapper');
+    if (datePickerWrapper) {
+      if (contentOpen) {
+        datePickerWrapper.style.top = '130px';
+      } else {
+        datePickerWrapper.style.top = '50px';
+      }
+    }
+  }, [contentOpen]);
+
   return isLoaded ? (
     <div className='map-display'>
       <div className='map-container'>
