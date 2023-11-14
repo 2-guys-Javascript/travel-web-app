@@ -4,6 +4,7 @@
 
 .react-datepicker-wrapper {
   position: sticky;
+  top: 50px;
   z-index: 100;
 }
 
