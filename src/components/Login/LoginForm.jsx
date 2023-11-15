@@ -31,7 +31,6 @@ function LoginForm({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDis
     } catch (error) {
       setErrorMessageOne('계정이 존재하지 않거나 이메일 또는 비밀번호가 틀렸습니다.');
       setErrorMessageTwo('다시 시도해주세요');
-      console.log(error);
     }
   }
 
@@ -55,7 +54,7 @@ function LoginForm({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDis
           로그인 하기
         </button>
         <div className='to-signup'>
-          <span className='if'>회원이 아니신가요?</span>
+          <span className='isMember'>회원이 아니신가요?</span>
           <Link to='/signup'>간편 회원가입</Link>
         </div>
       </form>

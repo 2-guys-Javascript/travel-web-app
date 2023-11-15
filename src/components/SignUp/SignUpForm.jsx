@@ -55,7 +55,6 @@ function SignUpForm() {
         if (error.code === 'auth/invalid-email') {
           setEmail('잘못된 형식의 이메일입니다.');
         }
-        console.log('Failed!');
       }
     }
   }
@@ -65,10 +64,10 @@ function SignUpForm() {
       <form action='post' className='sign-up-form' onSubmit={handleSignUpSubmit}>
         <label htmlFor='email'>이메일</label>
         <input type='email' id='email' name='email' placeholder='Email' className='signup-email-input' />
-        <div className='check'>{email}</div>
+        <div className='checkIsvalid'>{email}</div>
         <label htmlFor='password'>비밀번호</label>
         <input type='password' id='password' name='password' placeholder='비밀번호' className='signup-password-input' />
-        <div className='check'>{password}</div>
+        <div className='checkIsvalid'>{password}</div>
         <label htmlFor='nickname'>닉네임</label>
         <input
           type='text'
@@ -77,7 +76,7 @@ function SignUpForm() {
           placeholder='사용하실 닉네임'
           className='signup-nickname-input'
         />
-        <div className='check'>{nickname}</div>
+        <div className='checkIsvalid'>{nickname}</div>
         <button type='submit' className='signup-button'>
           회원 가입
         </button>

@@ -1,14 +1,15 @@
 .mypage-defauly-layout {
   z-index: 5;
   overflow-y: auto;
-  /* position: fixed; */
   max-width: 480px;
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-top: 70px;
+  /* margin-top: 70px; */
+  /* 모바일 환경에서 별로라면 padding-top을 지우고 다시 margin-top으로 */
+  padding-top: 17vh;
   align-items: center;
   box-shadow: 0 0 20px #00000033;
   background-color: #ffffff;
@@ -89,7 +90,6 @@
   border: 0;
   color: white;
   border-radius: 12px;
-  margin-bottom: 15px;
   box-sizing: border-box;
   box-shadow: 0 0 3px #00000088;
   bottom: 0;
@@ -148,11 +148,11 @@
   width: 7rem;
 }
 
-.github {
+.myPageSocialLogin {
   color: #00000077;
 }
 
-.mypage-information-form .github-input {
+.mypage-information-form .myPageSocialLogin-input {
   background-color: #00000022;
   pointer-events: none;
   color: #00000055;
