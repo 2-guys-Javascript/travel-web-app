@@ -77,7 +77,6 @@ function App() {
             <MyPage
               isLoggedIn={isLoggedIn}
               onChangeIsLoggedIn={setIsLoggedIn}
-              userId={userId}
               onChangeUserId={setUserId}
               displayName={displayName}
               onChangeDisplayName={setDisplayName}

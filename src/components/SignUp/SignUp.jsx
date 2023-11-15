@@ -7,7 +7,6 @@ function SignUp() {
     <div className='signup-page-outer-div scroll-box'>
       <div className='signup-header'>
         <h2>회원가입</h2>
-        <div></div>
         <button>
           <Link to='/'>홈으로</Link>
         </button>

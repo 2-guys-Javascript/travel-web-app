@@ -154,6 +154,25 @@
   background-color: #323232;
 }
 
+.__or__ {
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  grid-gap: 10px;
+  margin: 4vh 0;
+}
+
+.__or__:before,
+.__or__:after {
+  max-width: 200px;
+  width: 40vw;
+  height: 1px;
+  background: #e8e8e8;
+  flex: 1;
+  content: ' ';
+}
+
 .to-login {
   padding-bottom: 20vh;
 }
@@ -168,7 +187,7 @@
   color: #007bff;
 }
 
-.sign-up-form .check {
+.sign-up-form .checkIsvalid {
   color: rgba(207, 0, 0, 0.566);
   font-size: 12px;
   margin-bottom: 15px;
