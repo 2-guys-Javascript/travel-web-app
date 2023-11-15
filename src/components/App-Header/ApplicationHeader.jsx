@@ -1,17 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom';
 import './applicationHeader.css';
 
-function ApplicationHeader({
-  isLoggedIn,
-  onChangeIsLoggedIn,
-  userId,
-  onChangeUserId,
-  displayName,
-  onChangeDisplayName,
-}) {
+function ApplicationHeader({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, displayName, onChangeDisplayName }) {
   const navigate = useNavigate();
 
-  function handleClickButton() {
+  function handleClickLogoutButton() {
     onChangeIsLoggedIn(!isLoggedIn);
     onChangeUserId('');
     onChangeDisplayName('');
@@ -45,7 +38,7 @@ function ApplicationHeader({
           <Link to='/login'>로그인</Link>
         </button>
       ) : (
-        <button className='login-logout-button' onClick={handleClickButton}>
+        <button className='login-logout-button' onClick={handleClickLogoutButton}>
           로그아웃
         </button>
       )}

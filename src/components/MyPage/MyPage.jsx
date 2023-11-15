@@ -14,7 +14,7 @@ import { getDocs, collection, deleteDoc, doc, query } from 'firebase/firestore';
 
 import './Mypage.css';
 
-function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displayName, onChangeDisplayName }) {
+function MyPage({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, displayName, onChangeDisplayName }) {
   // MyPage 의 사용자 정보에서만 쓰이는 displayName 상태가 따로 있어야, 이를 수정해도 ApplicationHeader의 이름이 같이 변하지 않는다
   const [myPageDisplayName, setMyPageDisplayName] = useState('');
   const [passwordMismatch, setPasswordMismatch] = useState('');
@@ -81,7 +81,7 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
 
       navigate('/');
     } catch (error) {
-      console.log(error);
+      alert('계정을 정상적으로 삭제하지 못하였습니다!');
     }
   }
 
@@ -133,7 +133,6 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
       <ApplicationHeader
         isLoggedIn={isLoggedIn}
         onChangeIsLoggedIn={onChangeIsLoggedIn}
-        userId={userId}
         onChangeUserId={onChangeUserId}
         displayName={displayName}
         onChangeDisplayName={onChangeDisplayName}
@@ -145,7 +144,7 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
         </div>
         <form action='post' className='mypage-information-form'>
           <div>
-            <label className={isSocialLogin ? 'github' : ''} htmlFor='nickname'>
+            <label className={isSocialLogin ? 'myPageSocialLogin' : ''} htmlFor='nickname'>
               {isSocialLogin ? '소셜 로그인 시 닉네임을 변경 할 수 없습니다.' : '닉네임'}
             </label>
             <br />
@@ -153,7 +152,7 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displa
               id='nickname'
               name='nickname'
               type='text'
-              className={isSocialLogin ? 'github-input' : ''}
+              className={isSocialLogin ? 'myPageSocialLogin-input' : ''}
               value={myPageDisplayName}
               onChange={handleChangeUserNickname}
             />

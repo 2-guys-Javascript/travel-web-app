@@ -30,9 +30,7 @@ function Exchange({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) {
   useEffect(() => {
     getKrwToJpyExchange();
     getJpyToKrwExchange();
-  }, []);
 
-  useEffect(() => {
     const storedLoginStatus = localStorage.getItem('isLoggedIn');
     const storedUserId = localStorage.getItem('userId');
     const storedDisplayName = localStorage.getItem('displayName');
@@ -50,7 +48,7 @@ function Exchange({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) {
       <div className='real-exchangeRate' onClick={handleChangeKrwJpy}>
         <div className='exchange-click-description'>
           클릭해서 현재의 엔화 환율을 확인해요!
-          <h4 className='base-currency'>현재의 엔화는</h4>
+          <h4>현재의 엔화는</h4>
         </div>
         <h2>
           {isKrwToJpy === true
