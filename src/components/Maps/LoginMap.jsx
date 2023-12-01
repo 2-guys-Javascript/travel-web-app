@@ -454,6 +454,7 @@ function LoginMap({ userId }) {
           {selectedNearByPlace && console.log(selectedNearByPlace)}
           {selectedMarker && (
             <MarkerInfo
+              setContentOpen={setContentOpen}
               selectedMarker={selectedMarker}
               setSelectedMarker={setSelectedMarker}
               markers={markers}
