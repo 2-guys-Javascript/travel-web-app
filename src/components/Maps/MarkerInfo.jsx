@@ -1,7 +1,8 @@
 import { doc, updateDoc, deleteField } from 'firebase/firestore';
 import { db } from '../../../firebaseConfig';
+import { setConsent } from 'firebase/analytics';
 
-function MarkerInfo({ selectedMarker, setSelectedMarker, markers, setMarkers, userId, onClose }) {
+function MarkerInfo({ selectedMarker, setSelectedMarker, setMarkers, userId, onClose, setContentOpen }) {
   if (!selectedMarker.info) {
     return;
   }
@@ -11,7 +12,6 @@ function MarkerInfo({ selectedMarker, setSelectedMarker, markers, setMarkers, us
       const documentRef = doc(db, 'users', userId, 'date', selectedMarker.info.date);
       const dataToRemove = { [selectedMarker.info.title]: deleteField() };
       await updateDoc(documentRef, dataToRemove);
-      // db에서는 지워줬음. 이제 markers를 바꿔줘야함 : 애플리케이션에서의 상태와 DB 간의 동기화
       setMarkers((markers) => {
         return markers.filter((element) => element.info.title !== selectedMarker.info.title);
       });
@@ -19,6 +19,7 @@ function MarkerInfo({ selectedMarker, setSelectedMarker, markers, setMarkers, us
       console.log(error);
     }
     setSelectedMarker(false);
+    setContentOpen(false);
   }
 
   const from = `${selectedMarker.info.time.from.slice(0, 2)}시 ${selectedMarker.info.time.from.slice(3, 5)}분`;
