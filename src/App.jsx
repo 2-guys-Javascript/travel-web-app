@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { useState } from 'react';
 import Home from './components/Home/Home';
 import Japan from './components/Japan/Japan';

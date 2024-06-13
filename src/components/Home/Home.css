@@ -37,12 +37,10 @@
 }
 
 .korea-tab-div:hover {
-  transform: translate(-5px, -5px);
   box-shadow: 10px 10px 10px #edd3e4;
 }
 
 .korea-tab-div:active {
-  transform: translate(0, 0);
   box-shadow: 5px 5px 5px #edd3e4;
 }
 
@@ -82,12 +80,10 @@
 }
 
 .japan-tab-div:hover {
-  transform: translate(-5px, -5px);
   box-shadow: 10px 10px 10px #818589;
 }
 
 .japan-tab-div:active {
-  transform: translate(0, 0);
   box-shadow: 5px 5px 5px #818589;
 }
 
@@ -142,6 +138,7 @@ a {
   width: 100vw;
   animation: openFadeIn 1.5s ease-in-out forwards;
   z-index: 10;
+  /* 해당 요소에 대한 포인터 이벤트를 해제함. 이미지 영역이 한국 탭, 일본 탭과 겹치는 문제 해결 */
   pointer-events: none;
 }
 

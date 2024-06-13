@@ -28,7 +28,7 @@ body {
 /* css #root의 css값 수정했습니다! 모바일 화면 최적화 */
 #root {
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   position: relative;

@@ -144,15 +144,15 @@ $ npm run preview // 빌드 후 배포 환경에서의 실행
 ## 라우팅 & 컴포넌트 & 상태 관리
 
 ### 라우팅
-1. Home (url : `/`) 
+1. Home (url : `/`)
 2. 한국 (url : `/korea`) <br>
 > 최외곽에는 KrDefaultLayout이 감싸고 있어 상단에는 애플리케이션 헤더가, 하단에는 각 탭으로 이동할 수 있는 네비게이션 바가 위치하고, 세부 url path에 따라서 Outlet 컴포넌트가 달라집니다.
 3. 일본 (url : `/japan`) <br>
-> 일본 탭도 한국 탭과 마찬가지로 최외곽에는 JpDefaultLayout이 감싸고 있어 상단과 하단에 각각 애플리케이션 헤더와 네비게이션 바가 위치합니다. 하지만 세부 Outlet 컴포넌트가 환율(`Exchange`)이 추가되었다는 특징이 있습니다. 
+> 일본 탭도 한국 탭과 마찬가지로 최외곽에는 JpDefaultLayout이 감싸고 있어 상단과 하단에 각각 애플리케이션 헤더와 네비게이션 바가 위치합니다. 하지만 세부 Outlet 컴포넌트가 환율(`Exchange`)이 추가되었다는 특징이 있습니다.
 4. 회원 가입 (url : `/signup`) 과 로그인 (url : `/login`) <br>
-> 해당 url path만 예외적으로 ApplicationHeader를 이용하지 않고, 개별적인 헤더를 정의하여 UI를 렌더링합니다. 
+> 해당 url path만 예외적으로 ApplicationHeader를 이용하지 않고, 개별적인 헤더를 정의하여 UI를 렌더링합니다.
 5. 마이페이지 (url : `/mypage`) <br>
-> 로그인된 사용자의 계정 정보를 보여주는 탭이므로 ApplicationHeader를 사용하고 나머지 내용은 MyPage 컴포넌트를 사용하여 렌더링합니다. 
+> 로그인된 사용자의 계정 정보를 보여주는 탭이므로 ApplicationHeader를 사용하고 나머지 내용은 MyPage 컴포넌트를 사용하여 렌더링합니다.
 
 ### 컴포넌트
 
@@ -178,3 +178,9 @@ $ npm run preview // 빌드 후 배포 환경에서의 실행
 3. localStorage를 이용한 로그인 정보 저장은 보안상 아쉬운 점이 있으니 cookie를 이용한 방식으로 구현
 4. 비로그인된 사용자도 특정 지점을 클릭하고, 해당 장소 주면의 명소 정보를 볼 수 있으면 좋을 것 같음
 5. MyPage 컴포넌트에는 따로 footer 컴포넌트를 만들어주진 않을 것인지?
+
+
+## 각 페이지에 대한 구현 상세 정리
+
+### `/` 페이지
+해당 페이즈는 korea와 japan 탭으로 이동할 수 있는 링크가 fadeIn 효과를 통해 나타납니다. 이때 중간의 `opening` 이미지가 탭을 가리는 현상을 `pointer-events : none` 속성으로 해제시켜버림
