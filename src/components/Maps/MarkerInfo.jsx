@@ -1,6 +1,6 @@
 import { doc, updateDoc, deleteField } from 'firebase/firestore';
-import { db } from '../../../firebaseConfig';
-import { setConsent } from 'firebase/analytics';
+import {db} from '@/../firebaseConfig';
+
 
 function MarkerInfo({ selectedMarker, setSelectedMarker, setMarkers, userId, onClose, setContentOpen }) {
   if (!selectedMarker.info) {

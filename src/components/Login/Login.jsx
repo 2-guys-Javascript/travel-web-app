@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import LoginForm from './LoginForm';
-import { auth, googleProvider, githubProvider, facebookProvider } from '../../../firebaseConfig';
+import { auth, googleProvider, githubProvider, facebookProvider } from '@/../firebaseConfig';
 import { signInWithPopup } from 'firebase/auth';
 import './login.css';
 

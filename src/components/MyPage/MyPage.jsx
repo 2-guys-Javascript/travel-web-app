@@ -1,7 +1,7 @@
 import ApplicationHeader from '../App-Header/ApplicationHeader';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth } from '../../../firebaseConfig';
+import { auth } from '@/../firebaseConfig';
 import {
   FacebookAuthProvider,
   GithubAuthProvider,
@@ -9,7 +9,7 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from 'firebase/auth';
-import { db } from '../../../firebaseConfig';
+import { db } from '@/../firebaseConfig';
 import { getDocs, collection, deleteDoc, doc, query } from 'firebase/firestore';
 
 import './Mypage.css';

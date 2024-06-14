@@ -5,12 +5,13 @@ import ko from 'date-fns/locale/ko';
 import CreateMarkerForm from './CreateMarkerForm';
 import MarkerInfo from './MarkerInfo';
 import moment from 'moment';
-import { db } from '../../../firebaseConfig';
+import { db } from '@/../firebaseConfig';
 import { getDoc, doc, updateDoc, setDoc } from 'firebase/firestore';
 import './Map.css';
 import './LoginMap.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import SelectedPlaceInfo from './SelectedPlaceInfo';
+
 
 const myStyles = [
   {
@@ -490,4 +491,4 @@ function LoginMap({ userId }) {
   );
 }
 
-export default memo(LoginMap);
+export default memo(LoginMap)

@@ -1,7 +1,7 @@
 import './JapanDefaultLayout.css';
 import { Outlet } from 'react-router-dom';
 import JpNavBar from './JpNavBar';
-import ApplicationHeader from '../App-Header/ApplicationHeader';
+import ApplicationHeader from '@components/App-Header/ApplicationHeader'
 
 function JpDefaultLayout({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, displayName, onChangeDisplayName }) {
   return (

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { db } from '../../../firebaseConfig';
+import { db } from '@/../firebaseConfig';
 import { getDoc, doc } from 'firebase/firestore';
 import Calendar from 'react-calendar';
 import moment from 'moment';

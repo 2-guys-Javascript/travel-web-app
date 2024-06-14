@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import LoginMap from '../Maps/LoginMap';
-import NonLoginMap from '../Maps/NonLoginMap';
+import LoginMap from '@components/Maps/LoginMap';
+import NonLoginMap from '@components/Maps/NonLoginMap';
 
 function Korea({ isLoggedIn, onChangeIsLoggedIn, userId, onChangeUserId, displayName, onChangeDisplayName }) {
   useEffect(() => {

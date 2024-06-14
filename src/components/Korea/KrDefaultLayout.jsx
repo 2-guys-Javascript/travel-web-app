@@ -1,7 +1,7 @@
 import './KoreaDefaultLayout.css';
 import { Outlet } from 'react-router-dom';
 import KrNavBar from './KrNavBar';
-import ApplicationHeader from '../App-Header/ApplicationHeader';
+import ApplicationHeader from '@components/App-Header/ApplicationHeader';
 
 function KrDefaultLayout({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, displayName, onChangeDisplayName }) {
   return (
