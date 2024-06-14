@@ -25,6 +25,12 @@ body {
   overflow: hidden;
 }
 
+/* 모든 요소와 가상 요소에 box-sizing: border-box 적용 */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
 /* css #root의 css값 수정했습니다! 모바일 화면 최적화 */
 #root {
   width: 100%;

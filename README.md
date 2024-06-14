@@ -180,6 +180,7 @@ google의 Javascript Map과 places API는 별개입니다. 하지만 GCP의 기�
 3. localStorage를 이용한 로그인 정보 저장은 보안상 아쉬운 점이 있으니 cookie를 이용한 방식으로 구현
 4. 비로그인된 사용자도 특정 지점을 클릭하고, 해당 장소 주면의 명소 정보를 볼 수 있으면 좋을 것 같음
 5. MyPage 컴포넌트에는 따로 footer 컴포넌트를 만들어주진 않을 것인지?
+6. login된 사용자가 무단으로 `/login`, `/signup` 페이지로 접근하는 이슈
 
 
 ## 각 페이지에 대한 구현 상세 정리
@@ -191,3 +192,26 @@ google의 Javascript Map과 places API는 별개입니다. 하지만 GCP의 기�
 해당 페이즈는 korea와 japan 탭으로 이동할 수 있는 링크가 fadeIn 효과를 통해 나타납니다. 이때 중간의 `opening` 이미지가 탭을 가리는 현상을 `pointer-events : none` 속성으로 해제시켜버림
 
 ### `/korea` 페이지
+기본적으로 `KoreaDefaultLayout`이 하위 세부 세그먼트들을 감싸며, 이는 `outlet` 컴포넌트를 통해 차별화된다.
+- `weather` 세부 경로 : 날씨 api를 받아와서 국내 날씨 정보를 도시 별로 렌더링
+
+### `/japan` 페이지
+기본적으로 `JapanDefaultLayout`이 하위 세부 세그먼트들을 감싸며, 이는 `outlet` 컴포넌트를 통해 차별화된다.
+- `weather` 세부 경로 : 날씨 api를 받아와서 일본 도시 날씨 정보를 도시 별로 렌더링
+- `exchange` 세부 경로 : 한화, 일화 간의 환율 정보를 각각 받아와서 사용자에게 렌더링해준다.
+
+### `/signup` 페이지 🔏
+회원 가입은 이메일과 패스워드 기반의 로직으로 진행한다. sns 방식은 따로 회원 가입을 진행할 필요는 없고, 바로 로그인 페이지에서 서비스 이용을 진행하면 된다.<br>
+회원 가입의 절차는 다음과 같다.
+1. 사용자가 form에 이메일, 패스워드, 사용할 닉네임을 입력한다. 이때 과도한 페이지 리렌더링을 막기 위해 form의 양방향 바인딩은 하지 않고 단지 form이 제출될 때에만 해당 값을 참조하여 유효성 검사를 진행한다.
+2. 유효성 검사를 통과한 이메일과 패스워드는 `createUserWithEmailAndPassword` 함수를 통해 credential을 가져오고, `updateProfile` 함수를 통해 displayName까지 닉네임으로 등록해준다.
+3. 정상적이라면 로그인 페이지로 이동하여 다음 과정을 진행하고, 그렇지 않다면 붉은 글씨로 에러 메시지를 보여준다.
+
+
+
+### `/login` 페이지 🔓
+로그인의 로직은 Oauth 2.0 프로토콜을 웹 서버에서 따로 구현하기보다는, firebase에서 제공하는 API를 이용하기로 결정했습니다.<br>
+로그인 방식은 크게 facebook, google, gitub, 그리고 이메일 & 패스워드 방식으로 나뉘는데, 기본 원리는 동일합니다. <br>
+1. auth모듈과 인증 관련 정보(이메일 & 패스워드 혹은 sns provider) : 관련 설정은 firebaseConfig.js 모듈에서 생성
+2. 1의 비동기 함수를 **async ~ await** 방식으로 실행하여 리턴한 credential에서 uid와 displayName을 받아 상태와 로컬 스토리지에 반영하기
+3. 2의 과정에서 오류가 있다면 에러 핸들링을 하고, 성공적이라면 루트 랜딩 페이지로 네비게이트

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import JpHourlyWeather from './JpHourlyWeather';
 import JpForecastWeather from './JpForecastWeather';
 import './JpWeather.css';
@@ -14,10 +14,10 @@ function JpWeather({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) 
     us: ['osaka', 'kyoto', 'kobe', 'tokyo', 'hakone', 'yokohama', 'fukuoka', 'yufuin', 'kitakyushu', 'sapporo'],
   };
 
-  const currentDate = () => {
+  const currentDate = useCallback(() => {
     const today = new Date();
     return `${today.getMonth() + 1}월 ${today.getDate()}일`;
-  };
+  },[]);
 
   const options = {
     method: 'GET',
@@ -27,7 +27,7 @@ function JpWeather({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) 
     },
   };
 
-  const fetchWeatherData = async (e) => {
+  const fetchWeatherData = useCallback(async (e) => {
     const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${e}&days=3&lang=ko`;
     try {
       const response = await fetch(url, options);
@@ -37,7 +37,7 @@ function JpWeather({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) 
     } catch (error) {
       setWeatherData(null);
     }
-  };
+  },[]);
 
   useEffect(() => {
     const storedLoginStatus = localStorage.getItem('isLoggedIn');

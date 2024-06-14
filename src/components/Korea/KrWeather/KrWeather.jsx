@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import KrForecastWeather from './KrForecastWeather';
 import KrHourlyWeather from './KrHourlyWeather';
 import './KrWeather.css';
@@ -13,10 +13,10 @@ function KrWeather({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) 
     us: ['Seoul', 'Busan', 'Jeju', 'Yangyang', 'Jeonju', 'Daejeon', 'Gwangju', 'Yeosu', 'Gangneung', 'Sokcho'],
   };
 
-  const currentDate = () => {
+  const currentDate = useCallback(() => {
     const today = new Date();
     return `${today.getMonth() + 1}월 ${today.getDate()}일`;
-  };
+  }, [])
 
   const options = {
     method: 'GET',
@@ -26,7 +26,7 @@ function KrWeather({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) 
     },
   };
 
-  const fetchWeatherData = async (e) => {
+  const fetchWeatherData = useCallback(async (e) => {
     const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${e}&days=3&lang=ko`;
     try {
       const response = await fetch(url, options);
@@ -37,7 +37,7 @@ function KrWeather({ onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) 
       setWeatherData(null);
       console.error(error);
     }
-  };
+  },[]);
 
   useEffect(() => {
     const storedLoginStatus = localStorage.getItem('isLoggedIn');
