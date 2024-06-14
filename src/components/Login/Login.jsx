@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import { auth, googleProvider, githubProvider, facebookProvider } from '@/../firebaseConfig';
@@ -6,6 +7,14 @@ import './login.css';
 
 function Login({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, onChangeDisplayName }) {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedLoginStatus = localStorage.getItem('isLoggedIn');
+
+    if (storedLoginStatus) {
+      navigate('/')
+    }
+  }, []);
 
   async function handleGithubLogin() {
     try {

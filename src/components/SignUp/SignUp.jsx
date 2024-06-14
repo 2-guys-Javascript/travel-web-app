@@ -1,8 +1,18 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import SignUpForm from './SignUpForm';
 import './signup.css';
 
 function SignUp() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedLoginStatus = localStorage.getItem('isLoggedIn');
+
+    if (storedLoginStatus) {
+      navigate('/')
+    }
+  }, []);
   return (
     <div className='signup-page-outer-div scroll-box'>
       <div className='signup-header'>

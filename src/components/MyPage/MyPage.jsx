@@ -25,6 +25,14 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, displayName, o
 
   useEffect(() => {
     const storedLoginStatus = localStorage.getItem('isLoggedIn');
+
+    if (storedLoginStatus) {
+      navigate('/')
+    }
+  }, []);
+
+  useEffect(() => {
+    const storedLoginStatus = localStorage.getItem('isLoggedIn');
     const storedUserId = localStorage.getItem('userId');
     const storedDisplayName = localStorage.getItem('displayName');
 
@@ -35,6 +43,8 @@ function MyPage({ isLoggedIn, onChangeIsLoggedIn, onChangeUserId, displayName, o
 
       // 다음 코드는 input에서의 보이는 값을 불러오는 것
       setMyPageDisplayName(storedDisplayName);
+    } else {
+      navigate('/login');
     }
 
     const currentUser = auth.currentUser;
